@@ -1,0 +1,7 @@
+{
+  "name": "Corvi",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}

@@ -1,0 +1,25 @@
+<Corvi-header [title]="title"></Corvi-header>
+
+<ion-content class="marginTop57">
+  <ion-searchbar placeholder="Search..." showCancelButton color="danger" (ionInput)="search($event)"></ion-searchbar>
+  <div id="pdf-file-container">
+    <pdf-viewer [src]="pdfSrc" [original-size]="false" style="display: block;" (on-progress)="onProgress($event)" (error)="onError($event)"
+      [zoom]="zoom_to"></pdf-viewer>
+  </div>
+</ion-content>
+
+<ion-fab right bottom #fab1>
+  <button class="pop-in" ion-fab mini color="primary" [ngClass]="{'pop-out': fabGone}" (click)="zoom_in()">
+    <ion-icon name="add"></ion-icon>
+  </button>
+  <!-- <ion-label>Zoom In</ion-label> -->
+
+</ion-fab>
+
+<ion-fab left bottom #fab2>
+  <button class="pop-in" ion-fab mini color="primary" [ngClass]="{'pop-out': fabGone}" (click)="zoom_out()">
+    <ion-icon name="remove"></ion-icon>
+  </button>
+  <!-- <ion-label>Zoom Out</ion-label> -->
+
+</ion-fab>

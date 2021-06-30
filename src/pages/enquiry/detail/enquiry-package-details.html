@@ -1,0 +1,96 @@
+<Corvi-header [title]="title" [hidden]="showSearchBar"></Corvi-header>
+<ion-content class="marginTop57">
+  <form [formGroup]="packageDetailsForm">
+    <ion-item>
+      <ion-label floating>No. of packages</ion-label>
+      <ion-input type="text" class="text-primary" formControlName="Nop"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Units</ion-label>
+      <ion-select placeholder="Select">
+        <ion-option value="one">1</ion-option>
+        <ion-option value="two">2</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-grid class="marginTop12">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>L*W*H</ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col col-2>
+          <ion-input type="text" class="text-primary border_solid" formControlName="length"></ion-input>
+        </ion-col>
+        <ion-col class="star">*</ion-col>
+        <ion-col col-2>
+          <ion-input type="text" class="text-primary border_solid" formControlName="width"></ion-input>
+        </ion-col>
+        <ion-col class="star">*</ion-col>
+        <ion-col col-2>
+          <ion-input type="text" class="text-primary border_solid" formControlName="height"></ion-input>
+        </ion-col>
+        <ion-col>
+          <ion-item class="marginTop12">
+            <ion-label>Inches</ion-label>
+            <ion-select placeholder="Select">
+              <ion-option value="one">1</ion-option>
+              <ion-option value="two">2</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Gross Wt.</ion-label>
+            <ion-input type="text" class="text-primary" formControlName="GrossWt"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item style="margin-top: 22px;">
+            <ion-label>KGS</ion-label>
+            <ion-select placeholder="Select">
+              <ion-option value="one">1</ion-option>
+              <ion-option value="two">2</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-item>
+      <ion-label>Remarks</ion-label>
+      <ion-textarea></ion-textarea>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col> <button ion-button icon-start block color="primary" tappable>
+            <!-- <ion-icon name="save"></ion-icon> -->
+            Save
+          </button></ion-col>
+        <ion-col><button ion-button icon-start block color="primary" tappable>
+            <!-- <ion-icon name="close-circle"></ion-icon> -->
+            View
+          </button></ion-col>
+        <ion-col> <button ion-button icon-start block color="primary" tappable (click)="contact()">
+            <!-- <ion-icon name="save"></ion-icon> -->
+            Next
+          </button></ion-col>
+        <ion-col><button ion-button icon-start block color="primary" tappable>
+            <!-- <ion-icon name="close-circle"></ion-icon> -->
+            Back
+          </button></ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</ion-content>

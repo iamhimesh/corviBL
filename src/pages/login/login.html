@@ -1,0 +1,81 @@
+<!-- -->
+<ion-content padding class="animated fadeIn login auth-page">
+  <div class="login-content">
+
+    <!-- Logo -->
+    <div padding-horizontal text-center class="animated fadeInDown">
+      <div class="logo"></div>
+      <!-- <h2 ion-text class="text-primary">
+        <strong>CORVI</strong>
+      </h2> -->
+    </div>
+
+    <!-- Login form -->
+    <form class="list-form" #myForm="ngForm" (ngSubmit)="logIn()">
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="person" item-start class="text-primary"></ion-icon>
+          Username
+        </ion-label>
+        <ion-input type="text" name="username" [(ngModel)]="user.UserID" clearInput required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+          Password
+        </ion-label>
+        <ion-input name="p1" type="text" *ngIf="showPwd" [(ngModel)]="user.Password" required></ion-input>
+        <ion-input name="p2" type="password" *ngIf="!showPwd" [(ngModel)]="user.Password" required></ion-input>
+        <button icon-only ion-button clear type="button" item-right (click)="showPwd=!showPwd">
+          <ion-icon *ngIf="showPwd" name="eye"></ion-icon>
+          <ion-icon *ngIf="!showPwd" name="eye-off"></ion-icon>
+        </button>
+      </ion-item>
+
+      <ion-item style="width: 70%;" *ngIf="showCustIdCode">
+        <ion-label floating>
+          CustomerIdentity Code
+        </ion-label>
+        <ion-input type="text" name="custIdCode" [(ngModel)]="user.custIdCode"
+          (ngModelChange)="user.custIdCode = $event.toLocaleUpperCase()" clearInput required></ion-input>
+      </ion-item>
+
+      <ion-row>
+        <ion-checkbox name='remember' [(ngModel)]="isRemembered" style="margin-top: 13px;"></ion-checkbox>&nbsp;&nbsp;
+        <ion-label id="checkboxRemember" color="secondary">Remember Me</ion-label>
+      </ion-row>
+
+      <!-- <button ion-button (click)="goToDashboard()">
+        GO
+      </button> -->
+
+      <p text-right ion-text color="secondary" tappable (click)="forgotPass()">
+        <strong>Forgot Password?</strong>
+      </p>
+
+      <div>
+        <button ion-button icon-start block color="primary" tappable [disabled]="isInputValid()">
+          <ion-icon name="log-in"></ion-icon>
+          SIGN IN
+        </button>
+      </div>
+
+      <!-- <div>
+        <button ion-button icon-start block color="primary" tappable style="margin-top: 15px;" (click)="EnquiryForm()">
+          <ion-icon name="clipboard"></ion-icon>
+          SEND ENQUIRY
+        </button>
+      </div> -->
+    </form>
+
+
+    <!-- Other links -->
+    <!-- <div text-center margin-top>
+      <span ion-text color="secondary" tappable (click)="register()">New here?
+        <strong>Sign up</strong>
+      </span>
+    </div> -->
+
+  </div>
+</ion-content>

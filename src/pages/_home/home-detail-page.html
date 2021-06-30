@@ -1,0 +1,30 @@
+<ion-content>
+  <ion-card>
+    <ion-label>Total Enquiries : 10</ion-label>
+    <ion-slides autoplay="3000" pager slidesPerView="1" effect='coverflow'>
+      <ion-slide *ngFor="let slide of slidesArray" class="text-center slider-item" (click)="viewDetails(slide.page)"
+        [ngStyle]="{'background': slide.bgColor}">
+        <div class="slide-text">
+          <h2 class="h2customClass">{{slide.title}}</h2>
+          <p text-center class="pCustomcls">{{slide.count}} </p>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      Pie Chart
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #pieCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header>
+      Bar Chart
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #barCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,37 @@
+<Corvi-header [title]="title" [hidden]="showSearchBar"></Corvi-header>
+<ion-searchbar [hidden]="!showSearchBar" placeholder="Search..." showCancelButton color="primary" [animated]="true"
+  (ionInput)="filterItems($event)" [(ngModel)]="searchQuery" (ionCancel)="onCancel($event)"></ion-searchbar>
+<ion-content class="marginTop57">
+
+  <ion-list [virtualScroll]="quotationList" approxItemHeight="40px">
+    <ion-item-sliding *virtualItem="let item">
+      <ion-item (click)="goToQuotationDetails(item)">
+
+        <ion-avatar item-start>
+          <div class="customised_avatar_Img">
+            {{item.QuotationDate | moment:"date-DD/MM/YYYY"}}
+          </div>
+          <div style="text-align: center">{{item.QuotationDate | moment:"month-DD/MM/YYYY"}}</div>
+        </ion-avatar>
+        <h3>Quotation No : {{item.QuotationNo}}</h3>
+        <p> Quotation Id : {{item.QuotationId }}</p>
+        <!-- <p> Quotation Date : {{item.QuotationDate }}</p> -->
+        <!-- <p>Mode : {{item.Mode}}</p> -->
+        <p>Service : {{item.Service}}</p>
+        <p>Status : {{item.Status}}</p>
+
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+  <br>
+  <br>
+  <br>
+  <div *ngIf="quotationList.length <= 0" style="text-align:center">No Quotation Found</div>
+
+</ion-content>
+
+<ion-fab right bottom #fab1 *ngIf="quotationList.length > 0" [ngClass]="{'bottom63px': !tabsDisabled}">
+  <button class="pop-in" ion-fab mini color="primary" [ngClass]="{'pop-out': fabGone}" (click)="showSearch()">
+    <ion-icon name="search"></ion-icon>
+  </button>
+</ion-fab>
