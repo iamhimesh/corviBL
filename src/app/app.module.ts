@@ -38,6 +38,9 @@ import { HTTP } from '@ionic-native/http';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 import { BaseURLProvider } from '../providers/baseUrlGenerator/baseurlgenerator';
 import { EnquiryPageModule } from '../pages/enquiry/enquiry.module';
+import { DashboardPageModule } from '../pages/dashboard/dashboard.module';
+import { WelcomeuserPageModule } from '../pages/welcomeuser/welcomeuser.module';
+import { NewSalesActivityPageModule } from '../pages/new-sales-activity/new-sales-activity.module';
 
 @NgModule({
   declarations: [
@@ -63,7 +66,7 @@ import { EnquiryPageModule } from '../pages/enquiry/enquiry.module';
     OpenJobsPageModule,
     InvoicesPageModule,
     TabsPageModule,
-    EnquiryPageModule
+    EnquiryPageModule,DashboardPageModule,WelcomeuserPageModule,NewSalesActivityPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

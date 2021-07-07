@@ -17,6 +17,8 @@ import { ToastService } from "../../providers/util/toast.service";
 import { BaseURLProvider } from "../../providers/baseUrlGenerator/baseurlgenerator";
 import { EnquiryPage } from "../enquiry/enquiry";
 import { HomePage } from "../_home/home";
+import { DashboardPage } from "../dashboard/dashboard";
+import { WelcomeuserPage } from "../welcomeuser/welcomeuser";
 
 export class User { UserID: string; Password: string; UUID: any; custIdCode: any; }
 declare var Email: any;
@@ -213,6 +215,13 @@ export class LoginPage {
   }
 
   goToDashboard() {
+    debugger
     this.globalService.routePage(HomePage);
   }
+
+  dashboard() {
+
+    this.globalService.setRootPage(WelcomeuserPage);
+  }
+
 }

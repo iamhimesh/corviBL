@@ -31907,6 +31907,62 @@ page-closed-jobs-details .text-input[disabled] {
   opacity: 1 !important;
 }
 
+page-dashboard .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+page-dashboard .center-footer-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+}
+
+page-dashboard .text-center {
+  text-align: center;
+}
+
+page-dashboard .ShadowBox13 {
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+page-dashboard label {
+  color: #0461b2;
+  font-size: 1.5em;
+}
+
+page-dashboard .label-white {
+  color: #fff;
+}
+
+page-dashboard .toolbar-background-md {
+  background-color: #0461b2;
+  color: #fff;
+}
+
+page-dashboard .toolbar-title-md {
+  color: #fff;
+}
+
+page-dashboard .footer-col-color {
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+page-dashboard .box {
+  padding: 0 5px 0 5px;
+}
+
+page-dashboard .box .inner {
+  background-color: #fff;
+  padding: 5px;
+}
+
 .border_solid {
   border: 1px solid;
 }
@@ -31935,6 +31991,50 @@ page-invoices-details .text-input[disabled] {
 page-login .input-wrapper,
 .login .input-wrapper {
   font-size: inherit;
+}
+
+page-new-sales-activity .ShadowBox13 {
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+page-new-sales-activity .ion-fab34 {
+  width: 34px !important;
+  height: 34px !important;
+  float: right !important;
+}
+
+page-new-sales-activity .margin4 {
+  margin-top: 4px !important;
+}
+
+page-new-sales-activity table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+page-new-sales-activity th,
+page-new-sales-activity td {
+  text-align: left;
+  padding: 8px;
+}
+
+page-new-sales-activity .btnRadius {
+  border-radius: 20px;
+}
+
+page-new-sales-activity .btncancel {
+  background: white;
+  color: black;
+  border: solid thin black;
+}
+
+page-new-sales-activity .toolbar-background-md {
+  background-color: #0461b2;
+  color: #fff;
 }
 
 page-open-jobs-details .input-wrapper {

@@ -53,7 +53,7 @@ export class HomePage {
   selectedSegment: string;
   slides: any;
   constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public menu: MenuController, public globalService: GlobalProvider, public http: HttpServiceProvider, public event: Events) {
-    this.title = "Dashboard";
+    this.title = "Dasheeboard";
     this.selectedSegment = "Enquiry";
     this.drawerOptions = {
       handleHeight: 50,
