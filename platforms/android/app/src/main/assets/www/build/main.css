@@ -31362,6 +31362,10 @@ General Animations
   border: 0;
 }
 
+ion-app.md [padding] .scroll-content {
+  padding: 3px;
+}
+
 #menu-right button {
   padding-left: 16px;
 }
@@ -31422,6 +31426,23 @@ General Animations
   position: absolute;
   padding: 5px 8px;
   border-radius: 15px;
+}
+
+.addOns {
+  width: 100%;
+  height: 175px;
+  background-color: #1F63A6;
+}
+
+.addOnsText {
+  color: #ffffff;
+  padding-top: 20px;
+  padding-left: 15px;
+}
+
+.errorbox {
+  -webkit-text-decoration-color: red;
+  text-decoration-color: red;
 }
 
 #menu-avatar .user-avatar {
@@ -31488,6 +31509,7 @@ General Animations
 
 .scroll-content {
   padding-bottom: 0 !important;
+  margin-bottom: 215px;
 }
 
 .animated {
@@ -31575,7 +31597,7 @@ General Animations
 
 .auth-page::after {
   content: "";
-  background: url("../assets/img/bg.jpg") no-repeat;
+  background-color: #ffffff;
   background-size: cover;
   top: 0;
   left: 0;
@@ -31601,7 +31623,7 @@ General Animations
 }
 
 .auth-page .scroll-content .login-content {
-  width: 86%;
+  width: 94%;
 }
 
 .auth-page .scroll-content .login-content .logo {
@@ -31610,6 +31632,24 @@ General Animations
   margin: 20px auto 0;
   border-radius: 10%;
   background: url("../assets/img/logo.png") no-repeat;
+  background-size: 100%;
+}
+
+.auth-page .scroll-content .login-content .logoLeft {
+  width: 100px;
+  height: 60px;
+  margin-top: -80px;
+  margin-left: -22px;
+  border-radius: 10%;
+  background-size: 100%;
+}
+
+.auth-page .scroll-content .login-content .logoRight {
+  width: 100px;
+  height: 60px;
+  margin-top: -80px;
+  margin-left: 60px;
+  border-radius: 10%;
   background-size: 100%;
 }
 
@@ -31633,7 +31673,7 @@ General Animations
 
 .auth-page .scroll-content .login-content .list-form ion-item ion-label {
   font-size: 1em;
-  color: #1069ad;
+  color: grey;
 }
 
 .auth-page .scroll-content .login-content .list-form ion-item input {
@@ -31937,6 +31977,64 @@ page-login .input-wrapper,
   font-size: inherit;
 }
 
+.contaier-login {
+  height: 480px;
+  padding: 3px;
+  background: #FFFFFF;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+  margin-top: -3px;
+  margin-bottom: 50px;
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+.imgLeft {
+  height: 50px;
+  width: 174px;
+  display: block;
+}
+
+.imgRight {
+  height: 50px;
+  width: 161.86px;
+  padding-right: 11px;
+  padding-left: 34px;
+}
+
+.container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 18px;
+}
+
+.container h6 {
+  color: #0461AA;
+}
+
+.container img {
+  width: 60px;
+  height: auto;
+}
+
 page-open-jobs-details .input-wrapper {
   font-size: 1.4rem;
 }
@@ -31951,6 +32049,76 @@ page-quotation-detail .input-wrapper {
 
 page-quotation-detail .text-input[disabled] {
   opacity: 1 !important;
+}
+
+page-reset-password .contaier-login {
+  height: 434px;
+  padding: 3px;
+  background: #FFFFFF;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+  margin-top: -3px;
+  margin-bottom: 50px;
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+page-reset-password .imgLeft {
+  height: 50px;
+  width: 174px;
+  display: block;
+}
+
+page-reset-password .imgRight {
+  height: 50px;
+  width: 161.86px;
+  padding-right: 11px;
+  padding-left: 34px;
+}
+
+page-reset-password .container {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 18px;
+}
+
+page-reset-password .container h6 {
+  color: #0461AA;
+}
+
+page-reset-password .container img {
+  width: 60px;
+  height: auto;
+}
+
+page-reset-password .my-width {
+  width: 600px;
+}
+
+page-reset-password .button.customBtn {
+  width: 150px;
+}
+
+page-reset-password ion-label {
+  color: grey;
 }
 
 page-tabs #tab-t0-3 .tab-button-text {

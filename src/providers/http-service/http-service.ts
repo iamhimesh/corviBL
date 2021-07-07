@@ -21,6 +21,8 @@ import { GlobalProvider } from '../global/global';
 import { HTTP } from '@ionic-native/http';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 
+import * as xml2js from 'xml2js';
+
 @Injectable()
 export class HttpServiceProvider {
 
@@ -28,6 +30,7 @@ export class HttpServiceProvider {
   }
 
   public webPOST(service_name: string, requestMethod: RequestMethod, body?: any) {
+    console.log('I am from WebPOST');
     let connectionStatus = navigator.onLine ? 'online' : 'offline';
     return new Promise((resolve, reject) => {
 
@@ -44,7 +47,8 @@ export class HttpServiceProvider {
             this.getToken().then((token) => {
               let requestOptionArgs: RequestOptionsArgs;
               requestOptionArgs = {
-                url: baseURL + service_name,
+                // url: baseURL + service_name,
+                url: Constants.CORVI_Base_URL + service_name,
                 method: requestMethod,
                 body: body,
                 headers: new Headers({
@@ -198,6 +202,76 @@ export class HttpServiceProvider {
     } else {
       return this.webPOST(url, requestMethod, body);
     }
+  }
+
+
+
+  //new....
+  public getHttpRequest1(service_name: string, requestMethod: RequestMethod, body?: any) {
+
+    let connectionStatus = navigator.onLine ? 'online' : 'offline';
+    return new Promise((resolve, reject) => {
+      // We're using Angular Http provider to request the data,
+      // then on the response it'll map the JSON data to a parsed JS object.
+      // Next we process the data and resolve the promise with the new data.
+      if (connectionStatus == 'online') {
+        let requestOptionArgs: RequestOptionsArgs;
+        requestOptionArgs = {
+          url: Constants.CORVI_Base_URL + service_name,
+          method: requestMethod,
+          body: body,
+          headers: new Headers({
+            "Content-Type": "application/json",
+            "access-control-allow-methods":
+            'GET, POST', "access-control-allow-origin": "*",
+            "Access-Control-Allow-Credentials": 'true',
+            "Authorization": "Bearer "
+            //add any extra custom headers you need
+          })
+        }
+
+        //show the loader before starting the request
+        let loader = this.showLoader();
+
+        this.http.request(service_name, requestOptionArgs)
+          .map(res => res.json())
+          .subscribe(data => {
+            //console.log("Data ", data)
+            let resolvedDataToJson;
+            // we've got back the raw data, now generate the core schedule data
+            // and save the data for later reference
+
+            // Dismiss the loader and return response back.
+
+            xml2js.parseString(data.d, function (err, result) {
+              console.dir(result); // Prints JSON object!
+              resolvedDataToJson = result;
+            });
+
+            loader.dismiss().then(() => resolve(resolvedDataToJson));
+
+          }, (error) => {
+            // Dismiss the loader and return error back.
+            //console.log("Error Made" + JSON.stringify(error.json()));
+            let err = error.json();
+            if (err.hasOwnProperty('Message')) {
+              console.log(err.Message)
+              this.showErrorToast(err.Message)
+            }
+            loader.dismiss().then(() => reject(error));
+
+          });
+      } else if (connectionStatus == "offline") {
+        this.showErrorMessage('No Internet Connection');
+        reject('');
+      }
+    });
+
+  }
+
+  public getHttpPostRequest(url: string, body?: any) {
+    return this.getHttpRequest1(url, RequestMethod.Post, body);
+    // return this.nativePost(url, body);
   }
 
   private showLoader() {

@@ -1,3 +1,4 @@
+import { ResetPasswordPageModule } from './../pages/reset-password/reset-password.module';
 /**
  * @author Sachin Semlety
  * @email sachin.semlety@kalelogistics.in
@@ -38,6 +39,7 @@ import { HTTP } from '@ionic-native/http';
 import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 import { BaseURLProvider } from '../providers/baseUrlGenerator/baseurlgenerator';
 import { EnquiryPageModule } from '../pages/enquiry/enquiry.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,9 @@ import { EnquiryPageModule } from '../pages/enquiry/enquiry.module';
     OpenJobsPageModule,
     InvoicesPageModule,
     TabsPageModule,
-    EnquiryPageModule
+    EnquiryPageModule,
+    ResetPasswordPageModule,
+    FormsModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [

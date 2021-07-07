@@ -1,3 +1,5 @@
+
+
 /**
  * @author Sachin Semlety
  * @email sachin.semlety@kalelogistics.in
@@ -11,14 +13,19 @@ import { RegisterPage } from "../register/register";
 import { GlobalProvider } from "../../providers/global/global";
 import { HttpServiceProvider } from "../../providers/http-service/http-service";
 import { Constants } from "../../constants";
+// import { Constants } from './../../constants';
 import { TabsPage } from "../tabs/tabs";
 import { AlertService } from "../../providers/util/alert.service";
 import { ToastService } from "../../providers/util/toast.service";
-import { BaseURLProvider } from "../../providers/baseUrlGenerator/baseurlgenerator";
+// import { BaseURLProvider } from "../../providers/baseUrlGenerator/baseurlgenerator";
 import { EnquiryPage } from "../enquiry/enquiry";
 import { HomePage } from "../_home/home";
+import { ResetPasswordPage } from "../reset-password/reset-password";
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 
-export class User { UserID: string; Password: string; UUID: any; custIdCode: any; }
+export class User { UserId: string; Password: string; 
+  // CustIdCode: string;
+}
 declare var Email: any;
 @Component({
   selector: 'page-login',
@@ -29,6 +36,12 @@ export class LoginPage {
   isRemembered: boolean;
   loggedIn: true;
   showCustIdCode: boolean = true;
+  authForm: FormGroup;
+  username: any;
+  password: any;
+  customerCode: any;
+  public showPass = false;
+  public type = "password";
   constructor(
     public nav: NavController,
     public menu: MenuController,
@@ -37,11 +50,19 @@ export class LoginPage {
     public http: HttpServiceProvider,
     public alertService: AlertService,
     public toastService: ToastService,
-    public baseURLProvider: BaseURLProvider
+    // public baseURLProvider: BaseURLProvider,
+    public fb: FormBuilder
   ) {
     this.menu.swipeEnable(false);
     this.menu.close();
     this.user = new User();
+
+    // this.authForm = fb.group({
+    //   'username' : [null, Validators.compose([Validators.required,Validators.minLength(3)])],
+    //   'password' : [null, Validators.compose([Validators.required,Validators.minLength(3)])],
+    //   'customerCode' : [null, Validators.compose([Validators.required,Validators.minLength(3)])],
+    // });
+
   }
 
   //On page Load
@@ -54,27 +75,41 @@ export class LoginPage {
     this.globalService.routePage(RegisterPage);
   }
 
+  showPassword() {
+    this.showPass = !this.showPass;
+
+    if (this.showPass) {
+      this.type = "text";
+    } else {
+      this.type = "password";
+    }
+  }
+
   // login and go to home page
   logIn() {
-    let companyCode = this.user.custIdCode.substring(0, 3);
-    this.baseURLProvider.setBaseURL(companyCode).then((msg) => {
-      if (msg != null && msg != '') {
+    // let companyCode = this.user.custIdCode.substring(0, 3);
+    // this.baseURLProvider.setBaseURL(companyCode).then((msg) => {
+      // if (msg != null && msg != '') {
+        // console.log('response to check 1');
         this.http.POST(Constants.Corvi_Services.Login, this.user).then((response) => {
-          // console.log('resp ', response);
-          this.globalService.store('custIdCode', this.user.custIdCode);
+          console.log('response to check login method: ', response );
+          // this.globalService.store('custIdCode', this.user.custIdCode);
           this.user_Rememebered();
           this.globalService.store('login_resp', response);
           (response.hasOwnProperty('access_token')) ? this.fetchUserDetails() : this.globalService.showToast('Something went wrong');
         }, (err) => {
           console.log('error Login ', err);
+          console.log('response to check service link: ', Constants.Corvi_Services.Login);
           this.LoginInvalid(err);
         });
-      } else {
-        this.globalService.showAlert('Invalid Customer Identity Code')
-      }
+      // } 
+      // else {
+      //   this.globalService.showAlert('Invalid Customer Identity Code')
+      // }
 
-    });
+    // });
   }
+
 
   forgotPass() {
     this.alertService.forgetPassword().then((data) => {
@@ -83,9 +118,13 @@ export class LoginPage {
     })
   }
 
+  forgotPwd(){
+    this.nav.push(ResetPasswordPage);
+  }
+
   user_Rememebered() {
     if (this.isRemembered) {
-      this.globalService.store('userName', this.user.UserID);
+      this.globalService.store('userName', this.user.UserId);
       this.globalService.store('password', this.user.Password);
       this.globalService.store('isRemembered', "true");
     } else {
@@ -96,12 +135,12 @@ export class LoginPage {
   }
 
   // check input Valid
-  isInputValid(): boolean {
-    if (this.user.Password != undefined && this.user.UserID != undefined && this.user.custIdCode != undefined && this.user.Password.trim() !== '' && this.user.UserID.trim() !== '' && this.user.custIdCode.trim() !== '' && this.user.custIdCode.length > 2)
-      return false;
-    else
-      return true;
-  }
+  // isInputValid(): boolean {
+  //   if (this.user.Password != undefined && this.user.Username != undefined && this.user.CustIdCode != undefined && this.user.Password.trim() !== '' && this.user.Username.trim() !== '' && this.user.CustIdCode.trim() !== '' && this.user.CustIdCode.length > 2)
+  //     return false;
+  //   else
+  //     return true;
+  // }
 
   getUserDetails() {
     this.globalService.get('isRemembered')
@@ -112,7 +151,7 @@ export class LoginPage {
 
     this.globalService.get('custIdCode')
       .then((custIdCode) => {
-        custIdCode == '' ? this.user.custIdCode = "" : this.user.custIdCode = custIdCode;
+        // custIdCode == '' ? this.user.CustIdCode = "" : this.user.CustIdCode = custIdCode;
         custIdCode == '' ? this.showCustIdCode = true : this.showCustIdCode = false;
       }),
       error => console.error(error);
@@ -123,7 +162,7 @@ export class LoginPage {
       this.isRemembered = isRemembered;
       this.globalService.get('userName')
         .then(
-          userId => this.user.UserID = userId,
+          userId => this.user.UserId = userId,
           error => console.error(error)
         );
       this.globalService.get('password')
@@ -161,12 +200,12 @@ export class LoginPage {
   }
 
   setDetails(UUID) {
-    this.user.UUID = UUID;
+    this.user.UserId = UUID;
     this.http.POST(Constants.Corvi_Services.UserDetails, this.user).then((userDetailsResp) => {
       this.globalService.store('userDetails', userDetailsResp);
       this.globalService.publishEventwithData('app:userDetails', userDetailsResp);
       this.globalService.publishEventwithData('login:sessionExpired', 500000);
-      this.globalService.setRootPage(TabsPage);
+      this.globalService.setRootPage(HomePage);
     }, (err) => {
       console.log('error Login ', err);
     });

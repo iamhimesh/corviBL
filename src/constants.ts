@@ -11,7 +11,9 @@ export class Constants {
     // public static get CORVI_Base_URL(): string { return " http://113.193.225.56:8080/CorviMobileAPI/api/"; };
     // public static get CORVI_Base_URL(): string { return "http://10.22.2.31:8080/CorviMobileAPI/api/"; };
 
-    public static get CORVI_Base_URL(): string { return "http://104.211.244.239/MobileApi/MobileApi/"; }
+    // public static get CORVI_Base_URL(): string { return "http://104.211.244.239/MobileApi/MobileApi/"; }
+
+    public static get CORVI_Base_URL(): string { return "https://lmsinv.balmerlawrie.co.in/Mobapi/MobileAPI/"; }
 
     public static get CORVI_PDF_URL(): string { return "http://52.76.76.33/demo/"; }
     public static get SECRET_KEY(): string { return "0123456789abcdef" };

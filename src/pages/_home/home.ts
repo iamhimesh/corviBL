@@ -139,7 +139,7 @@ export class HomePage {
   setDetails(UUID, refresher) {
     this.globalService.get('userName')
       .then(
-        userId => this.user.UserID = userId,
+        userId => this.user.UserId = userId,
         error => console.error(error)
       );
     this.globalService.get('password')
@@ -147,7 +147,7 @@ export class HomePage {
         pwd => this.user.Password = pwd,
         error => console.error(error)
       );
-    this.user.UUID = UUID;
+    this.user.UserId = UUID;
     this.http.POST(Constants.Corvi_Services.UserDetails, this.user).then((userDetailsResp) => {
       this.globalService.publishEventwithData('app:userDetails', userDetailsResp);
       this.setUpDashboardCount(userDetailsResp, refresher)
