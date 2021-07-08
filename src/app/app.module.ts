@@ -40,6 +40,9 @@ import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 import { BaseURLProvider } from '../providers/baseUrlGenerator/baseurlgenerator';
 import { EnquiryPageModule } from '../pages/enquiry/enquiry.module';
 import { FormsModule } from '@angular/forms';
+import { DashboardPageModule } from '../pages/dashboard/dashboard.module';
+import { WelcomeuserPageModule } from '../pages/welcomeuser/welcomeuser.module';
+import { NewSalesActivityPageModule } from '../pages/new-sales-activity/new-sales-activity.module';
 
 @NgModule({
   declarations: [
@@ -68,6 +71,7 @@ import { FormsModule } from '@angular/forms';
     EnquiryPageModule,
     ResetPasswordPageModule,
     FormsModule,
+    EnquiryPageModule,DashboardPageModule,WelcomeuserPageModule,NewSalesActivityPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

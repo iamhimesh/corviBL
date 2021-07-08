@@ -19,12 +19,14 @@ export class Constants {
     public static get SECRET_KEY(): string { return "0123456789abcdef" };
     public static get MENU_PAGES_ARRAY(): Array<MENU> {
         return [
-            { title: 'Home', component: 'TabsPage', active: true, icon: 'home' },
-            { title: 'Quotation', component: 'QuotationPage', active: false, icon: 'quote' },
-            { title: 'Open Jobs', component: 'OpenJobsPage', active: false, icon: 'open' },
-            { title: 'Closed Jobs', component: 'ClosedJobsPage', active: false, icon: 'close' },
-            { title: 'Invoices', component: 'InvoicesPage', active: false, icon: 'print' },
-            { title: 'Enquiry', component: 'EnquiryPage', active: false, icon: 'clipboard' }
+            { title: 'Home', component: 'DashboardPage', active: true, icon: 'home' },
+            { title: 'New Sales Activity', component: 'NewSalesActivityPage', active: false, icon: 'quote' },
+            { title: 'Search Sales Activity', component: 'OpenJobsPage', active: false, icon: 'open' },
+            { title: 'New Sales Lead', component: 'ClosedJobsPage', active: false, icon: 'close' },
+            { title: 'Update Job Milestone', component: 'InvoicesPage', active: false, icon: 'print' },
+            { title: 'Configure Parameters', component: 'EnquiryPage', active: false, icon: 'clipboard' },
+            { title: 'Settings', component: 'EnquiryPage', active: false, icon: 'clipboard' },
+            { title: 'Notification', component: 'EnquiryPage', active: false, icon: 'clipboard' }
         ];
     }
     public static get MIME_TYPE(): string { return "application/pdf" }

@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\Corvi\\Corvi\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-is\\values-is.xml",
+            "outputFile": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-is\\values-is.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Priyanka.Rajeshirke\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-basement-12.0.1.aar\\e7236c946509f0aff500030af6931c8a\\res\\values-is\\values.xml",
+                    "source": "C:\\Users\\Mohammad.Junaid\\.gradle\\caches\\transforms-2\\files-2.1\\3b2286342f50d63f902d625bfcc1d859\\play-services-basement-12.0.1\\res\\values-is\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Priyanka.Rajeshirke\\.gradle\\caches\\transforms-1\\files-1.1\\firebase-messaging-12.0.1.aar\\c5b9d5c543062112e5bc92fba8dd6232\\res\\values-is\\values.xml",
+                    "source": "C:\\Users\\Mohammad.Junaid\\.gradle\\caches\\transforms-2\\files-2.1\\e3907971789cd6ca3091fa80ca61e0d8\\firebase-messaging-12.0.1\\res\\values-is\\values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Priyanka.Rajeshirke\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\75bbbfe100bd34bb72c009f2cb2f54a7\\res\\values-is\\values-is.xml",
+                    "source": "C:\\Users\\Mohammad.Junaid\\.gradle\\caches\\transforms-2\\files-2.1\\5683168ad78e04ccce3c41759391dd7d\\support-compat-28.0.0\\res\\values-is\\values-is.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -55,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Priyanka.Rajeshirke\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-12.0.1.aar\\c18d4e59663c0e43a8880f504a093801\\res\\values-is\\values.xml",
+                    "source": "C:\\Users\\Mohammad.Junaid\\.gradle\\caches\\transforms-2\\files-2.1\\68a8235baf375a341d53391a7de1568a\\play-services-base-12.0.1\\res\\values-is\\values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",

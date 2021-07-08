@@ -22,6 +22,8 @@ import { EnquiryPage } from "../enquiry/enquiry";
 import { HomePage } from "../_home/home";
 import { ResetPasswordPage } from "../reset-password/reset-password";
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { DashboardPage } from "../dashboard/dashboard";
+import { WelcomeuserPage } from "../welcomeuser/welcomeuser";
 
 export class User { UserId: string; Password: string; 
   // CustIdCode: string;
@@ -205,7 +207,7 @@ export class LoginPage {
       this.globalService.store('userDetails', userDetailsResp);
       this.globalService.publishEventwithData('app:userDetails', userDetailsResp);
       this.globalService.publishEventwithData('login:sessionExpired', 500000);
-      this.globalService.setRootPage(HomePage);
+      this.globalService.setRootPage(WelcomeuserPage);
     }, (err) => {
       console.log('error Login ', err);
     });
@@ -254,4 +256,10 @@ export class LoginPage {
   goToDashboard() {
     this.globalService.routePage(HomePage);
   }
+
+  dashboard() {
+
+    this.globalService.setRootPage(WelcomeuserPage);
+  }
+
 }
