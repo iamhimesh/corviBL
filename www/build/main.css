@@ -31931,9 +31931,8 @@ page-dashboard .ShadowBox13 {
   border-radius: 10px;
 }
 
-page-dashboard label {
+page-dashboard span {
   color: #0461b2;
-  font-size: 1.5em;
 }
 
 page-dashboard .label-white {
@@ -31978,6 +31977,130 @@ page-dashboard .box .inner {
 
 page-enquiry-cargo-detail .margin-top-16 {
   margin-top: 16px;
+}
+
+page-find-location .ShadowBox13 {
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+page-find-location .ion-fab34 {
+  width: 34px !important;
+  height: 34px !important;
+  float: right !important;
+}
+
+page-find-location .margin4 {
+  margin-top: 4px !important;
+}
+
+page-find-location table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+page-find-location th,
+page-find-location td {
+  text-align: left;
+  padding: 8px;
+}
+
+page-find-location .btnRadiusUpper {
+  border-radius: 10px;
+  text-transform: capitalize;
+}
+
+page-find-location .btnRadius {
+  border-radius: 20px;
+}
+
+page-find-location .btncancel {
+  background: white;
+  color: black;
+  border: solid thin gray;
+}
+
+page-find-location .toolbar-background-md {
+  background-color: #0461b2;
+  color: #fff;
+}
+
+page-find-location h4 {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #000;
+  line-height: 0.1em;
+  margin: 10px 0 10px;
+}
+
+page-find-location h4 span {
+  background: #fff;
+  padding: 0 10px;
+}
+
+page-find-sales-activity .ShadowBox13 {
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+page-find-sales-activity .ion-fab34 {
+  width: 34px !important;
+  height: 34px !important;
+  float: right !important;
+}
+
+page-find-sales-activity .margin4 {
+  margin-top: 4px !important;
+}
+
+page-find-sales-activity table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+page-find-sales-activity th,
+page-find-sales-activity td {
+  text-align: left;
+  padding: 8px;
+}
+
+page-find-sales-activity .btnRadiusUpper {
+  border-radius: 10px;
+  text-transform: capitalize;
+}
+
+page-find-sales-activity .btnRadius {
+  border-radius: 20px;
+}
+
+page-find-sales-activity .btncancel {
+  background: white;
+  color: black;
+  border: solid thin gray;
+}
+
+page-find-sales-activity .toolbar-background-md {
+  background-color: #0461b2;
+  color: #fff;
+}
+
+page-find-sales-activity h4 {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #000;
+  line-height: 0.1em;
+  margin: 10px 0 10px;
+}
+
+page-find-sales-activity h4 span {
+  background: #fff;
+  padding: 0 10px;
 }
 
 page-invoices-details .input-wrapper {
@@ -32029,12 +32152,60 @@ page-new-sales-activity .btnRadius {
 page-new-sales-activity .btncancel {
   background: white;
   color: black;
-  border: solid thin black;
+  border: solid thin gray;
 }
 
 page-new-sales-activity .toolbar-background-md {
   background-color: #0461b2;
   color: #fff;
+}
+
+page-new-sales-lead .ShadowBox13 {
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+page-new-sales-lead .ion-fab34 {
+  width: 3.5rem !important;
+  height: 3.5rem !important;
+  float: right !important;
+}
+
+page-new-sales-lead .margin4 {
+  margin-top: 4px !important;
+}
+
+page-new-sales-lead table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+page-new-sales-lead th,
+page-new-sales-lead td {
+  text-align: left;
+  padding: 8px;
+}
+
+page-new-sales-lead .btnRadius {
+  border-radius: 20px;
+}
+
+page-new-sales-lead .btncancel {
+  background: white;
+  color: black;
+  border: solid thin gray;
+}
+
+page-new-sales-lead .toolbar-background-md {
+  background-color: #0461b2;
+  color: #fff;
+}
+
+page-new-sales-lead label {
+  font-weight: 400;
 }
 
 page-open-jobs-details .input-wrapper {
@@ -32055,4 +32226,66 @@ page-quotation-detail .text-input[disabled] {
 
 page-tabs #tab-t0-3 .tab-button-text {
   font-size: 1.1rem;
+}
+
+page-update-job-milestone .ShadowBox13 {
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+page-update-job-milestone .ion-fab34 {
+  width: 34px !important;
+  height: 34px !important;
+  float: right !important;
+}
+
+page-update-job-milestone .margin4 {
+  margin-top: 4px !important;
+}
+
+page-update-job-milestone table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+page-update-job-milestone th,
+page-update-job-milestone td {
+  text-align: left;
+  padding: 8px;
+}
+
+page-update-job-milestone .btnRadiusUpper {
+  border-radius: 10px;
+  text-transform: capitalize;
+}
+
+page-update-job-milestone .btnRadius {
+  border-radius: 20px;
+}
+
+page-update-job-milestone .btncancel {
+  background: white;
+  color: black;
+  border: solid thin gray;
+}
+
+page-update-job-milestone .toolbar-background-md {
+  background-color: #0461b2;
+  color: #fff;
+}
+
+page-update-job-milestone h4 {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #000;
+  line-height: 0.1em;
+  margin: 10px 0 10px;
+}
+
+page-update-job-milestone h4 span {
+  background: #fff;
+  padding: 0 10px;
 }

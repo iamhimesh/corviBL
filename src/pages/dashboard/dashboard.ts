@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,MenuController } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
+import { FindSalesActivityPage } from '../find-sales-activity/find-sales-activity';
 import { NewSalesActivityPage } from '../new-sales-activity/new-sales-activity';
+import { NewSalesLeadPage } from '../new-sales-lead/new-sales-lead';
+import { UpdateJobMilestonePage } from '../update-job-milestone/update-job-milestone';
 
 /**
  * Generated class for the DashboardPage page.
@@ -17,15 +20,11 @@ import { NewSalesActivityPage } from '../new-sales-activity/new-sales-activity';
 })
 export class DashboardPage {
   title: string;
-
-  appBuildConfig = {
-    version: 'V1.0.0',
-    fullYear: (new Date).getFullYear().toString()
-  }
-
+  appBuildConfig: any;
   constructor(public navCtrl: NavController,
      public navParams: NavParams,public menu: MenuController,public globalService: GlobalProvider,) {
     this.title = "Dashboard";
+    this.appBuildConfig = this.globalService.appBuildConfig;
   }
 
   ionViewDidLoad() {
@@ -34,6 +33,21 @@ export class DashboardPage {
   goToNewSalesActivity() {
 
     this.globalService.setRootPage(NewSalesActivityPage);
+  }
+
+  goToFindSalesActivityPage() {
+
+    this.globalService.setRootPage(FindSalesActivityPage);
+  }
+
+  goToNewSalesLeadPage() {
+
+    this.globalService.setRootPage(NewSalesLeadPage);
+  }
+
+  goToUpdateJobMilestonePage() {
+
+    this.globalService.setRootPage(UpdateJobMilestonePage);
   }
 
 }

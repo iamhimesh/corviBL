@@ -16,13 +16,11 @@ import { DashboardPage } from '../dashboard/dashboard';
 })
 export class NewSalesActivityPage {
   title: string;
-  appBuildConfig = {
-    version: 'V1.0.0',
-    fullYear: (new Date).getFullYear().toString()
-  }
+  appBuildConfig: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public globalService: GlobalProvider) {
     this.title = "New Sales Activity";
+    this.appBuildConfig = this.globalService.appBuildConfig;
   }
 
   ionViewDidLoad() {
