@@ -22,7 +22,7 @@ export class BaseURLProvider {
             case 'IBL':
                 // this.global.store('PDFURL', '192.168.10.22/staging/');
                 // return this.global.setBaseURL('baseURL', 'http://10.22.2.31:8080/CORVI_SOMA_MOB_API/MobileApi/');
-                return this.global.setBaseURL('baseURL', 'http://mobileapi.somatrans.mu/MobileApi/');
+                return this.global.setBaseURL('baseURL', 'https://lmsinv.balmerlawrie.co.in/Mobapi/MobileAPI/');
 
             case 'EFS':
                 // this.global.store('PDFURL', '192.168.10.22/staging/');

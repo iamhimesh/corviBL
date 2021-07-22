@@ -50,16 +50,18 @@ export class GlobalProvider {
   /*Logout PopupModal*/
   public confirmlogOut() {
     let alert = this.alertCtrl.create({
-      title: 'Logout',
-      message: 'Are you sure you want to Logout?',
+      // title: 'Logout',
+      message: 'Are you sure you want to sign out?',
       buttons: [{
-        text: "Confirm",
+        text: "No",
+        role: 'cancel'
+      }, {
+        text: "Yes",
+        cssClass: 'alertDanger',
         handler: () => {
           this.handleLogOut();
         }
-      }, {
-        text: "Cancel",
-        role: 'cancel'
+        
       }]
     })
     alert.present();

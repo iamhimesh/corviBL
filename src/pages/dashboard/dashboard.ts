@@ -23,8 +23,7 @@ export class DashboardPage {
   appBuildConfig: any;
   constructor(public navCtrl: NavController,
      public navParams: NavParams,public menu: MenuController,public globalService: GlobalProvider,) {
-    this.title = "Dashboard";
-    this.appBuildConfig = this.globalService.appBuildConfig;
+    this.title = "Home";
   }
 
   ionViewDidLoad() {

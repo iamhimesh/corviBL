@@ -7,9 +7,9 @@ page-dashboard {
   }
   .center-footer-img {
     display: block;
-    margin-left: auto;
+    margin-left: 65px;
     margin-right: auto;
-    width: 30%;
+    width: 100%;
   }
   .text-center {
     text-align: center;
@@ -45,4 +45,14 @@ page-dashboard {
     background-color: #fff;
     padding: 5px;
 }
+.container {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+  background-color: #ffffff;
+  border-radius: 18px;
+}
+
 }

@@ -30,12 +30,20 @@ page-new-sales-activity {
     border-radius: 20px;
   }
   .btncancel {
-    background: white;
-    color: black;
-    border: solid thin gray;
+    // background: white;
+    // color: black;
+    // border: solid thin gray;
+    width: 100%;
   }
-  .toolbar-background-md{
+  .toolbar-background-md {
     background-color: #0461b2;
     color: #fff;
+  }
+  .toast-container {
+    background: yellow;
+  }
+
+  .toast-md .toast-message {
+    color: red;
   }
 }
