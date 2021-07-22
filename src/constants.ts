@@ -21,7 +21,7 @@ export class Constants {
         return [
             { title: 'Home', component: 'DashboardPage', active: true, icon: 'home' },
             { title: 'New Sales Activity', component: 'NewSalesActivityPage', active: false, icon: 'quote' },
-            { title: 'Search Sales Activity', component: 'OpenJobsPage', active: false, icon: 'open' },
+            { title: 'Search Sales Activity', component: 'FindSalesActivityPage', active: false, icon: 'open' },
             { title: 'New Sales Lead', component: 'ClosedJobsPage', active: false, icon: 'close' },
             { title: 'Update Job Milestone', component: 'InvoicesPage', active: false, icon: 'print' },
             { title: 'Configure Parameters', component: 'EnquiryPage', active: false, icon: 'clipboard' },

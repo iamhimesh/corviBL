@@ -1,3 +1,4 @@
+import { FindSalesActivityPage } from './../find-sales-activity/find-sales-activity';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,MenuController } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
@@ -34,6 +35,11 @@ export class DashboardPage {
   goToNewSalesActivity() {
 
     this.globalService.setRootPage(NewSalesActivityPage);
+  }
+
+  goToFindSalesActivity() {
+
+    this.globalService.setRootPage(FindSalesActivityPage);
   }
 
 }

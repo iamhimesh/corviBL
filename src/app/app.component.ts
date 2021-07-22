@@ -35,6 +35,7 @@ export class CorviApp {
   chosenPicture: any;
   hidePopups: boolean;
   appVersion: String;
+  
   constructor(
     public platform: Platform,
     public statusBar: StatusBar,
@@ -133,7 +134,8 @@ export class CorviApp {
 
   Logout() {
     this.globalService.confirmlogOut();
-  }
+  } 
+
 
   recieveUserDetailsEvent() {
     this.events.subscribe('app:userDetails', (userDetails) => {

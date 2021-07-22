@@ -6,16 +6,27 @@
 -->
 <ion-header>
   <ion-navbar color="primary">
-    <button right ion-button menuToggle>
+    <!-- <button right ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <button left ion-button menuToggle (click)="backToDashboard();">
+    <button left ion-button menuToggle>
       <ion-icon name="arrow-back"></ion-icon>
-    </button>
+    </button> -->
     <ion-title id="Dashboard" center text-center>
       {{title}}
     </ion-title>
 
+    <ion-buttons left>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons right>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams,MenuController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams,MenuController, Navbar } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
 import { DashboardPage } from '../dashboard/dashboard';
 /**
@@ -33,6 +33,10 @@ export class NewSalesActivityPage {
   backToDashboard() {
 
     this.globalService.setRootPage(DashboardPage);
+  }
+
+  backToPrevious(){
+    console.log('goig back')
   }
 
 }
