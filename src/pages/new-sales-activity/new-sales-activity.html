@@ -103,7 +103,7 @@
 
       <ion-col col-10>
 
-        <input col-12 placeholder="">
+        <input type="text" [(ngModel)]="filterCustomerData.BranchName" col-12 placeholder="">
 
       </ion-col>
       <ion-col col-2>
@@ -121,7 +121,7 @@
 
       <ion-col col-12>
 
-        <textarea col-12 placeholder="">
+        <textarea col-12 placeholder=""  [(ngModel)]="filterCustomerData.Address1">
         </textarea>
       </ion-col>
 
@@ -134,7 +134,7 @@
 
       <ion-col col-12 style="margin-top: 5px;">
 
-        <input col-12 placeholder="">
+        <input col-12 placeholder="" type="text" [(ngModel)]="filterCustomerData.VendorName">
       </ion-col>
     </ion-row>
     <ion-row padding class="ShadowBox13">

@@ -31,21 +31,23 @@ export class NewSalesActivityPage {
   branchCode: any = '0';
   startDate: String = new Date().toISOString();
   endtDate: String = new Date().toISOString();
+  customerData: any = [];
+  filterCustomerData: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public globalService: GlobalProvider,
     public menuCtrl: MenuController, private modalCtrl: ModalController, public toastService: ToastService,) {
     this.title = "New Sales Activity";
     this.appBuildConfig = this.globalService.appBuildConfig;
 
-
+    debugger
     this.UserDetails = this.globalService.get('userDetails');
-
+    this.customerData = this.globalService.get('customerData');
+    this.filterCustomerData = this.customerData[Object.keys(this.customerData)[1]];
     this.BranchTbl = this.UserDetails[Object.keys(this.UserDetails)[1]]["Table4"];
     this.ActivityTbl = this.UserDetails[Object.keys(this.UserDetails)[1]]["Table3"];
 
     this.filterActivityPriority = this.ActivityTbl.filter(t => t.Identifier == 'ActivityPriority');
     this.filterMode = this.ActivityTbl.filter(t => t.Identifier == 'CommunicationType');
     this.filterActivityStatus = this.ActivityTbl.filter(t => t.Identifier == 'ActivityStatus');
-
 
 
   }
@@ -98,6 +100,42 @@ export class NewSalesActivityPage {
     }
 
   }
+
+
+
+  // searchVenderList() {
+
+  //   this.findList.BranchCode = this.branchCode;
+  //   this.findList.VendorType = this.VenType;
+  //   this.findList.VendorCode = this.VendorCode;
+  //   this.findList.VendorName = this.VendorName;
+
+  //   this.http.POST(Constants.Corvi_Services.GetVendorMasterList, this.findList).then((response) => {
+
+  //     console.log('response to check login method: ', response);
+
+  //     if (response['Table'] == '') {
+  //       this.toastService.show('Data not found.', 3000, true, 'top', 'toast-container')
+  //       return;
+  //     } else {
+  //       this.customerInfo = response['Table'];
+  //     }
+  //     // this.globalService.store('login_resp', response);
+
+  //   }, (err) => {
+  //     console.log('error Login ', err);
+  //     console.log('response to check service link: ', Constants.Corvi_Services.Login);
+  //   });
+  //   // }
+  //   // else {
+  //   //   this.globalService.showAlert('Invalid Customer Identity Code')
+  //   // }
+
+  //   // });
+
+
+
+  // }
 
 
 }

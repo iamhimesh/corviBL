@@ -8,6 +8,8 @@ import { HttpServiceProvider } from '../../providers/http-service/http-service';
 import { AlertService } from '../../providers/util/alert.service';
 import { ToastService } from '../../providers/util/toast.service';
 import { DashboardPage } from '../dashboard/dashboard';
+import { NewSalesActivityPage } from '../new-sales-activity/new-sales-activity';
+import { WelcomeuserPage } from '../welcomeuser/welcomeuser';
 
 export class findVendorList {
   BranchCode: string; VendorType: string; VendorCode: string; VendorName: string;
@@ -36,7 +38,7 @@ export class FindSalesActivityPage {
 
   VendorName: any = '';
   VendorCode: any = '';
-  customerInfo: any;
+  customerInfo: any = [];
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public globalService: GlobalProvider,
     private modalCtrl: ModalController, public viewCtrl: ViewController,
@@ -58,7 +60,7 @@ export class FindSalesActivityPage {
 
     this.findList = new findVendorList();
 
-    this.VenType = 'LeadCustomer';
+    this.VenType = 'Lead-Customer';
 
   }
 
@@ -81,21 +83,15 @@ export class FindSalesActivityPage {
     let data = { 'foo': 'bar' };
     this.viewCtrl.dismiss(data);
   }
-
-
-
-
   searchVenderList() {
 
     this.findList.BranchCode = this.branchCode;
-
     this.findList.VendorType = this.VenType;
     this.findList.VendorCode = this.VendorCode;
     this.findList.VendorName = this.VendorName;
 
-
     this.http.POST(Constants.Corvi_Services.GetVendorMasterList, this.findList).then((response) => {
-      debugger
+
       console.log('response to check login method: ', response);
 
       if (response['Table'] == '') {
@@ -116,8 +112,16 @@ export class FindSalesActivityPage {
     // }
 
     // });
+
+
+
   }
 
+  passDataToNSA(custArray) {
 
+    this.globalService.store('customerData', custArray);
+    this.viewCtrl.dismiss();
+    this.globalService.setRootPage(NewSalesActivityPage);
+  }
 
 }
