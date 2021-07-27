@@ -25,7 +25,8 @@ import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms'
 import { DashboardPage } from "../dashboard/dashboard";
 import { WelcomeuserPage } from "../welcomeuser/welcomeuser";
 
-export class User { UserId: string; Password: string; 
+export class User {
+  UserId: string; Password: string;
   // CustIdCode: string;
 }
 declare var Email: any;
@@ -55,6 +56,8 @@ export class LoginPage {
     // public baseURLProvider: BaseURLProvider,
     public fb: FormBuilder
   ) {
+
+
     this.menu.swipeEnable(false);
     this.menu.close();
     this.user = new User();
@@ -91,23 +94,24 @@ export class LoginPage {
   logIn() {
     // let companyCode = this.user.custIdCode.substring(0, 3);
     // this.baseURLProvider.setBaseURL(companyCode).then((msg) => {
-      // if (msg != null && msg != '') {
-        // console.log('response to check 1');
-        this.http.POST(Constants.Corvi_Services.Login, this.user).then((response) => {
-          console.log('response to check login method: ', response );
-          // this.globalService.store('custIdCode', this.user.custIdCode);
-          this.user_Rememebered();
-          this.globalService.store('login_resp', response);
-          (response.hasOwnProperty('access_token')) ? this.fetchUserDetails() : this.globalService.showToast('Something went wrong');
-        }, (err) => {
-          console.log('error Login ', err);
-          console.log('response to check service link: ', Constants.Corvi_Services.Login);
-          this.LoginInvalid(err);
-        });
-      // } 
-      // else {
-      //   this.globalService.showAlert('Invalid Customer Identity Code')
-      // }
+    // if (msg != null && msg != '') {
+    // console.log('response to check 1');
+    this.http.POST(Constants.Corvi_Services.Login, this.user).then((response) => {
+      console.log('response to check login method: ', response);
+      // this.globalService.store('custIdCode', this.user.custIdCode);
+      this.user_Rememebered();
+      this.globalService.store('login_resp', response);
+
+      (response.hasOwnProperty('access_token')) ? this.fetchUserDetails() : this.globalService.showToast('Something went wrong');
+    }, (err) => {
+      console.log('error Login ', err);
+      console.log('response to check service link: ', Constants.Corvi_Services.Login);
+      this.LoginInvalid(err);
+    });
+    // }
+    // else {
+    //   this.globalService.showAlert('Invalid Customer Identity Code')
+    // }
 
     // });
   }
@@ -120,12 +124,13 @@ export class LoginPage {
     })
   }
 
-  forgotPwd(){
+  forgotPwd() {
     this.nav.push(ResetPasswordPage);
   }
 
   user_Rememebered() {
     if (this.isRemembered) {
+
       this.globalService.store('userName', this.user.UserId);
       this.globalService.store('password', this.user.Password);
       this.globalService.store('isRemembered', "true");
@@ -194,7 +199,8 @@ export class LoginPage {
   }
 
   fetchUserDetails() {
-    this.globalService.get('playerId')
+
+    this.globalService.get('userName')
       .then(
         UUID => this.setDetails(UUID),
         error => console.error(error)
@@ -204,7 +210,13 @@ export class LoginPage {
   setDetails(UUID) {
     this.user.UserId = UUID;
     this.http.POST(Constants.Corvi_Services.UserDetails, this.user).then((userDetailsResp) => {
+
       this.globalService.store('userDetails', userDetailsResp);
+      console.log('check userdetails', userDetailsResp);
+      let stageOne = userDetailsResp['Table'][0];
+      console.log('check userdetails2', stageOne.UserId);
+      localStorage.setItem('userId', stageOne.UserId );
+      console.log('checking from local', localStorage.getItem('userId'));
       this.globalService.publishEventwithData('app:userDetails', userDetailsResp);
       this.globalService.publishEventwithData('login:sessionExpired', 500000);
       this.globalService.setRootPage(WelcomeuserPage);
@@ -219,6 +231,7 @@ export class LoginPage {
       this.http.POST(Constants.Corvi_Services.ForgetPassword, {
         "UserId": Username
       }).then((res: any) => {
+
         let response = JSON.parse(res);
         let forgotPwdRes = response['Table'][0];
         forgotPwdRes['MSG'] == "Success" ? this.sendMailToUser(forgotPwdRes) : this.toastService.show(forgotPwdRes['MSG'], 3000, true, 'top', 'dark-trans')

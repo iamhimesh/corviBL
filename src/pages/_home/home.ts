@@ -12,9 +12,9 @@ import {
   Events
 } from 'ionic-angular';
 import chartJs from 'chart.js';
-import { GlobalProvider } from '../../providers/global/global';
+import { GlobalProvider } from './../../providers/global/global';
 import { Constants } from '../../constants';
-import { HttpServiceProvider } from '../../providers/http-service/http-service';
+import { HttpServiceProvider } from './../../providers/http-service/http-service';
 import { User } from '../login/login';
 import { QuotationPage } from '../quotation/quotation';
 import { OpenJobsPage } from '../open-jobs/open-jobs';
@@ -52,7 +52,13 @@ export class HomePage {
   @ViewChild('mySlider') slider: Slides;
   selectedSegment: string;
   slides: any;
-  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, public menu: MenuController, public globalService: GlobalProvider, public http: HttpServiceProvider, public event: Events) {
+  constructor(public navCtrl: NavController,
+    public globalService: GlobalProvider, 
+    public popoverCtrl: PopoverController, 
+    public menu: MenuController, 
+    public http: HttpServiceProvider, 
+    public event: Events,
+    ) {
     this.title = "Dasheeboard";
     this.selectedSegment = "Enquiry";
     this.drawerOptions = {

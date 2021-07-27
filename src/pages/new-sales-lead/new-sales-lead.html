@@ -1,0 +1,211 @@
+<!--
+  Generated template for the NewSalesActivityPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <button right ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title id="Dashboard" center text-center>
+      {{title}}
+    </ion-title>
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-row padding class="ShadowBox13">
+      <ion-col col-12>
+        <label>
+          Branch
+        </label>
+      </ion-col>
+      <ion-col col-12>
+        <select col-12 placeholder="Select One">
+          <option value="f">Default</option>
+          <option value="m">1</option>
+        </select>
+      </ion-col>
+      <ion-col col-12>
+        <label>
+          Company Name
+        </label>
+      </ion-col>
+      <ion-col col-10>
+        <input col-12 placeholder="">
+      </ion-col>
+      <ion-col col-2>
+        <button ion-fab class="ion-fab34">
+          <ion-icon name="md-search" class=""></ion-icon>
+        </button>
+      </ion-col>
+
+      <ion-col col-12>
+        <label>
+          Status
+        </label>
+      </ion-col>
+      <ion-col col-12>
+        <select col-12 placeholder="Select One">
+          <option value="f">Default</option>
+          <option value="m">1</option>
+        </select>
+      </ion-col>
+
+      <ion-col col-12>
+        <label>
+          Type of Industry
+        </label>
+      </ion-col>
+      <ion-col col-12>
+        <select col-12 placeholder="Select One">
+          <option value="f">Default</option>
+          <option value="m">1</option>
+        </select>
+      </ion-col>
+
+      <ion-col col-12>
+        <label>
+          Type of Customer
+        </label>
+      </ion-col>
+      <ion-col col-12>
+        <select col-12 placeholder="Select One">
+          <option value="f">Default</option>
+          <option value="m">1</option>
+        </select>
+      </ion-col>
+
+
+      <ion-col col-12>
+        <label>
+          Location
+        </label>
+      </ion-col>
+      <ion-col col-10>
+        <input col-12 placeholder="">
+      </ion-col>
+      <ion-col col-2>
+        <button ion-fab class="ion-fab34" (click)="goToFindLocation();">
+          <ion-icon name="md-search" class=""></ion-icon>
+        </button>
+      </ion-col>
+
+
+      <ion-col col-12>
+        <label>
+          Address
+        </label>
+      </ion-col>
+      <ion-col col-12>
+        <input col-12 placeholder="">
+      </ion-col>
+      <ion-col col-12>
+        <input col-12 placeholder="">
+      </ion-col>
+      <ion-col col-12>
+        <input col-12 placeholder="">
+      </ion-col>
+
+
+      <ion-col col-12>
+        <label>
+          Pin Code
+        </label>
+      </ion-col>
+      <ion-col col-12>
+        <input col-12 placeholder="">
+      </ion-col>
+
+
+      <ion-col col-12>
+        <h4>
+          Contact Person
+        </h4>
+      </ion-col>
+
+      <ion-col col-6>
+        <label>
+          First Name
+        </label>
+
+      </ion-col>
+      <ion-col col-6>
+        <label>
+          Last Name
+        </label>
+      </ion-col>
+      <ion-col col-6>
+        <input col-12 placeholder="">
+      </ion-col>
+      <ion-col col-6>
+        <input col-12 placeholder="">
+      </ion-col>
+
+
+      <ion-col col-12>
+        <label>
+          Designation
+        </label>
+      </ion-col>
+      <ion-col col-12>
+        <input col-12 placeholder="">
+      </ion-col>
+
+      <ion-col col-12>
+        <label>
+          Mobile No.
+        </label>
+      </ion-col>
+      <ion-col col-2>
+        <select col-12 placeholder="Select One">
+          <option value="f">IN</option>
+          <option value="m">1</option>
+        </select>
+      </ion-col>
+      <ion-col col-10>
+        <input col-12 type="number"  placeholder="">
+      </ion-col>
+
+
+      <ion-col col-12>
+        <label>
+          Email Id
+        </label>
+      </ion-col>
+      <ion-col col-12>
+        <input type="email" col-12 placeholder="">
+      </ion-col>
+
+
+    </ion-row>
+
+
+  </ion-list>
+</ion-content>
+<ion-footer class="ion-footer">
+  <ion-row padding class="ShadowBox13">
+    <ion-col col-6>
+      <button ion-button block class="btnRadius btncancel" (click)="backToDashboard();">
+        <ion-icon></ion-icon>
+        Cancel
+      </button>
+    </ion-col>
+
+    <ion-col col-6>
+      <button ion-button icon-start block class="btnRadius ">
+        <ion-icon></ion-icon>
+        Save
+      </button>
+    </ion-col>
+  </ion-row>
+  <div class="label-white toolbar-background-md" center text-center>
+    © Kale Logistics Solutions Private Limited. {{appBuildConfig.fullYear}} Version {{appBuildConfig.version}}
+  </div>
+</ion-footer>

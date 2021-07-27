@@ -1,3 +1,4 @@
+import { SearchMilestonePageModule } from './../pages/search-milestone/search-milestone.module';
 import { ResetPasswordPageModule } from './../pages/reset-password/reset-password.module';
 /**
  * @author Sachin Semlety
@@ -43,6 +44,10 @@ import { FormsModule } from '@angular/forms';
 import { DashboardPageModule } from '../pages/dashboard/dashboard.module';
 import { WelcomeuserPageModule } from '../pages/welcomeuser/welcomeuser.module';
 import { NewSalesActivityPageModule } from '../pages/new-sales-activity/new-sales-activity.module';
+import { FindSalesActivityPageModule } from '../pages/find-sales-activity/find-sales-activity.module';
+import { NewSalesLeadPageModule } from '../pages/new-sales-lead/new-sales-lead.module';
+import { FindLocationPageModule } from '../pages/find-location/find-location.module';
+import { UpdateJobMilestonePageModule } from '../pages/update-job-milestone/update-job-milestone.module';
 
 @NgModule({
   declarations: [
@@ -68,10 +73,13 @@ import { NewSalesActivityPageModule } from '../pages/new-sales-activity/new-sale
     OpenJobsPageModule,
     InvoicesPageModule,
     TabsPageModule,
-    EnquiryPageModule,
+    EnquiryPageModule,DashboardPageModule,
+    WelcomeuserPageModule,NewSalesActivityPageModule,FindSalesActivityPageModule,
+    NewSalesLeadPageModule,FindLocationPageModule,UpdateJobMilestonePageModule,
     ResetPasswordPageModule,
+    SearchMilestonePageModule,
     FormsModule,
-    EnquiryPageModule,DashboardPageModule,WelcomeuserPageModule,NewSalesActivityPageModule
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
