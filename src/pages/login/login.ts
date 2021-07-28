@@ -8,7 +8,7 @@
  * @desc [description]
 */
 import { Component } from "@angular/core";
-import { NavController, ToastController, MenuController } from "ionic-angular";
+import { NavController, ToastController, MenuController, AlertController } from "ionic-angular";
 import { RegisterPage } from "../register/register";
 import { GlobalProvider } from "../../providers/global/global";
 import { HttpServiceProvider } from "../../providers/http-service/http-service";
@@ -42,10 +42,11 @@ export class LoginPage {
   authForm: FormGroup;
   username: any;
   password: any;
-  customerCode: any;
+  customerCode: any = '15';
   public showPass = false;
   public type = "password";
   constructor(
+    private alertCtrl: AlertController,
     public nav: NavController,
     public menu: MenuController,
     public toastCtrl: ToastController,
@@ -57,6 +58,7 @@ export class LoginPage {
     public fb: FormBuilder
   ) {
 
+    //this.presentAlert();
 
     this.menu.swipeEnable(false);
     this.menu.close();
@@ -68,6 +70,15 @@ export class LoginPage {
     //   'customerCode' : [null, Validators.compose([Validators.required,Validators.minLength(3)])],
     // });
 
+  }
+
+  presentAlert() {
+    let alert = this.alertCtrl.create({
+      title: 'Low battery',
+      subTitle: '10% of battery remaining',
+      buttons: ['Dismiss']
+    });
+    alert.present();
   }
 
   //On page Load
@@ -208,11 +219,15 @@ export class LoginPage {
   }
 
   setDetails(UUID) {
-
     this.user.UserId = UUID;
     this.http.POST(Constants.Corvi_Services.UserDetails, this.user).then((userDetailsResp) => {
 
       this.globalService.store('userDetails', userDetailsResp);
+      console.log('check userdetails', userDetailsResp);
+      let stageOne = userDetailsResp['Table'][0];
+      console.log('check userdetails2', stageOne.UserId);
+      localStorage.setItem('userId', stageOne.UserId);
+      console.log('checking from local', localStorage.getItem('userId'));
       this.globalService.publishEventwithData('app:userDetails', userDetailsResp);
       this.globalService.publishEventwithData('login:sessionExpired', 500000);
       this.globalService.setRootPage(WelcomeuserPage);

@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController, ModalController } from 'ionic-angular';
+import { FormBuilder } from '@angular/forms';
+import { IonicPage, NavController, NavParams, MenuController, ModalController, ToastController } from 'ionic-angular';
+import { Constants } from '../../constants';
 import { GlobalProvider } from '../../providers/global/global';
+import { HttpServiceProvider } from '../../providers/http-service/http-service';
+import { AlertService } from '../../providers/util/alert.service';
 import { ToastService } from '../../providers/util/toast.service';
 import { DashboardPage } from '../dashboard/dashboard';
 import { FindSalesActivityPage } from '../find-sales-activity/find-sales-activity';
@@ -11,6 +15,23 @@ import { FindSalesActivityPage } from '../find-sales-activity/find-sales-activit
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+
+export class saveNewSalesActivityPage {
+  AppointmentID: any;
+  BranchCode: any;
+  CommunicationMode: any;
+  ActivityType: any;
+  Priority: any;
+  Status: any;
+  VendorCode: any;
+  ContactPerson: any;
+  StartTime: any;
+  EndTime: any;
+  BriefDescription: any;
+  Notes: any;
+  UserId: any;
+  CreatedDate: any;
+}
 
 @IonicPage()
 @Component({
@@ -29,26 +50,78 @@ export class NewSalesActivityPage {
   filterActivityStatus: any;
   madalDismissData: any;
   branchCode: any = '0';
-  startDate: String = new Date().toISOString();
-  endtDate: String = new Date().toISOString();
+  // startDate: String = new Date().toISOString();
+  // endtDate: String = new Date().toISOString();
+
+  startDate: any;
+  endtDate: any;
   customerData: any = [];
   filterCustomerData: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public globalService: GlobalProvider,
-    public menuCtrl: MenuController, private modalCtrl: ModalController, public toastService: ToastService,) {
+  saveActivity: saveNewSalesActivityPage;
+  commMode: any = '5';
+  activityType: any = '1';
+  priority: any = '1';
+  status: any = '5';
+  vCode: any;
+  contPerson: any;
+  sTime: any;
+  bDesc: any;
+  notes: any;
+  userID: any;
+  currDate: any = new Date();
+  constructor(
+    public navCtrl: NavController, public navParams: NavParams,
+    public globalService: GlobalProvider,
+    private modalCtrl: ModalController,
+    public nav: NavController,
+    public menu: MenuController,
+    public toastCtrl: ToastController,
+
+    public http: HttpServiceProvider,
+    public alertService: AlertService,
+    public toastService: ToastService,
+    // public baseURLProvider: BaseURLProvider,
+    public fb: FormBuilder
+  ) {
     this.title = "New Sales Activity";
     this.appBuildConfig = this.globalService.appBuildConfig;
-
     debugger
+
     this.UserDetails = this.globalService.get('userDetails');
     this.customerData = this.globalService.get('customerData');
     this.filterCustomerData = this.customerData[Object.keys(this.customerData)[1]];
+
+
+
     this.BranchTbl = this.UserDetails[Object.keys(this.UserDetails)[1]]["Table4"];
     this.ActivityTbl = this.UserDetails[Object.keys(this.UserDetails)[1]]["Table3"];
 
     this.filterActivityPriority = this.ActivityTbl.filter(t => t.Identifier == 'ActivityPriority');
     this.filterMode = this.ActivityTbl.filter(t => t.Identifier == 'CommunicationType');
     this.filterActivityStatus = this.ActivityTbl.filter(t => t.Identifier == 'ActivityStatus');
+    this.userID = localStorage.getItem('userId');
+    this.saveActivity = new saveNewSalesActivityPage();
+  }
 
+  ngOnInit() {
+
+    // var now = new Date();
+    // var utcString = now.toISOString().substring(0, 19);
+    // var year = now.getFullYear();
+    // var month = now.getMonth() + 1;
+    // var day = now.getDate();
+    // var hour = now.getHours();
+    // var minute = now.getMinutes();
+    // var second = now.getSeconds();
+    // var localDatetime = year + "-" +
+    //   (month < 10 ? "0" + month.toString() : month) + "-" +
+    //   (day < 10 ? "0" + day.toString() : day) + "T" +
+    //   (hour < 10 ? "0" + hour.toString() : hour) + ":" +
+    //   (minute < 10 ? "0" + minute.toString() : minute) +
+    //   utcString.substring(16, 19);
+    // var datetimeField = document.getElementById("myDatetimeField");
+    // this.startDate = localDatetime;
+    // this.endtDate = localDatetime;
 
   }
 
@@ -79,23 +152,48 @@ export class NewSalesActivityPage {
 
   changed(endte) {
 
-    let sdate = this.startDate.slice(0, 10);
-    let stime = this.startDate.slice(11, 16);
-    let sdatTime = sdate + ' ' + stime;
+    // let sdate = this.startDate.slice(0, 10);
+    // let stime = this.startDate.slice(11, 16);
+    // let sdatTime = sdate + ' ' + stime;
 
 
-    let edate = endte.slice(0, 10);
-    let etime = endte.slice(11, 16);
-    let edatTime = edate + ' ' + etime;
+    // let edate = endte.slice(0, 10);
+    // let etime = endte.slice(11, 16);
+    // let edatTime = edate + ' ' + etime;
+    // debugger
+    // var a = Date.parse(sdate);
+    // var b = Date.parse(edate);
     debugger
-    var a = Date.parse(sdate);
-    var b = Date.parse(edate);
+    // var now = new Date();
+    // var utcString = now.toISOString().substring(0, 19);
+    // var year = now.getFullYear();
+    // var month = now.getMonth() + 1;
+    // var day = now.getDate();
+    // var hour = now.getHours();
+    // var minute = now.getMinutes();
+    // var second = now.getSeconds();
+    // var localDatetime = year + "-" +
+    //   (month < 10 ? "0" + month.toString() : month) + "-" +
+    //   (day < 10 ? "0" + day.toString() : day) + "T" +
+    //   (hour < 10 ? "0" + hour.toString() : hour) + ":" +
+    //   (minute < 10 ? "0" + minute.toString() : minute) +
+    //   utcString.substring(16, 19);
+    // var datetimeField = document.getElementById("myDatetimeField");
+    // this.startDate = localDatetime;
+    // this.endtDate = localDatetime;
+
+
+    var a = Date.parse(this.startDate);
+    var b = Date.parse(this.endtDate);
 
     if (b < a) {
       this.toastService.show('End Time should be greater than Start Time.', 3000, true, 'top', 'toast-container')
       return;
-    } else {
-      alert('ok')
+    } else if (b == a) {
+
+      this.toastService.show('End Time should be greater than Start Time.', 3000, true, 'top', 'toast-container')
+      return;
+
 
     }
 
@@ -103,39 +201,73 @@ export class NewSalesActivityPage {
 
 
 
-  // searchVenderList() {
+  SalesActivitySave() {
 
-  //   this.findList.BranchCode = this.branchCode;
-  //   this.findList.VendorType = this.VenType;
-  //   this.findList.VendorCode = this.VendorCode;
-  //   this.findList.VendorName = this.VendorName;
+    debugger
+    var a = Date.parse(this.startDate);
+    var b = Date.parse(this.endtDate);
 
-  //   this.http.POST(Constants.Corvi_Services.GetVendorMasterList, this.findList).then((response) => {
+    if (b < a) {
+      this.toastService.show('End Time should be greater than Start Time.', 3000, true, 'top', 'toast-container')
+      return;
+    } else if (b == a) {
+      this.toastService.show('End Time should be greater than Start Time.', 3000, true, 'top', 'toast-container')
+      return;
+    }
 
-  //     console.log('response to check login method: ', response);
+    this.saveActivity.AppointmentID = '0'
+    this.saveActivity.BranchCode = this.branchCode;
+    this.saveActivity.CommunicationMode = this.commMode;
+    this.saveActivity.ActivityType = this.activityType;
+    this.saveActivity.Priority = this.priority;
+    this.saveActivity.Status = this.status;
+    this.saveActivity.VendorCode = this.filterCustomerData.VendorId;
+    this.saveActivity.ContactPerson = this.filterCustomerData.VendorName;
+    this.saveActivity.StartTime = this.startDate;
+    this.saveActivity.EndTime = this.endtDate;
+    this.saveActivity.BriefDescription = this.bDesc;
+    this.saveActivity.Notes = this.notes;
+    this.saveActivity.UserId = this.userID;
+    this.saveActivity.CreatedDate = this.currDate;
 
-  //     if (response['Table'] == '') {
-  //       this.toastService.show('Data not found.', 3000, true, 'top', 'toast-container')
-  //       return;
-  //     } else {
-  //       this.customerInfo = response['Table'];
-  //     }
-  //     // this.globalService.store('login_resp', response);
+    this.http.POST(Constants.Corvi_Services.SalesActivitySave, this.saveActivity).then((response) => {
 
-  //   }, (err) => {
-  //     console.log('error Login ', err);
-  //     console.log('response to check service link: ', Constants.Corvi_Services.Login);
-  //   });
-  //   // }
-  //   // else {
-  //   //   this.globalService.showAlert('Invalid Customer Identity Code')
-  //   // }
-
-  //   // });
+      console.log('response to check login method: ', response);
+      debugger
+      if (response != '') {
+        // localStorage.removeItem('login_resp');
+        // localStorage.removeItem('userDetails');
+        localStorage.removeItem('branchCode');
+        localStorage.removeItem('customerData');
+        this.toastService.show(response, 3000, true, 'top', 'toast-success');
+        this.globalService.setRootPage(DashboardPage);
+      }
 
 
+      // this.globalService.store('login_resp', response);
 
-  // }
+    }, (err) => {
+      console.log('error Login ', err);
+      console.log('response to check service link: ', Constants.Corvi_Services.Login);
+    });
+    // }
+    // else {
+    //   this.globalService.showAlert('Invalid Customer Identity Code')
+    // }
 
+    // });
+
+
+
+  }
+
+  getSelectedOptionText() {
+    // debugger
+    // alert(this.branchCode);
+    // alert(this.branchCode);
+    localStorage.setItem('bvalue', this.branchCode);
+    // localStorage.setItem('btext', this.branchCode.branch);
+
+  }
 
 }

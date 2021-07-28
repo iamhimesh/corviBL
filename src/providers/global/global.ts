@@ -61,7 +61,7 @@ export class GlobalProvider {
         handler: () => {
           this.handleLogOut();
         }
-        
+
       }]
     })
     alert.present();
@@ -76,6 +76,8 @@ export class GlobalProvider {
     this.remove('isLogged');
     this.remove('login_resp');
     this.remove('userDetails');
+    this.remove('branchCode');
+    this.remove('customerData');
     this.routePage(LoginPage);
   }
 

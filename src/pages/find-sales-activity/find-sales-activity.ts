@@ -39,6 +39,8 @@ export class FindSalesActivityPage {
   VendorName: any = '';
   VendorCode: any = '';
   customerInfo: any = [];
+  bvalue: any;
+  btext: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public globalService: GlobalProvider,
     private modalCtrl: ModalController, public viewCtrl: ViewController,
@@ -53,12 +55,15 @@ export class FindSalesActivityPage {
     public fb: FormBuilder) {
     this.title = "Find Sales Activity";
     this.appBuildConfig = this.globalService.appBuildConfig;
-    // this.branchCode = this.globalService.get('branchCode');
+
+  //  this.branchCode = localStorage.getItem('branchCode');
     this.UserDetails = this.globalService.get('userDetails');
 
     this.BranchTbl = this.UserDetails[Object.keys(this.UserDetails)[1]]["Table4"];
-
     this.findList = new findVendorList();
+// debugger
+//     this.bvalue = localStorage.getItem('bvalue');
+//     this.btext = localStorage.getItem('btext');
 
     this.VenType = 'Lead-Customer';
 
@@ -95,7 +100,7 @@ export class FindSalesActivityPage {
       console.log('response to check login method: ', response);
 
       if (response['Table'] == '') {
-        this.toastService.show('Data not found.', 3000, true, 'top', 'toast-container')
+        this.toastService.show('Data not found.', 3000, true, 'top', 'toast-container');
         return;
       } else {
         this.customerInfo = response['Table'];

@@ -43,11 +43,21 @@
           Branch
         </label>
       </ion-col>
-      <ion-col col-12>
+      <!-- <ion-col col-12>
 
         <select col-12 placeholder="Select One">
           <option value="f">Default</option>
           <option value="m">1</option>
+        </select>
+
+      </ion-col> -->
+
+      <ion-col col-12>
+
+        <select id="ddlBrach" name="ddlBrach" [(ngModel)]="branchCode" col-12 placeholder="">
+          <option [value]="0" disabled selected>Select</option>
+          <option *ngFor="let brData of BranchTbl" [value]="brData.BranchCode">{{brData.branch}}</option>
+
         </select>
 
       </ion-col>
@@ -59,9 +69,16 @@
       </ion-col>
 
       <ion-col col-12>
+        <select id="ddlBrach" name="ddlBrach" [(ngModel)]="transportMode" col-12 placeholder="">
+          <option [value]="0" disabled selected>Select</option>
+          <option *ngFor="let modeData of modes" [value]="modeData.Description">{{modeData.Description}}</option>
+        </select>
+      </ion-col> 
+
+      <!-- <ion-col col-12>
 
         <input col-12 placeholder="">
-      </ion-col>
+      </ion-col> -->
 
 
       <ion-col col-12>
@@ -71,12 +88,19 @@
       </ion-col>
 
       <ion-col col-12>
+        <select id="ddlBrach" name="ddlBrach" [(ngModel)]="serviceCode" col-12 placeholder="">
+          <option [value]="0" disabled selected>Select</option>
+          <option *ngFor="let serviceData of services" [value]="serviceData.Description">{{serviceData.Description}}</option>
+        </select>
+      </ion-col>
+
+      <!-- <ion-col col-12>
 
         <select col-12 placeholder="Select One">
           <option value="f">Default</option>
           <option value="m">1</option>
         </select>
-      </ion-col>
+      </ion-col> -->
 
 
       <ion-col col-12>
@@ -84,13 +108,20 @@
           Shipment Type
         </label>
       </ion-col>
-      <ion-col col-12>
 
+      <ion-col col-12>
+        <select id="ddlBrach" name="ddlBrach" [(ngModel)]="shipmentCode" col-12 placeholder="">
+          <option [value]="0" disabled selected>Select</option>
+          <option *ngFor="let shipData of shipments" [value]="shipData.Description">{{shipData.Description}}</option>
+        </select>
+      </ion-col>
+
+      <!-- <ion-col col-12>
         <select col-12 placeholder="Select One">
           <option value="f">Default</option>
           <option value="m">1</option>
         </select>
-      </ion-col>
+      </ion-col> -->
 
       <ion-col col-12>
         <label>
@@ -105,7 +136,7 @@
       </ion-col>
 
       <ion-col col-2>
-        <button ion-fab class="ion-fab34" style="float: right;
+        <button ion-fab class="ion-fab34" (click)="openModal();" style="float: right;
         width: auto;
         display: flex;
         align-items: center;
