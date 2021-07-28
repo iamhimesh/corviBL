@@ -13,6 +13,13 @@
       {{title}}
     </ion-title>
 
+    <ion-buttons left>
+      <button ion-button icon-only>
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+
   </ion-navbar>
 
 </ion-header>
@@ -25,7 +32,7 @@
         Job Type
       </ion-col>
 
-      <ion-col col-6>
+      <!-- <ion-col col-6>
         <button ion-button icon-start block class="btnRadiusUpper">
           <ion-icon></ion-icon>
           Freight Forwarding
@@ -36,6 +43,17 @@
           <ion-icon></ion-icon>
           Customs
         </button>
+      </ion-col> -->
+
+      <ion-col col-6>
+        <input [(ngModel)]="VenType" type="radio" class="stv-radio-button" name="jobType" value="freight"
+          id="freight" />
+        <label for="freight">Freight Forwarding</label>
+      </ion-col>
+      <ion-col col-6>
+        <input [(ngModel)]="VenType" type="radio" class="stv-radio-button" name="jobType" value="customs"
+          id="customs" />
+        <label for="customs">Customs</label>
       </ion-col>
 
       <ion-col col-12>
@@ -136,7 +154,7 @@
       </ion-col>
 
       <ion-col col-2>
-        <button ion-fab class="ion-fab34" (click)="openModal();" style="float: right;
+        <button ion-fab class="ion-fab34" (click)="sendDataToSearchMilestone();" style="float: right;
         width: auto;
         display: flex;
         align-items: center;

@@ -36,6 +36,7 @@ export class SearchMilestonePage {
 
   searchList: searchMilestoneList;
 
+  fetchedData: any = [];
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -47,13 +48,19 @@ export class SearchMilestonePage {
     
               this.title = "Search Milestone";
 
-              this.VenType = 'freight';
+              this.fetchedData = this.navParams.get('searchDetails');
 
-              this.UserDetails = this.navParams.get('userDetails');
+              if(this.fetchedData.length == 0){
+                this.VenType = 'freight';
+              } else {
+                this.VenType = this.fetchedData.jobType;
+              }
 
-    // this.appBuildConfig = this.globalService.appBuildConfig;
+              console.log('fetched data: ', this.fetchedData);
 
-    // this.UserDetails = this.globalService.get('userDetails');
+    this.appBuildConfig = this.globalService.appBuildConfig;
+
+    this.UserDetails = this.globalService.get('userDetails');
 
     this.BranchTbl = this.UserDetails[Object.keys(this.UserDetails)[1]]["Table4"];
     this.ModeTbl = this.UserDetails[Object.keys(this.UserDetails)[1]]["Table3"];
@@ -73,6 +80,20 @@ export class SearchMilestonePage {
     console.log('ionViewDidLoad SearchMilestonePage');
   }
 
+  ionViewDidEnter(){
+   if(this.fetchedData.length != 0){
+     this.branchCode = this.fetchedData.branch;
+     this.shipmentCode = this.fetchedData.shipmentType;
+     this.transportMode = this.fetchedData.mode;
+     this.serviceCode = this.fetchedData.service;
+    //  this.VenType = this.fetchedData.jobType;
+     this.VenType = "1";
+   }
+   else {
+     this.VenType = 'freight';
+   }
+  }
+
   dismissModal() {
     let data = { 'foo': 'bar' };
     this.viewCtrl.dismiss(data);
@@ -82,14 +103,16 @@ export class SearchMilestonePage {
 
 // console.log('get userid: ', localStorage.get(''))
     this.searchList.UserId = localStorage.getItem('userId');
-    this.searchList.service = this.serviceCode;
-    this.searchList.jobType = this.VenType;
-    this.searchList.shipmentType = this.shipmentCode;
     this.searchList.mode = this.transportMode;
+    this.searchList.service = this.serviceCode;
+    this.searchList.shipmentType = this.shipmentCode;
+    this.searchList.jobType = this.VenType;
+    
+    
     console.log('check one ');
-    // this.http.POST(Constants.Corvi_Services.GetSearchMilestoneList, this.searchList).then((response)=>{
-    //   console.log('check search milestone data: ', response);
-    // })
+    this.http.POST(Constants.Corvi_Services.GetSearchMilestoneList, this.searchList).then((response)=>{
+      console.log('check search milestone data: ', response);
+    })
 
 
     console.log('all the data: ',this.searchList.UserId, '+', this.serviceCode ,'+', this.VenType, '+', this.shipmentCode, '+', this.transportMode);
