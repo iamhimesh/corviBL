@@ -20,6 +20,7 @@ import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 @Injectable()
 export class GlobalProvider {
   /*Configuration for the app */
+  selectedCity;
   appConfig = {
     version: 'v1.1.6'
   }
@@ -276,5 +277,7 @@ export class GlobalProvider {
       });
     }
   }
+
+
 
 }

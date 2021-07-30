@@ -53,6 +53,9 @@ export class Constants {
         "GetVendorMasterList": "GetVendorMasterList",
         "GetSearchMilestoneList": "GetSearchMilestoneList",
         "SalesActivitySave": "SalesActivitySave",
+        "VendorMasterSave": "VendorMasterSave",
+        "GetLocationMasterList": "GetLocationMasterList",
+
         "OpenJobs": {
             "Get_OpenJobList": "OpenJobList"
         },

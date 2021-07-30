@@ -6,59 +6,50 @@
 -->
 <ion-header>
   <ion-navbar color="primary">
-    <button right ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
+
     <ion-title id="Dashboard" center text-center>
       {{title}}
+      <ion-icon name='close-circle' (click)='dismissModal()' style='float: right;'></ion-icon>
     </ion-title>
-
   </ion-navbar>
-
 </ion-header>
 
 
 <ion-content padding>
   <ion-list>
-    <ion-row padding class="ShadowBox13">
-      <ion-col col-2>
-        Select
-      </ion-col>
-      <ion-col col-5>
-        <button ion-button block class="btnRadiusUpper btncancel" (click)="backToDashboard();">
-          <ion-icon></ion-icon>
-          Customer
-        </button>
-      </ion-col>
 
-      <ion-col col-5>
-        <button ion-button icon-start block class="btnRadiusUpper">
-          <ion-icon></ion-icon>
-          Lead-Customer
-        </button>
+    <!-- <ion-row padding class="">
+      <ion-col col-6>
+        <input [(ngModel)]="VenType" type="radio" class="stv-radio-button" name="Customer" value="Customer"
+          id="Customer" />
+        <label for="Customer">Customer</label>
       </ion-col>
+      <ion-col col-6>
+        <input [(ngModel)]="VenType" type="radio" class="stv-radio-button" name="Customer" value="Lead-Customer"
+          id="LeadCustomer" checked />
+        <label for="LeadCustomer">Lead-Customer</label>
+      </ion-col>
+    </ion-row> -->
+
+    <ion-row padding class="ShadowBox13">
       <ion-col col-12>
         <label>
           City Name
         </label>
-        <select col-12 placeholder="Select One">
-          <option value="f">Default</option>
-          <option value="m">1</option>
-        </select>
-
       </ion-col>
+      <ion-col col-12>
+        <input type="text" [(ngModel)]="CityName" col-12 placeholder="">
+      </ion-col>
+
+      <h4><span>OR</span></h4>
+
       <ion-col col-12>
         <label>
           City Code
         </label>
-        <input col-12 placeholder="">
       </ion-col>
-      <h4><span>OR</span></h4>
       <ion-col col-12>
-        <label>
-          Lead-Customer/Customer Name
-        </label>
-        <input col-12 placeholder="">
+        <input type="text" [(ngModel)]="CityCode" col-12 placeholder="">
       </ion-col>
 
     </ion-row>
@@ -66,14 +57,14 @@
 
     <ion-row padding>
       <ion-col col-6>
-        <button ion-button block class="btnRadius btncancel" (click)="backToDashboard();">
+        <button ion-button block class="btnRadius btncancel" (click)='dismissModal()'>
           <ion-icon></ion-icon>
           Cancel
         </button>
       </ion-col>
 
       <ion-col col-6>
-        <button ion-button icon-start block class="btnRadius ">
+        <button ion-button icon-start block class="btnRadius " (click)="GetLocationMasterList();">
           <ion-icon></ion-icon>
           Search
         </button>
@@ -83,16 +74,77 @@
     <ion-row padding class="ShadowBox13">
       <ion-col col-12>
         <table>
+          <tr *ngFor="let item of LocationInfo; let i = index">
+            <td>
+              <label>
+                {{item.Locationtext}}
+              </label>
+            </td>
+            <td><a href="#" (click)="passDataToNSA(item);">Select</a></td>
+            <!-- <td><button (click)="passDataToNSA(item.Locationtext)">Select</button></td> -->
+
+            <!-- <td> <input [(ngModel)]="item.Address1" type="hidden" /> </td>
+            <td> <input [(ngModel)]="item.Address2" type="hidden" /> </td>
+            <td> <input [(ngModel)]="item.Address3" type="hidden" /> </td>
+            <td> <input [(ngModel)]="item.BranchName" type="hidden" /> </td>
+            <td> <input [(ngModel)]="item.GSTCategory" type="hidden" /> </td>
+            <td> <input [(ngModel)]="item.GSTRegistrationStatus" type="hidden" /> </td>
+            <td> <input [(ngModel)]="item.LocationCode" type="hidden" /> </td>
+            <td> <input [(ngModel)]="item.LocationID" type="hidden" /> </td>
+            <td> <input [(ngModel)]="item.LocationName" type="hidden" /> </td>
+            <td> <input [(ngModel)]="item.Pincode" type="hidden" /> </td>
+            <td> <input [(ngModel)]="item.VendorCode" type="hidden" /> </td>
+            <td> <input [(ngModel)]="item.VendorId" type="hidden" /> </td>
+            <td> <input [(ngModel)]="item.VendorName" type="hidden" /> </td>
+            <td> <input [(ngModel)]="item.VendorType" type="hidden" /> </td> -->
+            <!-- Address1: "Ideal Plaza"
+            Address2: "Sarat Bose Road"
+            Address3: ""
+            BranchName: "BALMER LAWRIE & CO. LTD - Kolkata"
+            GSTCategory: null
+            GSTIN: null
+            GSTRegistrationStatus: null
+            LocationCode: "IN CCU"
+            LocationID: 117603
+            LocationName: "KOLKATA"
+            Pincode: ""
+            SecretKey: null
+            StateName: null
+            VendorCode: "CCU/CUS/06586"
+            VendorId: 13929
+            VendorName: "OOCL"
+            VendorType: "Lead-Customer" -->
+          </tr>
+          <!-- <tr>
+            <td>
+              <label>
+                Babuline Pharma Pvt. Ltd.
+                Mumbai
+              </label>
+            </td>
+
+            <td><a href="#">Select</a></td>
+          </tr>
           <tr>
             <td>
               <label>
-                IN DEL - Delhi (DEL) India
+                BEC Chemicals Pvt. Ltd.
+                Mumbai
               </label>
             </td>
+
             <td><a href="#">Select</a></td>
-
           </tr>
+          <tr>
+            <td>
+              <label>
+                Cristopia Energy Systems (I) Pvt. Ltd.
+                Mumbai
+              </label>
+            </td>
 
+            <td><a href="#">Select</a></td>
+          </tr> -->
         </table>
       </ion-col>
 

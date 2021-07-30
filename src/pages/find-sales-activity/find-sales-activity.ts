@@ -31,7 +31,7 @@ export class FindSalesActivityPage {
   title: string;
   appBuildConfig: any;
   BranchTbl: any = [];
-  branchCode: any = '0';
+  branchCode: any;
   UserDetails: Promise<any>;
   findList: findVendorList;
   VenType: any;
@@ -41,6 +41,7 @@ export class FindSalesActivityPage {
   customerInfo: any = [];
   bvalue: any;
   btext: any;
+  fetchedData: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public globalService: GlobalProvider,
     private modalCtrl: ModalController, public viewCtrl: ViewController,
@@ -56,23 +57,32 @@ export class FindSalesActivityPage {
     this.title = "Find Sales Activity";
     this.appBuildConfig = this.globalService.appBuildConfig;
 
-  //  this.branchCode = localStorage.getItem('branchCode');
+    //  this.branchCode = localStorage.getItem('branchCode');
     this.UserDetails = this.globalService.get('userDetails');
+
+    this.fetchedData = this.navParams.get('searchDetails');
 
     this.BranchTbl = this.UserDetails[Object.keys(this.UserDetails)[1]]["Table4"];
     this.findList = new findVendorList();
-// debugger
-//     this.bvalue = localStorage.getItem('bvalue');
-//     this.btext = localStorage.getItem('btext');
+    // debugger
+    //     this.bvalue = localStorage.getItem('bvalue');
+    //     this.btext = localStorage.getItem('btext');
 
     this.VenType = 'Lead-Customer';
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad FindSalesActivityPage');
-  }
+  // ionViewDidLoad() {
+  //   console.log('ionViewDidLoad FindSalesActivityPage');
+  // }
+  ionViewDidEnter() {
 
+    if (this.fetchedData.length != 0) {
+      this.branchCode = this.fetchedData.BranchCode;
+
+    }
+
+  }
   backToDashboard() {
 
     this.globalService.setRootPage(DashboardPage);
@@ -123,10 +133,11 @@ export class FindSalesActivityPage {
   }
 
   passDataToNSA(custArray) {
-
+    localStorage.setItem('branchCode', this.branchCode)
     this.globalService.store('customerData', custArray);
-    this.viewCtrl.dismiss();
-    this.globalService.setRootPage(NewSalesActivityPage);
+    // this.viewCtrl.dismiss();
+    // this.globalService.setRootPage(NewSalesActivityPage);
+    this.navCtrl.remove(this.navCtrl.getActive().index - 0, 1,);
   }
 
 }

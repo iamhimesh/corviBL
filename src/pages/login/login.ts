@@ -103,6 +103,9 @@ export class LoginPage {
 
   // login and go to home page
   logIn() {
+    localStorage.removeItem('branchCode');
+    localStorage.removeItem('customerData');
+    localStorage.removeItem('branchCode');
     // let companyCode = this.user.custIdCode.substring(0, 3);
     // this.baseURLProvider.setBaseURL(companyCode).then((msg) => {
     // if (msg != null && msg != '') {

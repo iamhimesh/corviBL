@@ -27,9 +27,11 @@
         </label>
       </ion-col>
       <ion-col col-12>
-        <select col-12 placeholder="Select One">
-          <option value="f">Default</option>
-          <option value="m">1</option>
+        <select id="ddlBrach" name="ddlBrach" [(ngModel)]="branchCode" (change)="getSelectedOptionText()" col-12
+          placeholder="">
+          <option [value]="0" disabled selected>Select</option>
+          <option *ngFor="let brData of BranchTbl" [value]="brData.BranchCode">{{brData.branch}}</option>
+
         </select>
       </ion-col>
       <ion-col col-12>
@@ -38,7 +40,7 @@
         </label>
       </ion-col>
       <ion-col col-10>
-        <input col-12 placeholder="">
+        <input type="text" [(ngModel)]="vendorname" col-12 placeholder="">
       </ion-col>
       <ion-col col-2>
         <button ion-fab class="ion-fab34">
@@ -52,9 +54,10 @@
         </label>
       </ion-col>
       <ion-col col-12>
-        <select col-12 placeholder="Select One">
-          <option value="f">Default</option>
-          <option value="m">1</option>
+        <select col-12 placeholder="" [(ngModel)]="status">
+          <option [value]="5" disabled selected>Yet to start</option>
+          <option *ngFor="let acData of filterActivityStatus" [value]="1">{{acData.Description}}</option>
+
         </select>
       </ion-col>
 
@@ -64,9 +67,10 @@
         </label>
       </ion-col>
       <ion-col col-12>
-        <select col-12 placeholder="Select One">
-          <option value="f">Default</option>
-          <option value="m">1</option>
+        <select col-12 placeholder="" [(ngModel)]="typeOfIndus">
+          <option [value]="5" disabled selected>Yet to start</option>
+          <option *ngFor="let acData of filterTypesOFIndus" [value]="1">{{acData.Description}}</option>
+
         </select>
       </ion-col>
 
@@ -76,9 +80,10 @@
         </label>
       </ion-col>
       <ion-col col-12>
-        <select col-12 placeholder="Select One">
-          <option value="f">Default</option>
-          <option value="m">1</option>
+        <select col-12 placeholder="" [(ngModel)]="typeOfCust">
+          <option [value]="5" disabled selected>Yet to start</option>
+          <option *ngFor="let acData of filterTypeOFCustomer" [value]="1">{{acData.Description}}</option>
+
         </select>
       </ion-col>
 
@@ -89,10 +94,10 @@
         </label>
       </ion-col>
       <ion-col col-10>
-        <input col-12 placeholder="">
+        <input type="text" [(ngModel)]="location" col-12 placeholder="">
       </ion-col>
       <ion-col col-2>
-        <button ion-fab class="ion-fab34" (click)="goToFindLocation();">
+        <button ion-fab class="ion-fab34" (click)="openModal();">
           <ion-icon name="md-search" class=""></ion-icon>
         </button>
       </ion-col>
@@ -104,13 +109,13 @@
         </label>
       </ion-col>
       <ion-col col-12>
-        <input col-12 placeholder="">
+        <input type="text" [(ngModel)]="addressline1" col-12 placeholder="">
       </ion-col>
       <ion-col col-12>
-        <input col-12 placeholder="">
+        <input type="text" [(ngModel)]="addressline2" col-12 placeholder="">
       </ion-col>
       <ion-col col-12>
-        <input col-12 placeholder="">
+        <input type="text" [(ngModel)]="addressline3" col-12 placeholder="">
       </ion-col>
 
 
@@ -120,7 +125,7 @@
         </label>
       </ion-col>
       <ion-col col-12>
-        <input col-12 placeholder="">
+        <input type="text" [(ngModel)]="pincode" col-12 placeholder="">
       </ion-col>
 
 
@@ -142,10 +147,10 @@
         </label>
       </ion-col>
       <ion-col col-6>
-        <input col-12 placeholder="">
+        <input type="text" [formGroup]="vForm" [(ngModel)]="firstname" col-12 placeholder="">
       </ion-col>
       <ion-col col-6>
-        <input col-12 placeholder="">
+        <input type="text" [formGroup]="vForm" formControlName ="entPieces" [formControl] = "vForm.controls['entPieces']" [(ngModel)]="lastname" col-12 placeholder="">
       </ion-col>
 
 
@@ -155,7 +160,7 @@
         </label>
       </ion-col>
       <ion-col col-12>
-        <input col-12 placeholder="">
+        <input type="text" [(ngModel)]="designation" col-12 placeholder="">
       </ion-col>
 
       <ion-col col-12>
@@ -165,12 +170,11 @@
       </ion-col>
       <ion-col col-2>
         <select col-12 placeholder="Select One">
-          <option value="f">IN</option>
-          <option value="m">1</option>
+          <option disabled value="f">IN</option>
         </select>
       </ion-col>
       <ion-col col-10>
-        <input col-12 type="number"  placeholder="">
+        <input type="text" [(ngModel)]="mobileno" col-12 placeholder="">
       </ion-col>
 
 
@@ -180,7 +184,8 @@
         </label>
       </ion-col>
       <ion-col col-12>
-        <input type="email" col-12 placeholder="">
+        <input type="email" [(ngModel)]="contactemail" col-12 placeholder=""
+        pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})">
       </ion-col>
 
 
@@ -199,7 +204,7 @@
     </ion-col>
 
     <ion-col col-6>
-      <button ion-button icon-start block class="btnRadius ">
+      <button ion-button icon-start block class="btnRadius " (click)="VendorMasterSave();">
         <ion-icon></ion-icon>
         Save
       </button>

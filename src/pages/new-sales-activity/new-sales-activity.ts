@@ -53,8 +53,8 @@ export class NewSalesActivityPage {
   // startDate: String = new Date().toISOString();
   // endtDate: String = new Date().toISOString();
 
-  startDate: any;
-  endtDate: any;
+  startDate: any ='';
+  endtDate: any ='';
   customerData: any = [];
   filterCustomerData: any;
   saveActivity: saveNewSalesActivityPage;
@@ -69,6 +69,9 @@ export class NewSalesActivityPage {
   notes: any;
   userID: any;
   currDate: any = new Date();
+  isenabled: any = false;
+  fetchedData: any;
+  tempBranch: string;
   constructor(
     public navCtrl: NavController, public navParams: NavParams,
     public globalService: GlobalProvider,
@@ -101,6 +104,11 @@ export class NewSalesActivityPage {
     this.filterActivityStatus = this.ActivityTbl.filter(t => t.Identifier == 'ActivityStatus');
     this.userID = localStorage.getItem('userId');
     this.saveActivity = new saveNewSalesActivityPage();
+    // this.fetchedData = this.navParams.get('searchDetails');
+    this.tempBranch = localStorage.getItem('branchCode');
+    if (this.filterCustomerData.VendorName) {
+      this.isenabled = true;
+    }
   }
 
   ngOnInit() {
@@ -125,13 +133,18 @@ export class NewSalesActivityPage {
 
   }
 
+
+
+
   openModal() {
+    this.saveActivity.BranchCode = this.branchCode;
+
 
     if (this.branchCode == '0') {
       this.toastService.show('Please select branch.', 3000, true, 'top', 'toast-container')
       return;
     }
-    const profileModal = this.modalCtrl.create(FindSalesActivityPage, { userId: 8675309 });
+    const profileModal = this.modalCtrl.create(FindSalesActivityPage, { searchDetails: this.saveActivity });
     profileModal.onDidDismiss(data => {
       console.log(data);
       this.madalDismissData = JSON.stringify(data);
@@ -142,10 +155,21 @@ export class NewSalesActivityPage {
 
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad NewSalesActivityPage');
+    debugger
+    //this.branchCode = '0';
+    //this.branchCode = localStorage.getItem('branchCode');
+    // console.log('ionViewDidLoad NewSalesActivityPage');
+    if (this.tempBranch != null) {
+      this.branchCode = this.tempBranch;
+    }
+
   }
 
   backToDashboard() {
+    localStorage.removeItem('branchCode');
+    localStorage.removeItem('customerData');
+    localStorage.removeItem('branchCode');
+
 
     this.globalService.setRootPage(DashboardPage);
   }
@@ -204,6 +228,19 @@ export class NewSalesActivityPage {
   SalesActivitySave() {
 
     debugger
+
+    if (this.startDate == '') {
+      this.toastService.show('Please select Start Date.', 3000, true, 'top', 'toast-container');
+      //this.startDate.focus();
+      return;
+    }
+
+    if (this.endtDate == '') {
+      this.toastService.show('Please select End Date.', 3000, true, 'top', 'toast-container');
+     // this.startDate.focus();
+      return;
+    }
+
     var a = Date.parse(this.startDate);
     var b = Date.parse(this.endtDate);
 
@@ -239,6 +276,7 @@ export class NewSalesActivityPage {
         // localStorage.removeItem('userDetails');
         localStorage.removeItem('branchCode');
         localStorage.removeItem('customerData');
+        localStorage.removeItem('branchCode');
         this.toastService.show(response, 3000, true, 'top', 'toast-success');
         this.globalService.setRootPage(DashboardPage);
       }

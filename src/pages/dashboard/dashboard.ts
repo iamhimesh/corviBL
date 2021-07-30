@@ -33,6 +33,8 @@ export class DashboardPage {
   goToNewSalesActivity() {
 
     this.globalService.setRootPage(NewSalesActivityPage);
+  // this.navCtrl.push(NewSalesActivityPage);
+
   }
 
   goToFindSalesActivityPage() {
