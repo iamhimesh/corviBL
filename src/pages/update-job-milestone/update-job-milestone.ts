@@ -1,3 +1,4 @@
+import { SearchJobsPage } from './../search-jobs/search-jobs';
 import { SearchMilestonePage } from './../search-milestone/search-milestone';
 import { ToastService } from './../../providers/util/toast.service';
 import { Component } from '@angular/core';
@@ -36,6 +37,8 @@ export class UpdateJobMilestonePage {
   VenType: any;
   searchList: searchDataList;
 
+  fetchedMilestone;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams
     ,public globalService: GlobalProvider, public toastService: ToastService,
@@ -64,11 +67,18 @@ export class UpdateJobMilestonePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UpdateJobMilestonePage');
-    this.VenType = 'freight';
+    this.VenType = '1';
   }
 
   ionViewDidEnter(){
-    this.VenType = 'freight';
+    this.VenType = '1';
+    // this.fetchedMilestone = this.navParams.get('milestone');
+    this.fetchedMilestone = this.globalService.selectedMilestone;
+    console.log('check !!!!!!!', this.fetchedMilestone);
+  }
+
+  ionViewDidLeave(){
+   this.fetchedMilestone = '';
   }
   backToDashboard() {
 
@@ -85,6 +95,15 @@ export class UpdateJobMilestonePage {
     this.openModal();
   }
 
+  sendDataToSearchJobs(){
+    this.searchList.branch = this.branchCode;
+    this.searchList.mode = this.transportMode;
+    this.searchList.shipmentType = this.shipmentCode;
+    this.searchList.service = this.serviceCode;
+    this.searchList.jobType = this.VenType;
+
+    this.searchJobs();
+  }
   openModal() {
 
     if (this.branchCode == '0') {
@@ -98,6 +117,10 @@ export class UpdateJobMilestonePage {
     });
     searchMilestone.present();
     this.globalService.store('branchCode', this.branchCode);
+  }
+
+  searchJobs(){
+    this.navCtrl.push(SearchJobsPage, {searchDetails: this.searchList} );
   }
 
 

@@ -48,6 +48,8 @@ export class DashboardPage {
   goToUpdateJobMilestonePage() {
 
     this.globalService.setRootPage(UpdateJobMilestonePage);
+
+    // this.navCtrl.push(UpdateJobMilestonePage);
   }
 
 }

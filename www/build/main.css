@@ -32459,6 +32459,104 @@ page-reset-password ion-label {
   color: grey;
 }
 
+page-search-jobs .ShadowBox13 {
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+page-search-jobs .ion-fab34 {
+  width: 34px !important;
+  height: 34px !important;
+  float: right !important;
+}
+
+page-search-jobs .margin4 {
+  margin-top: 4px !important;
+}
+
+page-search-jobs table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+page-search-jobs th,
+page-search-jobs td {
+  text-align: left;
+  padding: 8px;
+}
+
+page-search-jobs .btnRadiusUpper {
+  border-radius: 10px;
+  text-transform: capitalize;
+}
+
+page-search-jobs .btnRadius {
+  border-radius: 20px;
+}
+
+page-search-jobs .btncancel {
+  background: white;
+  color: black;
+  border: solid thin gray;
+}
+
+page-search-jobs .toolbar-background-md {
+  background-color: #0461b2;
+  color: #fff;
+}
+
+page-search-jobs h4 {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #000;
+  line-height: 0.1em;
+  margin: 10px 0 10px;
+}
+
+page-search-jobs h4 span {
+  background: #fff;
+  padding: 0 10px;
+}
+
+page-search-jobs .stv-radio-buttons-wrapper {
+  clear: both;
+  display: inline-block;
+}
+
+page-search-jobs .stv-radio-button {
+  position: absolute;
+  left: -9999em;
+  top: -9999em;
+}
+
+page-search-jobs .stv-radio-button + label {
+  float: left;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  border: 1px solid #28608f;
+  margin-right: -1px;
+  color: #000;
+  background-color: #fff;
+  text-align: center;
+  width: 100%;
+}
+
+page-search-jobs .stv-radio-button + label:first-of-type {
+  border-radius: 0.7em 0 0 0.7em;
+}
+
+page-search-jobs .stv-radio-button + label:last-of-type {
+  border-radius: 10px;
+}
+
+page-search-jobs .stv-radio-button:checked + label {
+  background-color: #3277b3;
+  color: #fff;
+}
+
 page-search-milestone .ShadowBox13 {
   -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);

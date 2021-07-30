@@ -1,3 +1,4 @@
+import { UpdateJobMilestonePage } from './../update-job-milestone/update-job-milestone';
 import { Constants } from './../../constants';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
@@ -38,6 +39,11 @@ export class SearchMilestonePage {
 
   fetchedData: any = [];
 
+  mileStoneDetails: any;
+
+  // mileStoneDetails: Array<{ DocId: string, DocCode: string, DocumentName: string }> = [];
+  list:any;
+
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public globalService: GlobalProvider, 
@@ -51,7 +57,7 @@ export class SearchMilestonePage {
               this.fetchedData = this.navParams.get('searchDetails');
 
               if(this.fetchedData.length == 0){
-                this.VenType = 'freight';
+                this.VenType = '1';
               } else {
                 this.VenType = this.fetchedData.jobType;
               }
@@ -86,11 +92,11 @@ export class SearchMilestonePage {
      this.shipmentCode = this.fetchedData.shipmentType;
      this.transportMode = this.fetchedData.mode;
      this.serviceCode = this.fetchedData.service;
-    //  this.VenType = this.fetchedData.jobType;
-     this.VenType = "1";
+     this.VenType = this.fetchedData.jobType;
+    //  this.VenType = "1";
    }
    else {
-     this.VenType = 'freight';
+     this.VenType = '1';
    }
   }
 
@@ -100,6 +106,8 @@ export class SearchMilestonePage {
   }
 
   getSearchMilestoneData(){
+
+    this.mileStoneDetails = [];
 
 // console.log('get userid: ', localStorage.get(''))
     this.searchList.UserId = localStorage.getItem('userId');
@@ -112,11 +120,22 @@ export class SearchMilestonePage {
     console.log('check one ');
     this.http.POST(Constants.Corvi_Services.GetSearchMilestoneList, this.searchList).then((response)=>{
       console.log('check search milestone data: ', response);
+      this.mileStoneDetails = response['Table'];
+
+      console.log('check search milestone list data: ', this.mileStoneDetails);
+      // this.mileStoneDetails = response;
     })
 
 
     console.log('all the data: ',this.searchList.UserId, '+', this.serviceCode ,'+', this.VenType, '+', this.shipmentCode, '+', this.transportMode);
 
+  }
+
+  onMilestoneSelect(selectedData){
+    this.globalService.selectedMilestone = selectedData;
+    console.log('********', this.globalService.selectedMilestone);
+    // this.navCtrl.push(UpdateJobMilestonePage, {milestone: selecetedData})
+    this.navCtrl.remove(this.navCtrl.getActive().index - 0, 1,);
   }
 
 

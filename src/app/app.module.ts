@@ -1,4 +1,5 @@
 
+
 import { ResetPasswordPageModule } from './../pages/reset-password/reset-password.module';
 /**
  * @author Sachin Semlety
@@ -49,6 +50,7 @@ import { NewSalesLeadPageModule } from '../pages/new-sales-lead/new-sales-lead.m
 import { FindLocationPageModule } from '../pages/find-location/find-location.module';
 import { UpdateJobMilestonePageModule } from '../pages/update-job-milestone/update-job-milestone.module';
 import { SearchMilestonePageModule } from './../pages/search-milestone/search-milestone.module';
+import { SearchJobsPageModule } from './../pages/search-jobs/search-jobs.module';
 
 @NgModule({
   declarations: [
@@ -80,6 +82,7 @@ import { SearchMilestonePageModule } from './../pages/search-milestone/search-mi
     ResetPasswordPageModule,
     SearchMilestonePageModule,
     FormsModule,
+    SearchJobsPageModule
 
   ],
   bootstrap: [IonicApp],
