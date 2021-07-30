@@ -1,6 +1,4 @@
 
-
-import { ResetPasswordPageModule } from './../pages/reset-password/reset-password.module';
 /**
  * @author Sachin Semlety
  * @email sachin.semlety@kalelogistics.in
@@ -52,6 +50,7 @@ import { UpdateJobMilestonePageModule } from '../pages/update-job-milestone/upda
 import { SearchMilestonePageModule } from './../pages/search-milestone/search-milestone.module';
 import { SearchJobsPageModule } from './../pages/search-jobs/search-jobs.module';
 
+import { ResetPasswordPageModule } from './../pages/reset-password/reset-password.module';
 @NgModule({
   declarations: [
     CorviApp

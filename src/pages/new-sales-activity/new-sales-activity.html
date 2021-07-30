@@ -17,7 +17,7 @@
     </ion-title>
 
     <ion-buttons left>
-      <button ion-button icon-only>
+      <button ion-button icon-only (click)="backToDashboard();">
         <ion-icon name="arrow-back"></ion-icon>
       </button>
     </ion-buttons>
@@ -42,7 +42,8 @@
       </ion-col>
       <ion-col col-12>
 
-        <select id="ddlBrach" name="ddlBrach" [(ngModel)]="branchCode" col-12 placeholder="">
+        <select id="ddlBrach" name="ddlBrach" [(ngModel)]="branchCode" (change)="getSelectedOptionText()" col-12
+          placeholder="">
           <option [value]="0" disabled selected>Select</option>
           <option *ngFor="let brData of BranchTbl" [value]="brData.BranchCode">{{brData.branch}}</option>
 
@@ -61,14 +62,14 @@
       </ion-col>
       <ion-col col-6>
 
-        <select col-12 placeholder="">
+        <select col-12 placeholder="" [(ngModel)]="commMode">
           <option [value]="5" disabled selected>Visit</option>
           <option *ngFor="let acData of filterMode " [value]="acData.KeyValue">{{acData.Description}}</option>
         </select>
       </ion-col>
 
       <ion-col col-6>
-        <select col-12 placeholder="">
+        <select col-12 placeholder="" [(ngModel)]="activityType">
           <option *ngFor="let acData of ActivityTbl" [value]="acData.KeyValue">{{acData.Description}}</option>
         </select>
       </ion-col>
@@ -84,7 +85,7 @@
       </ion-col>
       <ion-col col-6>
 
-        <select col-12 placeholder="">
+        <select col-12 placeholder="" [(ngModel)]="priority">
           <option *ngFor="let acData of filterActivityPriority" [value]="acData.KeyValue">{{acData.Description}}
           </option>
         </select>
@@ -94,7 +95,7 @@
 
       <ion-col col-6>
 
-        <select col-12 placeholder="">
+        <select col-12 placeholder="" [(ngModel)]="status">
           <option [value]="5" disabled selected>Yet to start</option>
           <option *ngFor="let acData of filterActivityStatus" [value]="5">{{acData.Description}}</option>
 
@@ -114,7 +115,7 @@
 
       <ion-col col-10>
 
-        <input col-12 placeholder="">
+        <input type="text" [(ngModel)]="filterCustomerData.BranchName" col-12 placeholder="">
 
       </ion-col>
       <ion-col col-2>
@@ -132,7 +133,7 @@
 
       <ion-col col-12>
 
-        <textarea col-12 placeholder="">
+        <textarea col-12 placeholder="" [(ngModel)]="filterCustomerData.Address1">
         </textarea>
       </ion-col>
 
@@ -145,18 +146,40 @@
 
       <ion-col col-12 style="margin-top: 5px;">
 
-        <input col-12 placeholder="">
+        <input col-12 placeholder="" type="text" [(ngModel)]="filterCustomerData.VendorName">
       </ion-col>
     </ion-row>
     <ion-row padding class="ShadowBox13">
+      <ion-col col-6>
+        <label style="line-height: 3;">
+          Start Time
+        </label>
+      </ion-col>
+
+      <ion-col col-6 style="margin-top: 5px;">
+
+        <input col-12 type="datetime-local" [(ngModel)]="startDate">
+      </ion-col>
+
+      <ion-col col-6>
+        <label style="line-height: 3;">
+          End Time
+        </label>
+      </ion-col>
+
+      <ion-col col-6 style="margin-top: 5px;">
+
+        <input col-12 type="datetime-local" [(ngModel)]="endtDate" (ngModelChange)="changed($event)">
+      </ion-col>
+
       <ion-col col-12>
-        <table>
+        <!-- <table>
           <tr>
 
             <td>
               <ion-item>
                 <ion-label style="color: #000;">Start Time</ion-label>
-                <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="startDate"></ion-datetime>
+                <input type="date" displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="startDate">
               </ion-item>
             </td>
 
@@ -166,13 +189,13 @@
             <td>
               <ion-item>
                 <ion-label style="color: #000;">End Time</ion-label>
-                <ion-datetime displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="endtDate" (ngModelChange)="changed($event)">
-                </ion-datetime>
+                <input type="date" displayFormat="DD/MM/YYYY HH:mm" [(ngModel)]="endtDate" (ngModelChange)="changed($event)">
+
               </ion-item>
             </td>
 
           </tr>
-        </table>
+        </table> -->
       </ion-col>
       <ion-col col-12>
         <label>
@@ -181,7 +204,7 @@
       </ion-col>
       <ion-col col-12>
 
-        <textarea col-12 placeholder="">
+        <textarea col-12 placeholder="" [(ngModel)]="bDesc">
         </textarea>
       </ion-col>
       <ion-col col-12>
@@ -191,7 +214,7 @@
       </ion-col>
       <ion-col col-12 style="margin-top: 5px;">
 
-        <textarea col-12 placeholder="">
+        <textarea col-12 placeholder="" [(ngModel)]="notes">
         </textarea>
       </ion-col>
 
@@ -211,7 +234,7 @@
     </ion-col>
 
     <ion-col col-6>
-      <button ion-button icon-start block class="btnRadius" [disabled]="true">
+      <button ion-button icon-start block class="btnRadius" [disabled]="!isenabled" (click)="SalesActivitySave();">
         <ion-icon></ion-icon>
         Save
       </button>

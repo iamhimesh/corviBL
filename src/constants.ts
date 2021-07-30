@@ -52,7 +52,14 @@ export class Constants {
         "ForgetPassword": "ForgotPassword",
         "GetVendorMasterList": "GetVendorMasterList",
         "GetSearchMilestoneList": "GetSearchMilestoneList",
+<<<<<<< HEAD
         "GetSearchJobList": "GetSearchJobList",
+=======
+        "SalesActivitySave": "SalesActivitySave",
+        "VendorMasterSave": "VendorMasterSave",
+        "GetLocationMasterList": "GetLocationMasterList",
+
+>>>>>>> e721302439eed6579bcda2daca6d51efb7806cf6
         "OpenJobs": {
             "Get_OpenJobList": "OpenJobList"
         },

@@ -20,6 +20,7 @@ import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 @Injectable()
 export class GlobalProvider {
   /*Configuration for the app */
+  selectedCity;
   appConfig = {
     version: 'v1.1.6'
   }
@@ -63,7 +64,7 @@ export class GlobalProvider {
         handler: () => {
           this.handleLogOut();
         }
-        
+
       }]
     })
     alert.present();
@@ -78,6 +79,8 @@ export class GlobalProvider {
     this.remove('isLogged');
     this.remove('login_resp');
     this.remove('userDetails');
+    this.remove('branchCode');
+    this.remove('customerData');
     this.routePage(LoginPage);
   }
 
@@ -276,5 +279,7 @@ export class GlobalProvider {
       });
     }
   }
+
+
 
 }

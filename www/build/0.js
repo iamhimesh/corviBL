@@ -45166,7 +45166,7 @@ exports.MessageHandler = MessageHandler;
 /******/ ]);
 });
 //# sourceMappingURL=pdf.worker.js.map
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(44).Buffer, __webpack_require__(24), __webpack_require__(35)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(45).Buffer, __webpack_require__(25), __webpack_require__(35)))
 
 /***/ })
 
