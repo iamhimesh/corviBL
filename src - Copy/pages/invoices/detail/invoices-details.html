@@ -1,0 +1,75 @@
+<Corvi-header [title]="title"></Corvi-header>
+<ion-content class="marginTop57">
+
+
+    <ion-item>
+        <ion-label color="primary">Bill No</ion-label>
+        <ion-input type="text" name="BillingNo" [(ngModel)]="invoice_details[0].BillingNo" [disabled]="true" text-right></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label color="primary">Bill Date</ion-label>
+        <ion-input type="text" name="InvoiceDate" [(ngModel)]="invoice_details[0].InvoiceDate" [disabled]="true"
+            text-right></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label color="primary">Job No</ion-label>
+        <ion-input type="text" name="JobNo" [(ngModel)]="invoice_details[0].JobNo" [disabled]="true" text-right></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label color="primary">Amount</ion-label>
+        <ion-input type="text" name="Amount" [(ngModel)]="invoice_details[0].Amount" [disabled]="true" text-right></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label color="primary">Customer</ion-label>
+        <ion-input type="text" name="Customer" [(ngModel)]="invoice_details[0].Customer" [disabled]="true" text-right
+            style="font-size: 1.2rem;"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label color="primary">Branch</ion-label>
+        <ion-input type="text" name="Branch" [(ngModel)]="invoice_details[0].Branch" [disabled]="true" text-right></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label color="primary">Mode</ion-label>
+        <ion-input type="text" name="Mode" [(ngModel)]="invoice_details[0].Mode" [disabled]="true" text-right></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label color="primary">Service</ion-label>
+        <ion-input type="text" name="Service" [(ngModel)]="invoice_details[0].Service" [disabled]="true" text-right></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label color="primary">Reference No</ion-label>
+        <ion-input type="text" name="ReferenceNo" [(ngModel)]="invoice_details[0].ReferenceNo == '' ? '--' :invoice_details[0].ReferenceNo"
+            [disabled]="true" text-right></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label color="primary">Reference Date</ion-label>
+        <ion-input type="text" name="ReferenceDate" [(ngModel)]="invoice_details[0].ReferenceDate" [disabled]="true"
+            text-right></ion-input>
+    </ion-item>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+</ion-content>
+
+<ion-fab right bottom #fab1>
+    <button class="pop-in" ion-fab mini color="primary" [ngClass]="{'pop-out': fabGone}" (click)="viewPDF()">
+        <ion-icon name="document"></ion-icon>
+    </button>
+    <ion-label>View PDF</ion-label>
+
+</ion-fab>
+
+<!-- <ion-fab right bottom #fab2>
+    <button class="pop-in" ion-fab mini color="primary" [ngClass]="{'pop-out': fabGone}" (click)="followJob()">
+        <ion-icon name="help"></ion-icon>
+    </button>
+    <ion-label>Follow Job</ion-label>
+
+</ion-fab> -->

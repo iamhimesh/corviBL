@@ -91,7 +91,7 @@ export class Constants {
     static get GOOOGLE_PROJECT_NUMBER(): string { return "259880603802" };
     static get REST_API_KEY(): string { return "NDdjMTk2ODAtODYyNC00OWJjLTgyNTAtM2RjNWY4NDZiOWMx" };
     static get ONE_SIGNAL_NOTIFACTION_URL(): string { return "https://onesignal.com/api/v1/notifications?app_id=" + this.APP_ID };
-    static get ONE_SIGNAL_BASE_URL(): string { return "https://onesignal.com/api/v1/notifications" };
+   // static get ONE_SIGNAL_BASE_URL(): string { return "https://onesignal.com/api/v1/notifications" };
 
 
     // Chart Constants

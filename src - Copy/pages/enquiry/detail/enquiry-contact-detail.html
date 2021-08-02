@@ -1,0 +1,52 @@
+<Corvi-header [title]="title" [hidden]="showSearchBar"></Corvi-header>
+<ion-content class="marginTop57">
+  <form [formGroup]="contactDetailsForm" (ngSubmit)="logForm()">
+    <ion-item>
+      <ion-label floating>Name</ion-label>
+      <ion-input type="text" class="text-primary" formControlName="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Location</ion-label>
+      <ion-input type="text" class="text-primary" formControlName="location"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Email Id</ion-label>
+      <ion-input type="email" class="text-primary" formControlName="emailID"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Organization</ion-label>
+      <ion-input type="text" class="text-primary" formControlName="organization"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Contact No.</ion-label>
+      <ion-input type="number" class="text-primary" formControlName="contact_No"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Address</ion-label>
+      <ion-input type="text" class="text-primary" formControlName="Address"></ion-input>
+    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col> <button ion-button icon-start block color="primary" tappable>
+            <!-- <ion-icon name="save"></ion-icon> -->
+            Back
+          </button></ion-col>
+        <ion-col><button ion-button icon-start block color="primary" type="submit"
+            [disabled]="!contactDetailsForm.valid" tappable>
+            <!-- <ion-icon name="close-circle"></ion-icon> -->
+            Submit
+          </button></ion-col>
+        <ion-col> <button ion-button icon-start block color="primary" tappable>
+            <!-- <ion-icon name="save"></ion-icon> -->
+            Cancel
+          </button></ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</ion-content>

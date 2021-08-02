@@ -113,7 +113,7 @@ export class LoginPage {
     this.http.POST(Constants.Corvi_Services.Login, this.user).then((response) => {
       console.log('response to check login method: ', response);
       // this.globalService.store('custIdCode', this.user.custIdCode);
-      this.user_Rememebered();
+       this.user_Rememebered();
       this.globalService.store('login_resp', response);
 
       (response.hasOwnProperty('access_token')) ? this.fetchUserDetails() : this.globalService.showToast('Something went wrong');
@@ -149,7 +149,7 @@ export class LoginPage {
       this.globalService.store('password', this.user.Password);
       this.globalService.store('isRemembered', "true");
     } else {
-      this.globalService.store("userName", "");
+      this.globalService.store("userName", this.user.UserId);
       this.globalService.store("password", "");
       this.globalService.remove('isRemembered')
     }

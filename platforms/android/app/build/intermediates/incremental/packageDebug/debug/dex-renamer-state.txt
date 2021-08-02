@@ -1,4 +1,0 @@
-#Mon May 03 15:51:53 IST 2021
-base.0=E\:\\Corvi\\Corvi\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
-renamed.0=classes.dex
-file.0=E\:\\Corvi\\Corvi\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0\\classes.dex

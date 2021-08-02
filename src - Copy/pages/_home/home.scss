@@ -1,0 +1,121 @@
+page-home {
+  p {
+    text-align: justify;
+  }
+  sliding-drawer {
+      background-color: #34495e !important;
+  }
+
+  sliding-drawer .content {
+      padding: 20px;
+  }
+
+  .scroll-content {
+    background-color: map-get($colors, light);
+}
+
+ion-card-header {
+    font-weight: bold;
+}
+
+.swiper-container-horizontal>.swiper-pagination .swiper-pagination-bullet {
+    margin: 0;
+  }
+  .swiper-container-horizontal>.swiper-pagination {
+    display: flex;
+    bottom: 0px;
+    background-color: #dedede;
+    height: 5px;
+  }
+  .swiper-pagination-bullet {
+    width: 100%;
+    border-radius: 0;
+    background-color: white;
+    opacity: 1;
+  }
+  .swiper-pagination-bullet-active {
+    background-color: #1069ad;
+    transition: all 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750);
+  }
+  .slider-item {
+    height: 35vh;
+    width: 100%;
+    background-size: cover;
+  }
+  .slide-zoom {
+    height: 100%;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.22)) !important;
+  }
+  .slide-text {
+    position: relative;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .text-center {
+    text-align: center;
+    color: white;
+  }
+
+  .buttonChange {            
+    position: relative;
+    width: 42px;
+    top:1px;
+    right: 1px;
+    overflow: visible!important;
+}
+
+
+.badgeChange {
+    background-color: #1069ad;
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    border-radius: 100%;
+}
+.h2customClass{
+  margin-top: 1.8rem;
+  font-size: 2.4rem;
+  color: black !important;
+}
+.pCustomcls{
+  font-size: 40px;
+  color: black !important;
+}
+
+ion-segment {
+  display: block;
+  white-space: nowrap;
+  font-size: 0;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+      display: none;
+  }
+
+  ion-segment-button.segment-button {
+      display: inline-block;
+      min-width: 90px;
+      width: auto;
+  }
+}
+ion-toolbar {
+padding: 0px 4px !important;
+min-height: 43px !important;
+}
+
+
+.segment-md .segment-button.activated, .segment-md .segment-button.segment-activated{
+  border-color: #aacd49;
+}
+.segment-md .segment-button{
+  border-bottom-width: 4px;
+}
+
+// .toolbar-ios ion-title {
+// padding: 0 0px 1px;
+// }
+}
+

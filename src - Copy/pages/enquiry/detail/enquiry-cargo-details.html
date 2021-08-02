@@ -1,0 +1,118 @@
+<Corvi-header [title]="title" [hidden]="showSearchBar"></Corvi-header>
+<ion-content class="marginTop57">
+  <form [formGroup]="cargoDetailsForm" (ngSubmit)="logForm()" style="margin-bottom: 160px;">
+    <ion-item>
+      <ion-label floating>Origin(Country-City-POL)</ion-label>
+      <ion-input type="text" class="text-primary" formControlName="origin"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Destination(Country-City-POD)</ion-label>
+      <ion-input type="text" class="text-primary" formControlName="destination"></ion-input>
+    </ion-item>
+    <ion-item class="margin-top-16">
+      <ion-label>Incoterms</ion-label>
+      <ion-select placeholder="Select">
+        <ion-option value="air">AIR</ion-option>
+        <ion-option value="ocean">OCEAN</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item class="margin-top-16">
+      <ion-label>Delivery Terms</ion-label>
+      <ion-select placeholder="Select">
+        <ion-option value="air">AIR</ion-option>
+        <ion-option value="ocean">OCEAN</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-grid style="padding: 0px !important;">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Commodity</ion-label>
+            <ion-input type="text" class="text-primary" formControlName="commodity"></ion-input>
+          </ion-item>
+        </ion-col>
+        <!-- <ion-col>  -->
+        <button [round]="true" color="primary" ion-button icon-only clear style="margin-top: 30px;">
+          <ion-icon name="create"></ion-icon>
+        </button>
+        <!-- </ion-col> -->
+      </ion-row>
+    </ion-grid>
+    <ion-item>
+      <ion-label floating>Cargo Description</ion-label>
+      <ion-textarea formControlName="cargo_description"></ion-textarea>
+    </ion-item>
+    <ion-grid style="padding: 0px !important;">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Gross Wt.</ion-label>
+            <ion-input type="text" class="text-primary" formControlName="gross_wt"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>KGS</ion-label>
+            <ion-select placeholder="Select">
+              <ion-option value="air">AIR</ion-option>
+              <ion-option value="ocean">OCEAN</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Chargeable Wt.</ion-label>
+            <ion-input type="text" class="text-primary" formControlName="chargeable_wt"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>KGS</ion-label>
+            <ion-select placeholder="Select">
+              <ion-option value="air">AIR</ion-option>
+              <ion-option value="ocean">OCEAN</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid style="padding: 0px !important;">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Volume</ion-label>
+            <ion-input type="text" class="text-primary" formControlName="volume"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Chargeable Volume</ion-label>
+            <ion-input type="text" class="text-primary" formControlName="chargeable_volume"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-item>
+      <ion-label floating>Total packages</ion-label>
+      <ion-input type="text" class="text-primary" formControlName="commodity"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Remarks</ion-label>
+      <ion-input type="text" class="text-primary" formControlName="commodity"></ion-input>
+    </ion-item>
+    <button ion-button type="submit" [disabled]="!cargoDetailsForm.valid">Package Details>></button>
+  </form>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</ion-content>
+<ion-fab left bottom #fab1>
+  <button class="pop-in" ion-fab color="primary" [ngClass]="{'pop-out': fabGone}" (click)="previous()">
+    <ion-icon name="arrow-round-back"></ion-icon>
+  </button>
+</ion-fab>
+
+<ion-fab right bottom #fab2>
+  <button class="pop-in" ion-fab color="primary" [ngClass]="{'pop-out': fabGone}" (click)="next()">
+    <ion-icon name="arrow-round-forward"></ion-icon>
+  </button>
+</ion-fab>
