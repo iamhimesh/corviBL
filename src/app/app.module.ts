@@ -48,10 +48,11 @@ import { NewSalesLeadPageModule } from '../pages/new-sales-lead/new-sales-lead.m
 import { FindLocationPageModule } from '../pages/find-location/find-location.module';
 import { UpdateJobMilestonePageModule } from '../pages/update-job-milestone/update-job-milestone.module';
 import { SearchMilestonePageModule } from './../pages/search-milestone/search-milestone.module';
+import { SearchJobsPageModule } from './../pages/search-jobs/search-jobs.module';
+
 import { ResetPasswordPageModule } from './../pages/reset-password/reset-password.module';
-import { CustomerDashboardPageModule } from '../pages/customer-dashboard/customer-dashboard.module';
-import { ShipmentStatusPageModule } from '../pages/shipment-status/shipment-status.module';
-import { JobStatusPageModule } from '../pages/job-status/job-status.module';
+import { SearchJobResultsPageModule } from '../pages/search-job-results/search-job-results.module';
+import { ConfigureParametersPageModule } from '../pages/configure-parameters/configure-parameters.module';
 @NgModule({
   declarations: [
     CorviApp
@@ -81,7 +82,10 @@ import { JobStatusPageModule } from '../pages/job-status/job-status.module';
     NewSalesLeadPageModule,FindLocationPageModule,UpdateJobMilestonePageModule,
     ResetPasswordPageModule,
     SearchMilestonePageModule,
-    FormsModule,CustomerDashboardPageModule,ShipmentStatusPageModule,JobStatusPageModule
+    FormsModule,
+    SearchJobsPageModule,
+    SearchJobResultsPageModule,
+    ConfigureParametersPageModule
 
   ],
   bootstrap: [IonicApp],

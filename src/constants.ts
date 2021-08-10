@@ -8,54 +8,69 @@ export interface MENU {
   title: string, component: any, active: boolean, icon: string
 }
 export class Constants {
-  // public static get CORVI_Base_URL(): string { return " http://113.193.225.56:8080/CorviMobileAPI/api/"; };
-  // public static get CORVI_Base_URL(): string { return "http://10.22.2.31:8080/CorviMobileAPI/api/"; };
+    // public static get CORVI_Base_URL(): string { return " http://113.193.225.56:8080/CorviMobileAPI/api/"; };
+    // public static get CORVI_Base_URL(): string { return "http://10.22.2.31:8080/CorviMobileAPI/api/"; };
 
-  // public static get CORVI_Base_URL(): string { return "http://104.211.244.239/MobileApi/MobileApi/"; }
+    // public static get CORVI_Base_URL(): string { return "http://104.211.244.239/MobileApi/MobileApi/"; }
 
-  public static get CORVI_Base_URL(): string { return "https://lmsinv.balmerlawrie.co.in/Mobapi/MobileAPI/"; }
+    public static get CORVI_Base_URL(): string { return "https://lmsinv.balmerlawrie.co.in/Mobapi/MobileAPI/"; }
 
-  public static get CORVI_PDF_URL(): string { return "http://52.76.76.33/demo/"; }
-  public static get SECRET_KEY(): string { return "0123456789abcdef" };
-  public static get MENU_PAGES_ARRAY(): Array<MENU> {
-    return [
-      { title: 'Home', component: 'DashboardPage', active: true, icon: 'home' },
-      { title: 'New Sales Activity', component: 'NewSalesActivityPage', active: false, icon: 'quote' },
-      { title: 'Search Sales Activity', component: 'OpenJobsPage', active: false, icon: 'open' },
-      { title: 'New Sales Lead', component: 'ClosedJobsPage', active: false, icon: 'close' },
-      { title: 'Update Job Milestone', component: 'InvoicesPage', active: false, icon: 'print' },
-      { title: 'Configure Parameters', component: 'EnquiryPage', active: false, icon: 'clipboard' },
-      { title: 'Settings', component: 'EnquiryPage', active: false, icon: 'clipboard' },
-      { title: 'Notification', component: 'EnquiryPage', active: false, icon: 'clipboard' }
-    ];
-  }
-  public static get MIME_TYPE(): string { return "application/pdf" }
+    public static get CORVI_PDF_URL(): string { return "http://52.76.76.33/demo/"; }
+    public static get SECRET_KEY(): string { return "0123456789abcdef" };
+    public static get MENU_PAGES_ARRAY(): Array<MENU> {
+        return [
+            { title: 'Home', component: 'DashboardPage', active: true, icon: 'home' },
+            { title: 'New Sales Activity', component: 'NewSalesActivityPage', active: false, icon: 'quote' },
+            { title: 'Search Sales Activity', component: 'FindSalesActivityPage', active: false, icon: 'open' },
+            { title: 'New Sales Lead', component: 'NewSalesLeadPage', active: false, icon: 'close' },
+            { title: 'Update Job Milestone', component: 'UpdateJobMilestonePage', active: false, icon: 'print' },
+            { title: 'Configure Parameters', component: 'ConfigureParametersPage', active: false, icon: 'clipboard' },
+            { title: 'Settings', component: 'EnquiryPage', active: false, icon: 'clipboard' },
+            { title: 'Notification', component: 'EnquiryPage', active: false, icon: 'clipboard' }
+        ];
+    }
+    public static get MENU_PAGES_ARRAY_CUST(): Array<MENU> {
+        return [
+            { title: 'Home', component: 'DashboardPage', active: true, icon: 'home' },
+            { title: 'New Sales Activity', component: 'NewSalesActivityPage', active: false, icon: 'quote' },
+            { title: 'View Reporting User Activity', component: 'EnquiryPage', active: false, icon: 'quote' },
+            { title: 'Search Sales Activity', component: 'FindSalesActivityPage', active: false, icon: 'open' },
+            { title: 'New Sales Lead', component: 'NewSalesLeadPage', active: false, icon: 'close' },
+            { title: 'Update Job Milestone', component: 'UpdateJobMilestonePage', active: false, icon: 'print' },
+            { title: 'Configure Parameters', component: 'ConfigureParametersPage', active: false, icon: 'clipboard' },
+            { title: 'Settings', component: 'EnquiryPage', active: false, icon: 'clipboard' },
+            { title: 'Notification', component: 'EnquiryPage', active: false, icon: 'clipboard' }
+        ];
+    }
+    public static get MIME_TYPE(): string { return "application/pdf" }
 
-  public static MENU = {
-    DEFAULT: 'menu-components',
-    MATERIAL: 'menu-material',
-    AVATAR: 'menu-avatar',
-  };
+    public static MENU = {
+        DEFAULT: 'menu-components',
+        MATERIAL: 'menu-material',
+        AVATAR: 'menu-avatar',
+    };
 
-  public static SMTP_Credentails = {
-    "Host": "smtp25.elasticemail.com",
-    "Username": "kalelogisticsandy@gmail.com",
-    "Password": "60f0fd9e-84b6-4baa-9983-db9a021e69f7",
-    "From": "kalelogisticsandy@gmail.com"
-  }
+    public static SMTP_Credentails = {
+        "Host": "smtp25.elasticemail.com",
+        "Username": "kalelogisticsandy@gmail.com",
+        "Password": "60f0fd9e-84b6-4baa-9983-db9a021e69f7",
+        "From": "kalelogisticsandy@gmail.com"
+    }
 
 
-  // All Services names includes in this below object
-  public static Corvi_Services = {
-    "Login": "Login",
-    "UserDetails": "LoginDetails",
-    "ForgetPassword": "ForgotPassword",
-    "GetVendorMasterList": "GetVendorMasterList",
-    "GetSearchMilestoneList": "GetSearchMilestoneList",
-    "SalesActivitySave": "SalesActivitySave",
-    "VendorMasterSaveForHHT": "VendorMasterSave",
-    "GetLocationMasterList": "GetLocationMasterList",
-    "OpenJobList": "OpenJobList",
+    // All Services names includes in this below object
+    public static Corvi_Services = {
+        "Login": "Login",
+        "UserDetails": "LoginDetails",
+        "ForgetPassword": "ForgotPassword",
+        "GetVendorMasterList": "GetVendorMasterList",
+        "GetSearchMilestoneList": "GetSearchMilestoneList",
+        "GetSearchJobList": "GetSearchJobList",
+        "SalesActivitySave": "SalesActivitySave",
+        "VendorMasterSaveForHHT": "VendorMasterSave",
+        "GetLocationMasterList": "GetLocationMasterList",
+        "UpdateJobMilestone": "UpdateJobMilestone",
+        "UserConfigurationSave" : "UserConfigurationSave",
         "OpenJobs": {
       "Get_OpenJobList": "OpenJobList"
     },

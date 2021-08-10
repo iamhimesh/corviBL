@@ -22,7 +22,7 @@
 
 <ion-content padding>
   <img src="assets/img/Corvi_BL_Logo_360x70.png">
-  <ion-row style="margin-top:10px ;" class="text-center">
+  <ion-row *ngIf="profileType == '1'" style="margin-top:10px ;" class="text-center">
     <ion-col col-4 class="text-center box" (click)='goToNewSalesActivity();'>
       <div class="inner ShadowBox13">
         <img src="assets/img/add-file.png" class="center">
@@ -33,7 +33,7 @@
     <ion-col col-4 class="text-center box" (click)='goToFindSalesActivityPage();'>
       <div class="inner ShadowBox13">
         <img src="assets/img/search2.png" class="center">
-        <span>Find Sales Activity</span>
+        <span>Search Sales Activity</span>
       </div>
     </ion-col>
     <ion-col col-4 class="text-center box" (click)="goToNewSalesLeadPage();">
@@ -43,7 +43,7 @@
       </div>
     </ion-col>
   </ion-row>
-  <ion-row style="margin-top:10px ;">
+  <ion-row *ngIf="profileType == '1'" style="margin-top:10px ;">
     <ion-col col-4 class="text-center box" (click)="goToUpdateJobMilestonePage();">
       <div class="inner ShadowBox13">
         <img src="assets/img/Group 3526.png" class="center">
@@ -51,7 +51,53 @@
           Milestone</span>
       </div>
     </ion-col>
+    <ion-col col-4 class="text-center box" (click)="goToConfigureParams();">
+      <div class="inner ShadowBox13">
+        <img src="assets/img/Group 3527.png" class="center">
+        <span>Configure<br> Parameters</span>
+      </div>
+    </ion-col>
+  </ion-row>
+
+  <ion-row *ngIf="profileType == '2'" style="margin-top:10px ;" class="text-center">
+    <ion-col col-4 class="text-center box" (click)='goToNewSalesActivity();'>
+      <div class="inner ShadowBox13">
+        <img src="assets/img/add-file.png" class="center">
+        <span>New Sales Activity</span>
+      </div>
+    </ion-col>
+
     <ion-col col-4 class="text-center box">
+      <div class="inner ShadowBox13">
+        <img src="assets/img/viewReports.png" class="center">
+        <span>View Reporting User Activity</span>
+      </div>
+    </ion-col>
+
+    <ion-col col-4 class="text-center box" (click)='goToFindSalesActivityPage();'>
+      <div class="inner ShadowBox13">
+        <img src="assets/img/search2.png" class="center">
+        <span>Search Sales Activity</span>
+      </div>
+    </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="profileType == '2'" style="margin-top:10px ;">
+    <ion-col col-4 class="text-center box" (click)="goToNewSalesLeadPage();">
+      <div class="inner ShadowBox13">
+        <img src="assets/img/Group 3473.png" class="center">
+        <span>New Sales Lead</span>
+      </div>
+    </ion-col>
+
+    <ion-col col-4 class="text-center box" (click)="goToUpdateJobMilestonePage();">
+      <div class="inner ShadowBox13">
+        <img src="assets/img/Group 3526.png" class="center">
+        <span>Update Job
+          Milestone</span>
+      </div>
+    </ion-col>
+    <ion-col col-4 class="text-center box" (click)="goToConfigureParams();">
       <div class="inner ShadowBox13">
         <img src="assets/img/Group 3527.png" class="center">
         <span>Configure<br> Parameters</span>

@@ -2,6 +2,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, ModalController } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
+import { ConfigureParametersPage } from '../configure-parameters/configure-parameters';
 import { FindSalesActivityPage } from '../find-sales-activity/find-sales-activity';
 import { NewSalesActivityPage } from '../new-sales-activity/new-sales-activity';
 import { NewSalesLeadPage } from '../new-sales-lead/new-sales-lead';
@@ -22,6 +23,8 @@ import { UpdateJobMilestonePage } from '../update-job-milestone/update-job-miles
 export class DashboardPage {
   title: string;
   appBuildConfig: any;
+  profileType;
+
   constructor(public navCtrl: NavController,
     public navParams: NavParams, public menu: MenuController,
     public globalService: GlobalProvider, private modalCtrl: ModalController,) {
@@ -29,13 +32,18 @@ export class DashboardPage {
   }
 
   ionViewDidLoad() {
+    this.profileType = localStorage.getItem('profileType');
+    console.log('******', this.profileType);
     console.log('ionViewDidLoad DashboardPage');
   }
   goToNewSalesActivity() {
 
     this.globalService.setRootPage(NewSalesActivityPage);
+<<<<<<< HEAD
     // this.navCtrl.push(NewSalesActivityPage);
 
+=======
+>>>>>>> d8346a981fb89d047215dd8532d739ca1476828e
   }
 
   goToFindSalesActivityPage() {
@@ -63,6 +71,12 @@ export class DashboardPage {
   goToUpdateJobMilestonePage() {
 
     this.globalService.setRootPage(UpdateJobMilestonePage);
+
+    // this.navCtrl.push(UpdateJobMilestonePage);
+  }
+
+  goToConfigureParams(){
+    this.globalService.setRootPage(ConfigureParametersPage);
   }
 
 }

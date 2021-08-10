@@ -145,7 +145,7 @@ export class FindSalesActivityPage {
   }
 
   passDataToNSA(custArray) {
-
+debugger
     if (this.fromSaleLeadVal == '1') {
 
       this.globalService.valueForLeadCutomer = custArray;

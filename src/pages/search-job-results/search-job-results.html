@@ -1,0 +1,51 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title center text-center>
+      {{title}}
+    </ion-title>
+
+    <ion-buttons right>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list class="ShadowBox13">
+    <ion-item *ngFor="let data of fetchedData">
+      <ion-label>
+        <h4>{{data.JobNo}}</h4>
+        <h6>{{data.CustomerName}}</h6>
+        
+      </ion-label>
+      <ion-checkbox slot="end" (ionChange)="selectedJobs(data)" class="float-right"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
+
+<ion-footer class="ion-footer">
+  <ion-row padding class="ShadowBox13">
+    <ion-col col-6>
+      <button ion-button block class="btnRadius btncancel">
+        <ion-icon></ion-icon>
+        Cancel
+      </button>
+    </ion-col>
+
+    <ion-col col-6>
+      <button ion-button icon-start block class="btnRadius" (click)="confirmJobs()">
+        <ion-icon></ion-icon>
+        Confirm
+      </button>
+    </ion-col>
+  </ion-row>
+  <!-- <div class="label-white toolbar-background-md" center text-center>
+      © Kale Logistics Solutions Private Limited. {{appBuildConfig.fullYear}} Version {{appBuildConfig.version}}
+    </div> -->
+</ion-footer>
