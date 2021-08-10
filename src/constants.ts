@@ -21,10 +21,23 @@ export class Constants {
         return [
             { title: 'Home', component: 'DashboardPage', active: true, icon: 'home' },
             { title: 'New Sales Activity', component: 'NewSalesActivityPage', active: false, icon: 'quote' },
-            { title: 'Search Sales Activity', component: 'OpenJobsPage', active: false, icon: 'open' },
-            { title: 'New Sales Lead', component: 'ClosedJobsPage', active: false, icon: 'close' },
-            { title: 'Update Job Milestone', component: 'InvoicesPage', active: false, icon: 'print' },
-            { title: 'Configure Parameters', component: 'EnquiryPage', active: false, icon: 'clipboard' },
+            { title: 'Search Sales Activity', component: 'FindSalesActivityPage', active: false, icon: 'open' },
+            { title: 'New Sales Lead', component: 'NewSalesLeadPage', active: false, icon: 'close' },
+            { title: 'Update Job Milestone', component: 'UpdateJobMilestonePage', active: false, icon: 'print' },
+            { title: 'Configure Parameters', component: 'ConfigureParametersPage', active: false, icon: 'clipboard' },
+            { title: 'Settings', component: 'EnquiryPage', active: false, icon: 'clipboard' },
+            { title: 'Notification', component: 'EnquiryPage', active: false, icon: 'clipboard' }
+        ];
+    }
+    public static get MENU_PAGES_ARRAY_CUST(): Array<MENU> {
+        return [
+            { title: 'Home', component: 'DashboardPage', active: true, icon: 'home' },
+            { title: 'New Sales Activity', component: 'NewSalesActivityPage', active: false, icon: 'quote' },
+            { title: 'View Reporting User Activity', component: 'EnquiryPage', active: false, icon: 'quote' },
+            { title: 'Search Sales Activity', component: 'FindSalesActivityPage', active: false, icon: 'open' },
+            { title: 'New Sales Lead', component: 'NewSalesLeadPage', active: false, icon: 'close' },
+            { title: 'Update Job Milestone', component: 'UpdateJobMilestonePage', active: false, icon: 'print' },
+            { title: 'Configure Parameters', component: 'ConfigureParametersPage', active: false, icon: 'clipboard' },
             { title: 'Settings', component: 'EnquiryPage', active: false, icon: 'clipboard' },
             { title: 'Notification', component: 'EnquiryPage', active: false, icon: 'clipboard' }
         ];
@@ -52,14 +65,12 @@ export class Constants {
         "ForgetPassword": "ForgotPassword",
         "GetVendorMasterList": "GetVendorMasterList",
         "GetSearchMilestoneList": "GetSearchMilestoneList",
-<<<<<<< HEAD
         "GetSearchJobList": "GetSearchJobList",
-=======
         "SalesActivitySave": "SalesActivitySave",
-        "VendorMasterSave": "VendorMasterSave",
+        "VendorMasterSaveForHHT": "VendorMasterSave",
         "GetLocationMasterList": "GetLocationMasterList",
-
->>>>>>> e721302439eed6579bcda2daca6d51efb7806cf6
+        "UpdateJobMilestone": "UpdateJobMilestone",
+        "UserConfigurationSave" : "UserConfigurationSave",
         "OpenJobs": {
             "Get_OpenJobList": "OpenJobList"
         },

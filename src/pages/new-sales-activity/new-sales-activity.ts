@@ -62,16 +62,17 @@ export class NewSalesActivityPage {
   activityType: any = '1';
   priority: any = '1';
   status: any = '5';
-  vCode: any;
+  vCode: any ='';
   contPerson: any;
-  sTime: any;
-  bDesc: any;
-  notes: any;
-  userID: any;
+  sTime: any='';
+  bDesc: any='';
+  notes: any='';
+  userID: any='';
   currDate: any = new Date();
   isenabled: any = false;
   fetchedData: any;
   tempBranch: string;
+  filterActivity: any;
   constructor(
     public navCtrl: NavController, public navParams: NavParams,
     public globalService: GlobalProvider,
@@ -88,7 +89,6 @@ export class NewSalesActivityPage {
   ) {
     this.title = "New Sales Activity";
     this.appBuildConfig = this.globalService.appBuildConfig;
-    debugger
 
     this.UserDetails = this.globalService.get('userDetails');
     this.customerData = this.globalService.get('customerData');
@@ -99,6 +99,7 @@ export class NewSalesActivityPage {
     this.BranchTbl = this.UserDetails[Object.keys(this.UserDetails)[1]]["Table4"];
     this.ActivityTbl = this.UserDetails[Object.keys(this.UserDetails)[1]]["Table3"];
 
+    this.filterActivity = this.ActivityTbl.filter(t => t.Identifier == 'Activity');
     this.filterActivityPriority = this.ActivityTbl.filter(t => t.Identifier == 'ActivityPriority');
     this.filterMode = this.ActivityTbl.filter(t => t.Identifier == 'CommunicationType');
     this.filterActivityStatus = this.ActivityTbl.filter(t => t.Identifier == 'ActivityStatus');
@@ -155,7 +156,6 @@ export class NewSalesActivityPage {
 
 
   ionViewDidLoad() {
-    debugger
     //this.branchCode = '0';
     //this.branchCode = localStorage.getItem('branchCode');
     // console.log('ionViewDidLoad NewSalesActivityPage');
@@ -187,7 +187,7 @@ export class NewSalesActivityPage {
     // debugger
     // var a = Date.parse(sdate);
     // var b = Date.parse(edate);
-    debugger
+   // debugger
     // var now = new Date();
     // var utcString = now.toISOString().substring(0, 19);
     // var year = now.getFullYear();
@@ -229,17 +229,52 @@ export class NewSalesActivityPage {
 
     debugger
 
+    if (this.branchCode == '0') {
+      this.toastService.show('Please select branch.', 3000, true, 'top', 'toast-container');
+      //this.startDate.focus();
+      return;
+    }
+
+    if (this.filterCustomerData.BranchName == '') {
+      this.toastService.show('Please search company.', 3000, true, 'top', 'toast-container');
+      //this.startDate.focus();
+      return;
+    }
+
+
+    if (this.contPerson == '') {
+      this.toastService.show('Enter contact person.', 3000, true, 'top', 'toast-container');
+      //this.startDate.focus();
+      return;
+    }
+
     if (this.startDate == '') {
-      this.toastService.show('Please select Start Date.', 3000, true, 'top', 'toast-container');
+      this.toastService.show('Please select start date.', 3000, true, 'top', 'toast-container');
       //this.startDate.focus();
       return;
     }
 
     if (this.endtDate == '') {
-      this.toastService.show('Please select End Date.', 3000, true, 'top', 'toast-container');
+      this.toastService.show('Please select end date.', 3000, true, 'top', 'toast-container');
      // this.startDate.focus();
       return;
     }
+
+
+    var now = new Date();
+    var utcString = now.toISOString().substring(0, 19);
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;
+    var day = now.getDate();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    var localDatetime = year + "-" +
+      (month < 10 ? "0" + month.toString() : month) + "-" +
+      (day < 10 ? "0" + day.toString() : day) + "T" +
+      (hour < 10 ? "0" + hour.toString() : hour) + ":" +
+      (minute < 10 ? "0" + minute.toString() : minute) +
+      utcString.substring(16, 19);
 
     var a = Date.parse(this.startDate);
     var b = Date.parse(this.endtDate);
@@ -258,14 +293,14 @@ export class NewSalesActivityPage {
     this.saveActivity.ActivityType = this.activityType;
     this.saveActivity.Priority = this.priority;
     this.saveActivity.Status = this.status;
-    this.saveActivity.VendorCode = this.filterCustomerData.VendorId;
+    this.saveActivity.VendorCode = this.filterCustomerData.VendorId.toString();
     this.saveActivity.ContactPerson = this.filterCustomerData.VendorName;
-    this.saveActivity.StartTime = this.startDate;
-    this.saveActivity.EndTime = this.endtDate;
+    this.saveActivity.StartTime = this.startDate.replace("T"," ");
+    this.saveActivity.EndTime = this.endtDate.replace("T"," ");;
     this.saveActivity.BriefDescription = this.bDesc;
     this.saveActivity.Notes = this.notes;
     this.saveActivity.UserId = this.userID;
-    this.saveActivity.CreatedDate = this.currDate;
+    this.saveActivity.CreatedDate = localDatetime.replace("T"," ");;//this.currDate;
 
     this.http.POST(Constants.Corvi_Services.SalesActivitySave, this.saveActivity).then((response) => {
 

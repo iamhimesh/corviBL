@@ -6,6 +6,11 @@
 -->
 <ion-header>
   <ion-navbar color="primary">
+    <ion-buttons left>
+      <button ion-button icon-only (click)="backToDashboard();">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
     <button right ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -25,6 +30,7 @@
         <label>
           Branch
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
       <ion-col col-12>
         <select id="ddlBrach" name="ddlBrach" [(ngModel)]="branchCode" (change)="getSelectedOptionText()" col-12
@@ -38,12 +44,13 @@
         <label>
           Company Name
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
       <ion-col col-10>
-        <input type="text" [(ngModel)]="vendorname" col-12 placeholder="">
+        <input maxlength="50" type="text" [(ngModel)]="vendorname" col-12 placeholder="">
       </ion-col>
       <ion-col col-2>
-        <button ion-fab class="ion-fab34">
+        <button ion-fab class="ion-fab34" (click)="openModalFoSearchCompany();">
           <ion-icon name="md-search" class=""></ion-icon>
         </button>
       </ion-col>
@@ -52,6 +59,7 @@
         <label>
           Status
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
       <ion-col col-12>
         <select col-12 placeholder="" [(ngModel)]="status">
@@ -65,6 +73,7 @@
         <label>
           Type of Industry
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
       <ion-col col-12>
         <select col-12 placeholder="" [(ngModel)]="typeOfIndus">
@@ -78,6 +87,7 @@
         <label>
           Type of Customer
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
       <ion-col col-12>
         <select col-12 placeholder="" [(ngModel)]="typeOfCust">
@@ -92,9 +102,10 @@
         <label>
           Location
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
       <ion-col col-10>
-        <input type="text" [(ngModel)]="location" col-12 placeholder="">
+        <input disabled maxlength="100" type="text" [(ngModel)]="location" col-12 placeholder="">
       </ion-col>
       <ion-col col-2>
         <button ion-fab class="ion-fab34" (click)="openModal();">
@@ -107,15 +118,16 @@
         <label>
           Address
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
       <ion-col col-12>
-        <input type="text" [(ngModel)]="addressline1" col-12 placeholder="">
+        <input maxlength="50" type="text" [(ngModel)]="addressline1" col-12 placeholder="">
       </ion-col>
       <ion-col col-12>
-        <input type="text" [(ngModel)]="addressline2" col-12 placeholder="">
+        <input maxlength="50" type="text" [(ngModel)]="addressline2" col-12 placeholder="">
       </ion-col>
       <ion-col col-12>
-        <input type="text" [(ngModel)]="addressline3" col-12 placeholder="">
+        <input maxlength="50" type="text" [(ngModel)]="addressline3" col-12 placeholder="">
       </ion-col>
 
 
@@ -125,7 +137,7 @@
         </label>
       </ion-col>
       <ion-col col-12>
-        <input type="text" [(ngModel)]="pincode" col-12 placeholder="">
+        <input maxlength="9" type="text" [(ngModel)]="pincode" col-12 placeholder="">
       </ion-col>
 
 
@@ -147,10 +159,10 @@
         </label>
       </ion-col>
       <ion-col col-6>
-        <input type="text" [formGroup]="vForm" [(ngModel)]="firstname" col-12 placeholder="">
+        <input maxlength="50" type="text" [(ngModel)]="firstname" col-12 placeholder="">
       </ion-col>
       <ion-col col-6>
-        <input type="text" [formGroup]="vForm" formControlName ="entPieces" [formControl] = "vForm.controls['entPieces']" [(ngModel)]="lastname" col-12 placeholder="">
+        <input maxlength="50" type="text" [(ngModel)]="lastname" col-12 placeholder="">
       </ion-col>
 
 
@@ -160,7 +172,7 @@
         </label>
       </ion-col>
       <ion-col col-12>
-        <input type="text" [(ngModel)]="designation" col-12 placeholder="">
+        <input maxlength="50" type="text" [(ngModel)]="designation" col-12 placeholder="">
       </ion-col>
 
       <ion-col col-12>
@@ -174,7 +186,7 @@
         </select>
       </ion-col>
       <ion-col col-10>
-        <input type="text" [(ngModel)]="mobileno" col-12 placeholder="">
+        <input maxlength="50" type="text" [(ngModel)]="mobileno" col-12 placeholder="">
       </ion-col>
 
 
@@ -184,8 +196,8 @@
         </label>
       </ion-col>
       <ion-col col-12>
-        <input type="email" [(ngModel)]="contactemail" col-12 placeholder=""
-        pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})">
+        <input maxlength="100" type="email" [(ngModel)]="contactemail" col-12 placeholder=""
+          pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})">
       </ion-col>
 
 
@@ -196,6 +208,9 @@
 </ion-content>
 <ion-footer class="ion-footer">
   <ion-row padding class="ShadowBox13">
+    <ion-col col-12>
+      <span style="color: red;">(*) Marks field are mandatory to fill up</span>
+    </ion-col>
     <ion-col col-6>
       <button ion-button block class="btnRadius btncancel" (click)="backToDashboard();">
         <ion-icon></ion-icon>
@@ -204,7 +219,7 @@
     </ion-col>
 
     <ion-col col-6>
-      <button ion-button icon-start block class="btnRadius " (click)="VendorMasterSave();">
+      <button ion-button icon-start block class="btnRadius " (click)="VendorMasterSaveHHT();">
         <ion-icon></ion-icon>
         Save
       </button>

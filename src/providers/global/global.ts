@@ -20,7 +20,6 @@ import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 @Injectable()
 export class GlobalProvider {
   /*Configuration for the app */
-  selectedCity;
   appConfig = {
     version: 'v1.1.6'
   }
@@ -30,7 +29,10 @@ export class GlobalProvider {
     fullYear: (new Date).getFullYear().toString()
   }
 
-  selectedMilestone;
+  selectedCity: any = '';
+  valueForLeadCutomer: any = '';
+  selectedMilestone: any = [];
+  selectedJobsArray: any = [];
 
   constructor(public http: HttpClient, private app: App, public alertCtrl: AlertController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController, public eventCtrl: Events, public actionSheetCtrl: ActionSheetController, public file: File, public transfer: FileTransfer, public fileOpener: FileOpener, private nativeStorage: NativeStorage, private spinnerDialog: SpinnerDialog) {
   }
@@ -64,7 +66,7 @@ export class GlobalProvider {
         handler: () => {
           this.handleLogOut();
         }
-
+        
       }]
     })
     alert.present();
@@ -79,8 +81,6 @@ export class GlobalProvider {
     this.remove('isLogged');
     this.remove('login_resp');
     this.remove('userDetails');
-    this.remove('branchCode');
-    this.remove('customerData');
     this.routePage(LoginPage);
   }
 
@@ -279,7 +279,5 @@ export class GlobalProvider {
       });
     }
   }
-
-
 
 }

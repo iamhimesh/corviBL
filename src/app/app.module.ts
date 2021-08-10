@@ -51,6 +51,8 @@ import { SearchMilestonePageModule } from './../pages/search-milestone/search-mi
 import { SearchJobsPageModule } from './../pages/search-jobs/search-jobs.module';
 
 import { ResetPasswordPageModule } from './../pages/reset-password/reset-password.module';
+import { SearchJobResultsPageModule } from '../pages/search-job-results/search-job-results.module';
+import { ConfigureParametersPageModule } from '../pages/configure-parameters/configure-parameters.module';
 @NgModule({
   declarations: [
     CorviApp
@@ -81,7 +83,9 @@ import { ResetPasswordPageModule } from './../pages/reset-password/reset-passwor
     ResetPasswordPageModule,
     SearchMilestonePageModule,
     FormsModule,
-    SearchJobsPageModule
+    SearchJobsPageModule,
+    SearchJobResultsPageModule,
+    ConfigureParametersPageModule
 
   ],
   bootstrap: [IonicApp],

@@ -9,6 +9,7 @@ import { AlertService } from '../../providers/util/alert.service';
 import { ToastService } from '../../providers/util/toast.service';
 import { DashboardPage } from '../dashboard/dashboard';
 import { NewSalesActivityPage } from '../new-sales-activity/new-sales-activity';
+import { NewSalesLeadPage } from '../new-sales-lead/new-sales-lead';
 import { WelcomeuserPage } from '../welcomeuser/welcomeuser';
 
 export class findVendorList {
@@ -31,7 +32,7 @@ export class FindSalesActivityPage {
   title: string;
   appBuildConfig: any;
   BranchTbl: any = [];
-  branchCode: any;
+  branchCode: any = '0';
   UserDetails: Promise<any>;
   findList: findVendorList;
   VenType: any;
@@ -42,6 +43,7 @@ export class FindSalesActivityPage {
   bvalue: any;
   btext: any;
   fetchedData: any;
+  fromSaleLeadVal: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public globalService: GlobalProvider,
     private modalCtrl: ModalController, public viewCtrl: ViewController,
@@ -70,18 +72,22 @@ export class FindSalesActivityPage {
 
     this.VenType = 'Lead-Customer';
 
+
+    this.fromSaleLeadVal = this.navParams.get('fromSaleLeadVal');
+
+
   }
 
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad FindSalesActivityPage');
   // }
   ionViewDidEnter() {
+    if (this.fetchedData != undefined) {
+      if (this.fetchedData.length != 0) {
+        this.branchCode = this.fetchedData.BranchCode;
 
-    if (this.fetchedData.length != 0) {
-      this.branchCode = this.fetchedData.BranchCode;
-
+      }
     }
-
   }
   backToDashboard() {
 
@@ -99,6 +105,12 @@ export class FindSalesActivityPage {
     this.viewCtrl.dismiss(data);
   }
   searchVenderList() {
+
+    if (this.branchCode == undefined) {
+      this.toastService.show('Please select branch.', 3000, true, 'top', 'toast-container');
+      //this.startDate.focus();
+      return;
+    }
 
     this.findList.BranchCode = this.branchCode;
     this.findList.VendorType = this.VenType;
@@ -133,11 +145,19 @@ export class FindSalesActivityPage {
   }
 
   passDataToNSA(custArray) {
-    localStorage.setItem('branchCode', this.branchCode)
-    this.globalService.store('customerData', custArray);
-    // this.viewCtrl.dismiss();
-    // this.globalService.setRootPage(NewSalesActivityPage);
-    this.navCtrl.remove(this.navCtrl.getActive().index - 0, 1,);
+debugger
+    if (this.fromSaleLeadVal == '1') {
+
+      this.globalService.valueForLeadCutomer = custArray;
+      this.viewCtrl.dismiss();
+      this.globalService.setRootPage(NewSalesLeadPage);
+    } else {
+      localStorage.setItem('branchCode', this.branchCode)
+      this.globalService.store('customerData', custArray);
+      this.viewCtrl.dismiss();
+      this.globalService.setRootPage(NewSalesActivityPage);
+    }
+    // this.navCtrl.remove(this.navCtrl.getActive().index - 0, 1,);
   }
 
 }

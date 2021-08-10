@@ -31951,6 +31951,104 @@ page-closed-jobs-details .text-input[disabled] {
   opacity: 1 !important;
 }
 
+page-configure-parameters .ShadowBox13 {
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+page-configure-parameters .ion-fab34 {
+  width: 34px !important;
+  height: 34px !important;
+  float: right !important;
+}
+
+page-configure-parameters .margin4 {
+  margin-top: 4px !important;
+}
+
+page-configure-parameters table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+page-configure-parameters th,
+page-configure-parameters td {
+  text-align: left;
+  padding: 8px;
+}
+
+page-configure-parameters .btnRadiusUpper {
+  border-radius: 10px;
+  text-transform: capitalize;
+}
+
+page-configure-parameters .btnRadius {
+  border-radius: 20px;
+}
+
+page-configure-parameters .btncancel {
+  background: white;
+  color: black;
+  border: solid thin gray;
+}
+
+page-configure-parameters .toolbar-background-md {
+  background-color: #0461b2;
+  color: #fff;
+}
+
+page-configure-parameters h4 {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #000;
+  line-height: 0.1em;
+  margin: 10px 0 10px;
+}
+
+page-configure-parameters h4 span {
+  background: #fff;
+  padding: 0 10px;
+}
+
+page-configure-parameters .stv-radio-buttons-wrapper {
+  clear: both;
+  display: inline-block;
+}
+
+page-configure-parameters .stv-radio-button {
+  position: absolute;
+  left: -9999em;
+  top: -9999em;
+}
+
+page-configure-parameters .stv-radio-button + label {
+  float: left;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  border: 1px solid #28608f;
+  margin-right: -1px;
+  color: #000;
+  background-color: #fff;
+  text-align: center;
+  width: 100%;
+}
+
+page-configure-parameters .stv-radio-button + label:first-of-type {
+  border-radius: 0.7em 0 0 0.7em;
+}
+
+page-configure-parameters .stv-radio-button + label:last-of-type {
+  border-radius: 10px;
+}
+
+page-configure-parameters .stv-radio-button:checked + label {
+  background-color: #3277b3;
+  color: #fff;
+}
+
 page-dashboard .center {
   display: block;
   margin-left: auto;
@@ -32253,11 +32351,6 @@ page-login .input-wrapper,
   font-size: inherit;
 }
 
-page-login .normalToast,
-.login .normalToast {
-  background: #1069ad;
-}
-
 .contaier-login {
   height: 480px;
   padding: 3px;
@@ -32498,6 +32591,59 @@ page-reset-password .button.customBtn {
 
 page-reset-password ion-label {
   color: grey;
+}
+
+page-search-job-results .ShadowBox13 {
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+page-search-job-results .ion-fab34 {
+  width: 34px !important;
+  height: 34px !important;
+  float: right !important;
+}
+
+page-search-job-results .margin4 {
+  margin-top: 4px !important;
+}
+
+page-search-job-results table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  border: 1px solid #ddd;
+}
+
+page-search-job-results th,
+page-search-job-results td {
+  text-align: left;
+  padding: 8px;
+}
+
+page-search-job-results .btnRadiusUpper {
+  border-radius: 10px;
+  text-transform: capitalize;
+}
+
+page-search-job-results .btnRadius {
+  border-radius: 20px;
+}
+
+page-search-job-results .btncancel {
+  background: white;
+  color: black;
+  border: solid thin gray;
+}
+
+page-search-job-results .toolbar-background-md {
+  background-color: #0461b2;
+  color: #fff;
+}
+
+page-search-job-results .float-right {
+  float: right;
 }
 
 page-search-jobs .ShadowBox13 {

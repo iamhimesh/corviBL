@@ -39,6 +39,7 @@
         <label>
           Branch
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
       <ion-col col-12>
 
@@ -54,11 +55,13 @@
         <label>
           Communication Mode
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
       <ion-col col-6>
         <label>
           Activity
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
       <ion-col col-6>
 
@@ -70,18 +73,20 @@
 
       <ion-col col-6>
         <select col-12 placeholder="" [(ngModel)]="activityType">
-          <option *ngFor="let acData of ActivityTbl" [value]="acData.KeyValue">{{acData.Description}}</option>
+          <option *ngFor="let acData of filterActivity" [value]="acData.KeyValue">{{acData.Description}}</option>
         </select>
       </ion-col>
       <ion-col col-6>
         <label>
           Priority
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
       <ion-col col-6>
         <label>
           Status
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
       <ion-col col-6>
 
@@ -115,7 +120,7 @@
 
       <ion-col col-10>
 
-        <input type="text" [(ngModel)]="filterCustomerData.BranchName" col-12 placeholder="">
+        <input maxlength="50" disabled type="text" [(ngModel)]="filterCustomerData.BranchName" col-12 placeholder="">
 
       </ion-col>
       <ion-col col-2>
@@ -133,7 +138,7 @@
 
       <ion-col col-12>
 
-        <textarea col-12 placeholder="" [(ngModel)]="filterCustomerData.Address1">
+        <textarea maxlength="250" col-12 placeholder="" [(ngModel)]="filterCustomerData.Address1">
         </textarea>
       </ion-col>
 
@@ -142,11 +147,12 @@
         <label>
           Contact Person
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
 
       <ion-col col-12 style="margin-top: 5px;">
 
-        <input col-12 placeholder="" type="text" [(ngModel)]="filterCustomerData.VendorName">
+        <input maxlength="50" col-12 placeholder="" type="text" [(ngModel)]="filterCustomerData.VendorName">
       </ion-col>
     </ion-row>
     <ion-row padding class="ShadowBox13">
@@ -154,6 +160,7 @@
         <label style="line-height: 3;">
           Start Time
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
 
       <ion-col col-6 style="margin-top: 5px;">
@@ -165,6 +172,7 @@
         <label style="line-height: 3;">
           End Time
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
 
       <ion-col col-6 style="margin-top: 5px;">
@@ -201,10 +209,11 @@
         <label>
           General Remarks
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
       <ion-col col-12>
 
-        <textarea col-12 placeholder="" [(ngModel)]="bDesc">
+        <textarea maxlength="1000" col-12 placeholder="" [(ngModel)]="bDesc">
         </textarea>
       </ion-col>
       <ion-col col-12>
@@ -214,7 +223,7 @@
       </ion-col>
       <ion-col col-12 style="margin-top: 5px;">
 
-        <textarea col-12 placeholder="" [(ngModel)]="notes">
+        <textarea maxlength="1000" col-12 placeholder="" [(ngModel)]="notes">
         </textarea>
       </ion-col>
 
@@ -226,6 +235,9 @@
 </ion-content>
 <ion-footer class="ion-footer">
   <ion-row padding class="ShadowBox13">
+    <ion-col col-12>
+      <span style="color: red;">(*) Marks field are mandatory to fill up</span>
+    </ion-col>
     <ion-col col-6>
       <button ion-button round outline class="btncancel" (click)="backToDashboard();">
         <ion-icon></ion-icon>
