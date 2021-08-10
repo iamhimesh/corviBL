@@ -50,7 +50,7 @@
         <input maxlength="50" type="text" [(ngModel)]="vendorname" col-12 placeholder="">
       </ion-col>
       <ion-col col-2>
-        <button ion-fab class="ion-fab34">
+        <button ion-fab class="ion-fab34" (click)="openModalFoSearchCompany();">
           <ion-icon name="md-search" class=""></ion-icon>
         </button>
       </ion-col>
@@ -219,7 +219,7 @@
     </ion-col>
 
     <ion-col col-6>
-      <button ion-button icon-start block class="btnRadius " (click)="VendorMasterSave();">
+      <button ion-button icon-start block class="btnRadius " (click)="VendorMasterSaveHHT();">
         <ion-icon></ion-icon>
         Save
       </button>

@@ -1,6 +1,7 @@
-import { Component, ViewChild} from '@angular/core';
-import { IonicPage, NavController, NavParams,Slides } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, Slides } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
+import { CustomerDashboardPage } from '../customer-dashboard/customer-dashboard';
 import { DashboardPage } from '../dashboard/dashboard';
 
 /**
@@ -17,8 +18,10 @@ import { DashboardPage } from '../dashboard/dashboard';
 })
 export class WelcomeuserPage {
   title: string;
-  @ViewChild('mySlider')  slides: Slides;
-  public next(){
+  @ViewChild('mySlider') slides: Slides;
+  UserDetails: any = [];
+  BranchTbl: any= [];
+  public next() {
     this.slides.slideNext();
   }
 
@@ -26,13 +29,22 @@ export class WelcomeuserPage {
 
   //   this.globalService.routePage(DashboardPage);
   // }
-  skip(){
-    this.globalService.setRootPage(DashboardPage);
-  }
-  constructor(public navCtrl: NavController, public navParams: NavParams,public globalService: GlobalProvider,) {
-    this.title = "Welcome, CORVI User";
-  }
 
+  constructor(public navCtrl: NavController, public navParams: NavParams, public globalService: GlobalProvider,) {
+    this.title = "Welcome, CORVI User";
+
+    this.UserDetails = this.globalService.get('userDetails');
+
+    this.BranchTbl = this.UserDetails[Object.keys(this.UserDetails)[1]]["Table"];
+  }
+  skip() {
+    if (this.BranchTbl[0]["ProfileType"] == '2') {
+
+      this.globalService.setRootPage(CustomerDashboardPage);
+    } else {
+      this.globalService.setRootPage(DashboardPage);
+    }
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad WellcomeuserPage');
   }

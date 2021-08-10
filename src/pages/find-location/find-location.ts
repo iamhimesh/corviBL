@@ -8,9 +8,7 @@ import { HttpServiceProvider } from '../../providers/http-service/http-service';
 import { AlertService } from '../../providers/util/alert.service';
 import { ToastService } from '../../providers/util/toast.service';
 import { DashboardPage } from '../dashboard/dashboard';
-import { NewSalesActivityPage } from '../new-sales-activity/new-sales-activity';
 import { NewSalesLeadPage } from '../new-sales-lead/new-sales-lead';
-import { WelcomeuserPage } from '../welcomeuser/welcomeuser';
 
 /**
  * Generated class for the FindLocationPage page.
@@ -71,7 +69,7 @@ export class FindLocationPage {
   }
 
   GetLocationMasterList() {
-    // debugger
+     debugger
     this.SearchLoc.LocationType = 'Port,Airport,City'; //this.branchCode;
     this.SearchLoc.LocationCode = this.CityCode;
     this.SearchLoc.LocationName = this.CityName;
@@ -124,7 +122,7 @@ export class FindLocationPage {
 
 
   passDataToNSA(selectedData) {
-    debugger
+
     this.globalService.selectedCity = selectedData;
     console.log('********', this.globalService.selectedCity);
     // this.navCtrl.push(UpdateJobMilestonePage, {milestone: selecetedData})

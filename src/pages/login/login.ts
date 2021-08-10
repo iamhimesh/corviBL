@@ -29,6 +29,27 @@ export class User {
   UserId: string; Password: string;
   // CustIdCode: string;
 }
+export class saveLeadCustomer {
+  VendorId: any;
+  VendorName: any;
+  VendorType: any;
+  AddressLine1: any;
+  AddressLine2: any;
+  AddressLine3: any;
+  ContactEmail: any;
+  FirstName: any;
+  LastName: any;
+  Designation: any;
+  Location: any;
+  MobileNo: any;
+  PinCode: any;
+  Status: any;
+  TypeOfCustomer: any;
+  TypeofIndustry: any;
+  UserId: any;
+  ClientDate: any;
+  BranchCode: any;
+}
 declare var Email: any;
 @Component({
   selector: 'page-login',
@@ -42,6 +63,7 @@ export class LoginPage {
   authForm: FormGroup;
   username: any;
   password: any;
+  saveCustomer:saveLeadCustomer
   customerCode: any = '15';
   public showPass = false;
   public type = "password";
@@ -60,16 +82,19 @@ export class LoginPage {
 
     //this.presentAlert();
 
+
+
+
     this.menu.swipeEnable(false);
     this.menu.close();
     this.user = new User();
-
+this.saveCustomer = new saveLeadCustomer();
     // this.authForm = fb.group({
     //   'username' : [null, Validators.compose([Validators.required,Validators.minLength(3)])],
     //   'password' : [null, Validators.compose([Validators.required,Validators.minLength(3)])],
     //   'customerCode' : [null, Validators.compose([Validators.required,Validators.minLength(3)])],
     // });
-
+  //  this.VendorMasterSaveHHT();
   }
 
   presentAlert() {
@@ -222,6 +247,7 @@ export class LoginPage {
   }
 
   setDetails(UUID) {
+
     this.user.UserId = UUID;
     this.http.POST(Constants.Corvi_Services.UserDetails, this.user).then((userDetailsResp) => {
 
@@ -287,6 +313,104 @@ export class LoginPage {
   dashboard() {
 
     this.globalService.setRootPage(WelcomeuserPage);
+  }
+
+
+
+
+  VendorMasterSaveHHT() {
+
+    debugger
+
+
+    var now = new Date();
+    var utcString = now.toISOString().substring(0, 19);
+    var year = now.getFullYear();
+    var month = now.getMonth() + 1;
+    var day = now.getDate();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    var localDatetime = year + "-" +
+      (month < 10 ? "0" + month.toString() : month) + "-" +
+      (day < 10 ? "0" + day.toString() : day) + " " +
+      (hour < 10 ? "0" + hour.toString() : hour) + ":" +
+      (minute < 10 ? "0" + minute.toString() : minute) +
+      utcString.substring(16, 19);
+
+    // if (this.startDate == '') {
+    //   this.toastService.show('Please select Start Date.', 3000, true, 'top', 'toast-container');
+    //   //this.startDate.focus();
+    //   return;
+    // }
+
+    // if (this.endtDate == '') {
+    //   this.toastService.show('Please select End Date.', 3000, true, 'top', 'toast-container');
+    //  // this.startDate.focus();
+    //   return;
+    // }
+
+    // var a = Date.parse(this.startDate);
+    // var b = Date.parse(this.endtDate);
+
+    // if (b < a) {
+    //   this.toastService.show('End Time should be greater than Start Time.', 3000, true, 'top', 'toast-container')
+    //   return;
+    // } else if (b == a) {
+    //   this.toastService.show('End Time should be greater than Start Time.', 3000, true, 'top', 'toast-container')
+    //   return;
+    // }
+
+    this.saveCustomer.VendorId = '0';
+    this.saveCustomer.VendorName = 'comp'
+    this.saveCustomer.VendorType = "Lead Customer"
+    this.saveCustomer.AddressLine1 = "test";
+    this.saveCustomer.AddressLine2 = ''
+    this.saveCustomer.AddressLine3 = ''
+    this.saveCustomer.ContactEmail = ''
+    this.saveCustomer.FirstName = ''
+    this.saveCustomer.LastName = ''
+    this.saveCustomer.Designation = ''
+    this.saveCustomer.Location = '11217'
+    this.saveCustomer.MobileNo = ''
+    this.saveCustomer.PinCode = ''
+    this.saveCustomer.Status = '1'
+    this.saveCustomer.TypeOfCustomer ='1'
+    this.saveCustomer.TypeofIndustry = '1'
+    this.saveCustomer.UserId = '1'
+    this.saveCustomer.ClientDate = localDatetime;
+    this.saveCustomer.BranchCode = 'CCU'
+
+
+
+
+
+    this.http.POST(Constants.Corvi_Services.VendorMasterSaveForHHT, this.saveCustomer).then((response) => {
+
+      console.log('response to check login method: ', response);
+      debugger
+      if (response != '') {
+        // localStorage.removeItem('login_resp');
+        // localStorage.removeItem('userDetails');
+        this.toastService.show(response, 3000, true, 'top', 'toast-success');
+      }
+
+
+      // this.globalService.store('login_resp', response);
+
+    }, (err) => {
+      console.log('error Login ', err);
+      console.log('response to check service link: ', Constants.Corvi_Services.Login);
+    });
+    // }
+    // else {
+    //   this.globalService.showAlert('Invalid Customer Identity Code')
+    // }
+
+    // });
+
+
+
   }
 
 }

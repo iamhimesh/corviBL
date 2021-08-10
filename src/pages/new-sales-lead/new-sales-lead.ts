@@ -1,27 +1,23 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { IonicPage, NavController, NavParams, ModalController, ViewController, MenuController, ToastController } from 'ionic-angular';
+import { FormBuilder } from '@angular/forms';
+import { IonicPage, NavController, NavParams, MenuController, ModalController, ToastController, ViewController } from 'ionic-angular';
 import { Constants } from '../../constants';
-
 import { GlobalProvider } from '../../providers/global/global';
 import { HttpServiceProvider } from '../../providers/http-service/http-service';
 import { AlertService } from '../../providers/util/alert.service';
 import { ToastService } from '../../providers/util/toast.service';
 import { DashboardPage } from '../dashboard/dashboard';
 import { FindLocationPage } from '../find-location/find-location';
-import { NewSalesActivityPage } from '../new-sales-activity/new-sales-activity';
-import { WelcomeuserPage } from '../welcomeuser/welcomeuser';
+import { FindSalesActivityPage } from '../find-sales-activity/find-sales-activity';
 
 /**
- * Generated class for the NewSalesLeadPage page.
+ * Generated class for the NewSalesActivityPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 
-
 export class saveLeadCustomer {
-
   VendorId: any;
   VendorName: any;
   VendorType: any;
@@ -43,11 +39,13 @@ export class saveLeadCustomer {
   BranchCode: any;
 }
 
+
 @IonicPage()
 @Component({
   selector: 'page-new-sales-lead',
   templateUrl: 'new-sales-lead.html',
 })
+
 
 export class NewSalesLeadPage {
   title: string;
@@ -63,22 +61,26 @@ export class NewSalesLeadPage {
   typeOfIndus: any = '1';
   typeOfCust: any = '1';
   saveCustomer: saveLeadCustomer;
-  vendorname: any ='';
-  vendortype: any = 'Lead-Customer';
-  addressline1: any='';
-  addressline2: any='';
-  addressline3: any='';
-  contactemail: any='';
-  firstname: any ='';
-  lastname: any ='';
-  designation: any ='';
-  location: any ='';
-  mobileno: any ='';
-  pincode: any ='';
+  vendorname: any = '';
+  vendortype: any = 'Lead Customer';
+  addressline1: any = '';
+  addressline2: any = '';
+  addressline3: any = '';
+  contactemail: any = '';
+  firstname: any = '';
+  lastname: any = '';
+  designation: any = '';
+  location: any = '';
+  mobileno: any = '';
+  pincode: any = '';
 
   userid: any;
   clientdate: any = new Date();
- // public vForm: FormGroup;
+  LocationCode: any;
+  Locationid: any;
+  companyName: any;
+  customerType: any;
+  // public vForm: FormGroup;
   constructor(
     public navCtrl: NavController, public navParams: NavParams,
     public globalService: GlobalProvider,
@@ -94,7 +96,7 @@ export class NewSalesLeadPage {
     public fb: FormBuilder
   ) {
 
-   // debugger
+    // debugger
     this.title = "New Sales Lead";
     this.appBuildConfig = this.globalService.appBuildConfig;
     this.UserDetails = this.globalService.get('userDetails');
@@ -109,7 +111,23 @@ export class NewSalesLeadPage {
 
     if (this.globalService.selectedCity != undefined) {
       this.location = this.globalService.selectedCity.Locationtext;
+
+      this.LocationCode = this.globalService.selectedCity.LocationCode;
+      this.Locationid = this.globalService.selectedCity.Locationid;
+
+
     }
+
+
+    if (this.globalService.valueForLeadCutomer != undefined) {
+
+      this.companyName = this.globalService.valueForLeadCutomer.BranchName;
+      this.customerType = this.globalService.valueForLeadCutomer.VendorType;
+
+      this.vendorname = this.companyName;
+
+    }
+
     // this.vForm = this.fb.group({
 
     //   pieces: ['', Validators.required],
@@ -166,7 +184,7 @@ export class NewSalesLeadPage {
   }
 
 
-  VendorMasterSave() {
+  VendorMasterSaveHHT() {
 
     debugger
     if (this.branchCode == '0') {
@@ -192,7 +210,7 @@ export class NewSalesLeadPage {
     }
 
 
-     var now = new Date();
+    var now = new Date();
     var utcString = now.toISOString().substring(0, 19);
     var year = now.getFullYear();
     var month = now.getMonth() + 1;
@@ -202,7 +220,7 @@ export class NewSalesLeadPage {
     var second = now.getSeconds();
     var localDatetime = year + "-" +
       (month < 10 ? "0" + month.toString() : month) + "-" +
-      (day < 10 ? "0" + day.toString() : day) + "T" +
+      (day < 10 ? "0" + day.toString() : day) + " " +
       (hour < 10 ? "0" + hour.toString() : hour) + ":" +
       (minute < 10 ? "0" + minute.toString() : minute) +
       utcString.substring(16, 19);
@@ -230,7 +248,7 @@ export class NewSalesLeadPage {
     //   return;
     // }
 
-    this.saveCustomer.VendorId = '0'
+    this.saveCustomer.VendorId = '0';
     this.saveCustomer.VendorName = this.vendorname;
     this.saveCustomer.VendorType = this.vendortype;
     this.saveCustomer.AddressLine1 = this.addressline1;
@@ -240,17 +258,17 @@ export class NewSalesLeadPage {
     this.saveCustomer.FirstName = this.firstname;
     this.saveCustomer.LastName = this.lastname;
     this.saveCustomer.Designation = this.designation;
-    this.saveCustomer.Location = this.location;
+    this.saveCustomer.Location = this.Locationid.toString(); //'117601';// this.Locationid.toString();
     this.saveCustomer.MobileNo = this.mobileno;
     this.saveCustomer.PinCode = this.pincode;
     this.saveCustomer.Status = this.status;
     this.saveCustomer.TypeOfCustomer = this.typeOfCust;
     this.saveCustomer.TypeofIndustry = this.typeOfIndus;
     this.saveCustomer.UserId = this.userid;
-    this.saveCustomer.ClientDate = localDatetime;
+    this.saveCustomer.ClientDate = '2021-05-28 13:10:44.060';
     this.saveCustomer.BranchCode = this.branchCode;
 
-    this.http.POST(Constants.Corvi_Services.VendorMasterSave, this.saveCustomer).then((response) => {
+    this.http.POST(Constants.Corvi_Services.VendorMasterSaveForHHT, this.saveCustomer).then((response) => {
 
       console.log('response to check login method: ', response);
       debugger
@@ -276,6 +294,27 @@ export class NewSalesLeadPage {
 
 
 
+  }
+
+
+
+
+
+
+
+  openModalFoSearchCompany() {
+
+    if (this.branchCode == '0') {
+      this.toastService.show('Please select branch.', 3000, true, 'top', 'toast-container')
+      return;
+    }
+    const profileModal = this.modalCtrl.create(FindSalesActivityPage, { fromSaleLeadVal: '1' });
+    profileModal.onDidDismiss(data => {
+      console.log(data);
+      // this.madalDismissData = JSON.stringify(data);
+    });
+    profileModal.present();
+    this.globalService.store('branchCode', this.branchCode);
   }
 
 }

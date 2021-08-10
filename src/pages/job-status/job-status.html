@@ -1,0 +1,104 @@
+<!--
+  Generated template for the NewSalesActivityPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+    <!-- <button right ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <button left ion-button menuToggle>
+      <ion-icon name="arrow-back"></ion-icon>
+    </button> -->
+    <ion-title id="Dashboard" center text-center>
+      {{title}}
+    </ion-title>
+
+    <ion-buttons left>
+      <button ion-button icon-only (click)="backToDashboard();">
+        <ion-icon name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons right>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+
+    <ion-row padding class="ShadowBox13">
+
+      <table>
+        <tr>
+          <td><b>Branch</b></td>
+          <td></td>
+
+        </tr>
+        <tr>
+          <td><b>Job No.</b></td>
+          <td>{{AllData.JobNo}}</td>
+
+        </tr>
+        <tr>
+          <td><b>Service</b></td>
+          <td>{{AllData.Service}}</td>
+
+        </tr>
+        <tr>
+          <td><b>Mode</b></td>
+          <td>{{AllData.Mode}}</td>
+
+        </tr>
+      </table>
+
+      <table>
+        <tr>
+          <td><b>MAWB No.</b></td>
+          <td><b>Date</b></td>
+
+        </tr>
+        <tr>
+          <td>{{AllData.MasterNo}}</td>
+          <td>{{AllData.MasterDate}}</td>
+        </tr>
+        <tr>
+          <td><b>HAWB No.</b></td>
+          <td><b>Date</b></td>
+        </tr>
+        <tr>
+          <td>{{AllData.HouseNo}}</td>
+          <td>{{AllData.HouseDate}}</td>
+
+        </tr>
+
+        <tr>
+          <td><b>BE No.</b></td>
+          <td><b>Date</b></td>
+        </tr>
+        <tr>
+          <td>{{AllData.WODetailNo}}</td>
+          <td>{{AllData.JobDate}}</td>
+
+        </tr>
+      </table>
+    </ion-row>
+
+
+
+  </ion-list>
+</ion-content>
+<ion-footer class="ion-footer">
+
+  <div class="label-white toolbar-background-md" center text-center>
+    © Kale Logistics Solutions Private Limited. {{appBuildConfig.fullYear}} Version {{appBuildConfig.version}}
+  </div>
+</ion-footer>

@@ -1,0 +1,82 @@
+page-shipment-status {
+  .ShadowBox13 {
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  .ion-fab34 {
+    width: 3.5rem !important;
+    height: 3.5rem !important;
+    float: right !important;
+  }
+
+  .margin4 {
+    margin-top: 4px !important;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 8px;
+  }
+  .btnRadius {
+    border-radius: 20px;
+  }
+  .btncancel {
+    background: white;
+    color: black;
+    border: solid thin gray;
+  }
+  .toolbar-background-md {
+    background-color: #0461b2;
+    color: #fff;
+  }
+  label {
+    font-weight: 400;
+  }
+  .column {
+    float: left;
+    width: 50%;
+    padding: 10px;
+    border-radius: 10px 0 10px 0px;
+    // border: solid thin black;
+    background-color: #E6B900;
+    color: #fff;
+    font-size: 20px;
+  }
+  .column1 {
+    float: left;
+    width: 40%;
+    padding: 10px;
+
+
+  }
+  .column2 {
+    padding: 10px;
+    width: 90%;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .imgSize{
+    height: 20px;
+    float: right;
+  }
+  .divW{
+    width: 8%;
+  }
+}

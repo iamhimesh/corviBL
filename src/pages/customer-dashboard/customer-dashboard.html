@@ -1,0 +1,139 @@
+<!--
+  Generated template for the DashboardPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<!-- <Corvi-header [title]="title"></Corvi-header> -->
+<ion-header>
+  <ion-navbar color="primary">
+    <button right ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title id="Dashboard" center text-center>
+      {{title}}
+    </ion-title>
+
+
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding scroll>
+  <img src="assets/img/Corvi_BL_Logo_360x70.png">
+  <ion-row style="margin-top:10px ;" class="text-center">
+    <ion-col col-4 class="text-center box" (click)='goToShipmentStatus();'>
+      <div class="inner ShadowBox13">
+        <img src="assets/img/Group 3529.png" class="center">
+        <span>Shipment Status</span>
+      </div>
+    </ion-col>
+
+    <ion-col col-4 class="text-center box" (click)='goToFindSalesActivityPage();'>
+      <div class="inner ShadowBox13">
+        <img src="assets/img/Group 3530.png" class="center">
+        <span>Shipment Invoice</span>
+      </div>
+    </ion-col>
+    <ion-col col-4 class="text-center box" (click)="goToConfigureParam();">
+      <div class="inner ShadowBox13">
+        <img src="assets/img/Group 3527.png" class="center">
+        <span>Configure Parameter</span>
+      </div>
+    </ion-col>
+  </ion-row>
+
+
+
+</ion-content>
+
+<!-- <ion-footer class="ion-footer">
+  <ion-toolbar>
+    <ion-title class="label-white">Additional Services</ion-title>
+    <ion-row no-padding style="margin-top:10px ;">
+      <ion-col col-4 class="text-center  box">
+        <div class="inner footer-col-color">
+          <img src="assets/img/smartphone_moreservices.png" class="center-footer-img">
+          More Services
+        </div>
+
+      </ion-col>
+      <ion-col col-4 class="text-center box">
+        <div class="inner footer-col-color">
+          <img src="assets/img/phone-call_contactus-1.png" class="center-footer-img">
+          Contact Us
+        </div>
+
+      </ion-col>
+      <ion-col col-4 class="text-center  box">
+        <div class="inner footer-col-color">
+          <img src="assets/img/monitor_support.png" class="center-footer-img">
+          20 x 7 Support
+        </div>
+
+      </ion-col>
+    </ion-row>
+    <div class="label-white" center text-center>
+      © Kale Logistics Solutions Private Limited. {{appBuildConfig.fullYear}} Version {{appBuildConfig.version}}
+    </div>
+  </ion-toolbar>
+
+
+</ion-footer> -->
+
+<ion-footer>
+
+  <div class="toolbar-background-md">
+    <div class="addOnsText" style="margin-top:15px;">
+      <h4>Additional Services</h4>
+    </div>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+            <div class="container">
+                <img src="../assets/img/moreservices.png">
+                <h6>More Services</h6>
+              </div>
+        </ion-col>
+        <ion-col>
+            <div class="container">
+                <img src="../assets/img/contactus.png">
+                <h6>Contact Us</h6>
+              </div>
+        </ion-col>
+        <ion-col>
+            <div class="container">
+                <img src="../assets/img/monitor_support.png">
+                <h6>24 x 7 Support</h6>
+              </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+  </div>
+
+    <!-- <ion-row>
+      <ion-col col-2></ion-col>
+      <ion-col col-4>
+          <div class="inner footer-col-color">
+              <img src="assets/img/kale_power.png" class="center-footer-img">
+            </div>
+
+      </ion-col>
+      <ion-col col-2></ion-col>
+    </ion-row>
+      <ion-row>
+        <ion-col col-6>
+      <h6 style="text-align: center;" class = "title">Terms and conditions</h6>
+    </ion-col>
+
+    <ion-col col-6>
+        <h6 style="text-align: center;" class = "title">Privacy Policy</h6>
+      </ion-col>
+    </ion-row> -->
+
+</ion-footer>
+
