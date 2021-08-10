@@ -53,6 +53,12 @@ import { SearchJobsPageModule } from './../pages/search-jobs/search-jobs.module'
 import { ResetPasswordPageModule } from './../pages/reset-password/reset-password.module';
 import { SearchJobResultsPageModule } from '../pages/search-job-results/search-job-results.module';
 import { ConfigureParametersPageModule } from '../pages/configure-parameters/configure-parameters.module';
+import { CustomerDashboardPageModule } from '../pages/customer-dashboard/customer-dashboard.module';
+import { ShipmentStatusPageModule } from '../pages/shipment-status/shipment-status.module';
+import { JobStatusPageModule } from '../pages/job-status/job-status.module';
+import { CustomerJobSearchPage } from '../pages/customer-job-search/customer-job-search';
+import { CustomerJobSearchPageModule } from '../pages/customer-job-search/customer-job-search.module';
+import { SearchPortAirportPageModule } from '../pages/search-port-airport/search-port-airport.module';
 @NgModule({
   declarations: [
     CorviApp
@@ -85,7 +91,8 @@ import { ConfigureParametersPageModule } from '../pages/configure-parameters/con
     FormsModule,
     SearchJobsPageModule,
     SearchJobResultsPageModule,
-    ConfigureParametersPageModule
+    ConfigureParametersPageModule,CustomerDashboardPageModule,ShipmentStatusPageModule,JobStatusPageModule,
+    CustomerJobSearchPageModule,SearchPortAirportPageModule
 
   ],
   bootstrap: [IonicApp],

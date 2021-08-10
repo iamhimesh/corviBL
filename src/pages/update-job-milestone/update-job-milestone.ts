@@ -37,27 +37,16 @@ export class UpdateJobMilestonePage {
   transportMode: any = '0';
   serviceCode: any = '0';
   shipmentCode: any = '0';
-
   modalDismissData: any;
-
   VenType: any;
   searchList: searchDataList;
-
   fetchedMilestone;
-
   fetchedJobs: any = [];
-
   bookingNoArr: any = [];
   activityIdArr: any = [];
-
   activityDate: string = new Date().toISOString();
   remarks;
-
   saveMileStoneList: saveMileStoneList;
-
-
-
-
 
   constructor(public navCtrl: NavController, public navParams: NavParams
     ,public globalService: GlobalProvider, public toastService: ToastService,
@@ -83,7 +72,7 @@ export class UpdateJobMilestonePage {
      this.saveMileStoneList = new saveMileStoneList();
 
   //   console.log(this.ModeTbl.filter(function(item){
-  //     this.modes = item.Identifier == "TransportMode";         
+  //     this.modes = item.Identifier == "TransportMode";
   // }));
   }
 
@@ -116,7 +105,7 @@ export class UpdateJobMilestonePage {
           text: 'OK',
           handler: () => {
             this.globalService.setRootPage(DashboardPage);
-            
+
           }
         },
         {
@@ -203,7 +192,7 @@ export class UpdateJobMilestonePage {
     for(let data of this.globalService.selectedJobsArray){
       this.bookingNoArr.push(data.WODetailNo);
     }
-    
+
     this.saveMileStoneList.BookingNo = this.bookingNoArr.toString();
     console.log('***&&&&&***', this.saveMileStoneList);
 

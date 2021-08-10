@@ -32,9 +32,11 @@ export class GlobalProvider {
   jobStatusPArms: any;
 
   selectedCity: any = '';
-  valueForLeadCutomer: any = '';
+ //valueForLeadCutomer: any = '';
   selectedMilestone: any = [];
   selectedJobsArray: any = [];
+  selectedOrigin: any;
+  selectedDest: any;
 
   constructor(public http: HttpClient, private app: App, public alertCtrl: AlertController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController, public eventCtrl: Events, public actionSheetCtrl: ActionSheetController, public file: File, public transfer: FileTransfer, public fileOpener: FileOpener, private nativeStorage: NativeStorage, private spinnerDialog: SpinnerDialog) {
   }
@@ -68,7 +70,7 @@ export class GlobalProvider {
         handler: () => {
           this.handleLogOut();
         }
-        
+
       }]
     })
     alert.present();

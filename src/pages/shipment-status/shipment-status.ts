@@ -7,6 +7,7 @@ import { HttpServiceProvider } from '../../providers/http-service/http-service';
 import { AlertService } from '../../providers/util/alert.service';
 import { ToastService } from '../../providers/util/toast.service';
 import { CustomerDashboardPage } from '../customer-dashboard/customer-dashboard';
+import { CustomerJobSearchPage } from '../customer-job-search/customer-job-search';
 import { JobStatusPage } from '../job-status/job-status';
 
 
@@ -128,6 +129,8 @@ export class ShipmentStatusPage {
       this.globalService.setRootPage(JobStatusPage);
     }
     // this.navCtrl.remove(this.navCtrl.getActive().index - 0, 1,);
-
+    goToCustomerJobSearch(){
+      this.globalService.setRootPage(CustomerJobSearchPage);
+    }
 
 }
