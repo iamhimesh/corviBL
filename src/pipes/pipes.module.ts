@@ -7,9 +7,18 @@
 */
 import { NgModule } from '@angular/core';
 import { MomentPipe } from './moment/moment';
+import { SortPipe } from './sort/sort';
+import { SearchPipe } from './search/search';
 @NgModule({
-	declarations: [MomentPipe],
+	declarations: [MomentPipe,
+		SortPipe,
+		SearchPipe
+    // SortPipe
+],
 	imports: [],
-	exports: [MomentPipe]
+	exports: [MomentPipe,
+		SortPipe,SearchPipe
+    // SortPipe
+]
 })
 export class PipesModule { }

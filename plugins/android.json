@@ -8,47 +8,47 @@
   },
   "installed_plugins": {
     "com.telerik.plugins.nativepagetransitions": {
-      "PACKAGE_NAME": "com.kalelogistics.corvi"
+      "PACKAGE_NAME": "com.kalelogistics.corviBLApp"
     },
     "cordova-plugin-advanced-http": {
-      "PACKAGE_NAME": "com.kalelogistics.corvi"
+      "PACKAGE_NAME": "com.kalelogistics.corviBLApp"
     },
     "cordova-plugin-device": {
-      "PACKAGE_NAME": "com.kalelogistics.corvi"
+      "PACKAGE_NAME": "com.kalelogistics.corviBLApp"
     },
     "cordova-plugin-file": {
-      "PACKAGE_NAME": "com.kalelogistics.corvi"
+      "PACKAGE_NAME": "com.kalelogistics.corviBLApp"
     },
     "cordova-plugin-file-opener2": {
-      "PACKAGE_NAME": "com.kalelogistics.corvi"
+      "PACKAGE_NAME": "com.kalelogistics.corviBLApp"
     },
     "cordova-plugin-file-transfer": {
-      "PACKAGE_NAME": "com.kalelogistics.corvi"
+      "PACKAGE_NAME": "com.kalelogistics.corviBLApp"
     },
     "cordova-plugin-ionic-keyboard": {
-      "PACKAGE_NAME": "com.kalelogistics.corvi"
+      "PACKAGE_NAME": "com.kalelogistics.corviBLApp"
     },
     "cordova-plugin-ionic-webview": {
       "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
-      "PACKAGE_NAME": "com.kalelogistics.corvi"
+      "PACKAGE_NAME": "com.kalelogistics.corviBLApp"
     },
     "cordova-plugin-native-spinner": {
-      "PACKAGE_NAME": "com.kalelogistics.corvi"
+      "PACKAGE_NAME": "com.kalelogistics.corviBLApp"
     },
     "cordova-plugin-nativestorage": {
-      "PACKAGE_NAME": "com.kalelogistics.corvi"
+      "PACKAGE_NAME": "com.kalelogistics.corviBLApp"
     },
     "cordova-plugin-network-information": {
-      "PACKAGE_NAME": "com.kalelogistics.corvi"
+      "PACKAGE_NAME": "com.kalelogistics.corviBLApp"
     },
     "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "com.kalelogistics.corvi"
+      "PACKAGE_NAME": "com.kalelogistics.corviBLApp"
     },
     "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "com.kalelogistics.corvi"
+      "PACKAGE_NAME": "com.kalelogistics.corviBLApp"
     },
     "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.kalelogistics.corvi"
+      "PACKAGE_NAME": "com.kalelogistics.corviBLApp"
     }
   },
   "dependent_plugins": {}

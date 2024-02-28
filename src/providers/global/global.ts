@@ -28,16 +28,38 @@ export class GlobalProvider {
     version: 'V1.25.0',
     fullYear: (new Date).getFullYear().toString()
   }
-  valueForLeadCutomer: any;
-  jobStatusPArms: any;
 
   selectedCity: any = '';
- //valueForLeadCutomer: any = '';
+  valueForLeadCutomer: any = '';
   selectedMilestone: any = [];
   selectedJobsArray: any = [];
-  selectedOrigin: any;
-  selectedDest: any;
+  jobStatusPArms: any;
+  selectedOrigin: any = '';
+  selectedDest: any = '';
 
+  selectedOriginInv;
+  selectedDestinationInv;
+  globalDefaultBranchCode: any = '';
+  defaultUsername: any = '';
+  defaultEmailId: any = '';
+  defaultMode: any = '';
+  defaultService: any = '';
+  defaultJobType: any = '';
+  defaultNoofRecords: any = '';
+
+  menuItems: any = '';
+  viewSales: any = '';
+  editSales: any = '';
+  viewLead: any = '';
+  createLead: any = '';
+
+  editLead: any = '';
+  createSales: any = '';
+  viewMilestone: any = '';
+  editMilestone: any = '';
+  createMilestone: any = '';
+
+  selectedJobType = '';
   constructor(public http: HttpClient, private app: App, public alertCtrl: AlertController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController, public eventCtrl: Events, public actionSheetCtrl: ActionSheetController, public file: File, public transfer: FileTransfer, public fileOpener: FileOpener, private nativeStorage: NativeStorage, private spinnerDialog: SpinnerDialog) {
   }
 
@@ -85,6 +107,33 @@ export class GlobalProvider {
     this.remove('isLogged');
     this.remove('login_resp');
     this.remove('userDetails');
+
+    this.remove('ActivityStatus');
+    this.remove('SalesLeadStatus');
+    this.remove('ActivityPriority');
+
+
+    this.remove('bvalue');
+    this.remove('profileType');
+    //  this.remove('isRemembered');
+    this.remove('TransportMode');
+    this.remove('CommunicationType');
+    this.remove('reportingUSer');
+    this.remove('BranchTable');
+    this.remove('Activity');
+    this.remove('ServiceType');
+    this.remove('ShipmentType');
+    this.remove('jobType');
+    this.remove('TypeOfIndustry');
+
+    localStorage.removeItem('dashSales');
+    localStorage.removeItem('dashLead');
+    localStorage.removeItem('dashMilestone');
+    localStorage.removeItem('dashShipStatus');
+    localStorage.removeItem('dashShipInvoice');
+    localStorage.removeItem('dashReportingUser');
+
+
     this.routePage(LoginPage);
   }
 
@@ -133,6 +182,7 @@ export class GlobalProvider {
 
   /* Encrypt and store the local storage data*/
   public store(key: string, value: any) {
+
     if (this.isCordovaAvailable()) {
       this.nativeStorage.setItem(key, value)
         .then(

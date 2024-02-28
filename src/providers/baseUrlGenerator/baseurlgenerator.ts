@@ -21,8 +21,8 @@ export class BaseURLProvider {
 
             case 'IBL':
                 // this.global.store('PDFURL', '192.168.10.22/staging/');
-                // return this.global.setBaseURL('baseURL', 'http://10.22.2.31:8080/CORVI_SOMA_MOB_API/MobileApi/');
-                return this.global.setBaseURL('baseURL', 'https://lmsinv.balmerlawrie.co.in/Mobapi/MobileAPI/');
+                return this.global.setBaseURL('baseURL', 'http://10.22.2.31:8080/CORVI_SOMA_MOB_API/MobileApi/');
+            // return this.global.setBaseURL('baseURL', 'https://lmsinv.balmerlawrie.co.in/Mobapi/MobileAPI/');
 
             case 'EFS':
                 // this.global.store('PDFURL', '192.168.10.22/staging/');
@@ -41,12 +41,17 @@ export class BaseURLProvider {
                 return this.global.setBaseURL('baseURL', 'http://52.172.36.110/Sudarshan_CORVI_MOB_API/MobileApi/');
 
             case 'BML':
+                // this.global.store('PDFURL', 'http://125.19.68.249/Staging/');
+                return this.global.setBaseURL('baseURL', 'https://lms.balmerlawrie.co.in/MobapiLive/MobileAPI/');
+            // return this.global.setBaseURL('baseURL', 'https://lms.balmerlawrie.co.in/Mobapi/MobileAPI/');
+            case 'BLL':
                 // this.global.store('PDFURL', '192.168.10.22/staging/');
-                return this.global.setBaseURL('baseURL', 'http://61.95.145.131/CORVI_MOB_API/MobileApi/');
+                return this.global.setBaseURL('baseURL', 'https://lms.balmerlawrie.co.in/MobapiLive/MobileAPI/');
+            // return this.global.setBaseURL('baseURL', 'https://lms.balmerlawrie.co.in/Mobapi/MobileAPI/');
 
             case 'SIC':
                 // this.global.store('PDFURL', '192.168.10.22/staging/');
-                return this.global.setBaseURL('baseURL', 'http://223.31.96.135/Corvi_MOB_API/MobileApi/');
+                return this.global.setBaseURL('baseURL', 'https://lms.balmerlawrie.co.in/Mobapi/MobileAP/');
 
             case 'DEM':
                 // this.global.store('PDFURL', '192.168.10.22/staging/');
@@ -57,10 +62,11 @@ export class BaseURLProvider {
                 return this.global.setBaseURL('baseURL', 'http://192.168.10.22/StagingMobileApi/MobileApi/');
 
 
-            default:
-                return new Promise((resolve, reject) => {
-                    return resolve('');
-                });
+            // default:
+            // return new Promise((resolve, reject) => {
+            //     return resolve('');
+            // });
+            // return this.global.setBaseURL('baseURL', 'https://lmsinv.balmerlawrie.co.in/Mobapi/MobileAPI/');
         }
 
     }

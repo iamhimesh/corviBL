@@ -33,14 +33,14 @@
 
 
 <ion-content padding>
-  <ion-list>
+  <ion-list *ngIf="dataFlag">
 
     <ion-row padding class="ShadowBox13">
 
       <table>
         <tr>
           <td><b>Branch</b></td>
-          <td></td>
+          <td>{{AllData.BranchName}}</td>
 
         </tr>
         <tr>
@@ -85,14 +85,50 @@
           <td><b>Date</b></td>
         </tr>
         <tr>
-          <td>{{AllData.WODetailNo}}</td>
-          <td>{{AllData.JobDate}}</td>
+          <td>{{AllData.BENo}}</td>
+          <td>{{AllData.BEDate}}</td>
 
         </tr>
       </table>
+
+      <table>
+        <tr>
+          <td><b>Origin</b></td>
+          <td><b>Destination</b></td>
+
+        </tr>
+        <tr>
+          <td> {{AllData.Origin}}</td>
+          <td> {{AllData.Destination}}</td>
+
+        </tr>
+      </table>
+
+
     </ion-row>
 
+    <ion-row padding class="ShadowBox14">
+      <h5>Job Milestone</h5>
+      <table>
+        <tr style="border-bottom: 1px solid #ddd;" *ngFor="let mileData of gateMileStoneListArr; let i = index;">
+          <td>
+            {{mileData.MileStoneName}}
+          </td>
 
+          <td>
+            {{mileData.ActivityDate}}
+          </td>
+        </tr>
+      </table>
+      <!-- <ion-item *ngFor="let mileData of gateMileStoneListArr; let i = index;">
+        <ion-label>
+          {{mileData.MileStoneName}}
+        </ion-label>
+        <ion-label>
+          {{mileData.MileStoneDate}}
+        </ion-label>
+      </ion-item> -->
+    </ion-row>
 
   </ion-list>
 </ion-content>

@@ -1,54 +1,65 @@
-page-login,
-.login {
-    .input-wrapper{
-        font-size: inherit;
-      }
-}
+page-login {
+  .ShadowBox13 {
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 10px;
+  }
 
-.contaier-login {
-  // width: 403px;
-  height: 480px;
-  padding: 3px;
-  background: #FFFFFF;
-  border-radius: 5px;
-  -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
-  margin-top: -3px;
-  // margin-top: 73px;
-  margin-bottom: 50px;
-  margin-left: 7px;
-  margin-right: 7px;
-}
+  .login {
+    .input-wrapper {
+      font-size: inherit;
+    }
+  }
 
-.imgLeft{
-  height: 50px;
-  width: 174px;
-  display: block;
-}
+  .contaier-login {
+    // width: 403px;
+    height: 480px;
+    padding: 3px;
+    background: #ffffff;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.75);
+    margin-top: -3px;
+    // margin-top: 73px;
+    margin-bottom: 50px;
+    margin-left: 7px;
+    margin-right: 7px;
+  }
 
-.imgRight{
-  height: 50px;
-  width: 161.86px;
-  padding-right: 11px;
-  padding-left: 34px;
-}
+  .imgLeft {
+    height: 50px;
+    width: 174px;
+    display: block;
+  }
 
-.container {
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  flex-direction: column;
-  background-color: #ffffff;
-  border-radius: 18px;
-}
+  .imgRight {
+    height: 50px;
+    width: 161.86px;
+    padding-right: 11px;
+    padding-left: 34px;
+  }
 
-.container h6{
-  color: #0461AA;
-}
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 10px;
+  }
 
-.container img{
-  width: 60px;
-  height: auto;
+  .container h6 {
+    color: #0461aa;
+  }
+
+  .container img {
+    width: 40px;
+    height: auto;
+  }
 }

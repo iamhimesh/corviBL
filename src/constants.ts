@@ -17,29 +17,41 @@ export class Constants {
 
   public static get CORVI_PDF_URL(): string { return "http://52.76.76.33/demo/"; }
   public static get SECRET_KEY(): string { return "0123456789abcdef" };
+
   public static get MENU_PAGES_ARRAY(): Array<MENU> {
     return [
       { title: 'Home', component: 'DashboardPage', active: true, icon: 'home' },
       { title: 'New Sales Activity', component: 'NewSalesActivityPage', active: false, icon: 'quote' },
-      { title: 'Search Sales Activity', component: 'FindSalesActivityPage', active: false, icon: 'open' },
+      { title: 'View Reporting User Activity', component: 'ReportingUserActivityPage', active: false, icon: 'quote' },
+      { title: 'Search Sales Activity', component: 'SearchSalesActivityPage', active: false, icon: 'open' },
       { title: 'New Sales Lead', component: 'NewSalesLeadPage', active: false, icon: 'close' },
       { title: 'Update Job Milestone', component: 'UpdateJobMilestonePage', active: false, icon: 'print' },
       { title: 'Configure Parameters', component: 'ConfigureParametersPage', active: false, icon: 'clipboard' },
-      { title: 'Settings', component: 'EnquiryPage', active: false, icon: 'clipboard' },
-      { title: 'Notification', component: 'EnquiryPage', active: false, icon: 'clipboard' }
+      // { title: 'Settings', component: 'EnquiryPage', active: false, icon: 'clipboard' },
+      // { title: 'Notification', component: 'EnquiryPage', active: false, icon: 'clipboard' }
+    ];
+  }
+  public static get MENU_PAGES_ARRAY_MANAGER(): Array<MENU> {
+    return [
+      { title: 'Home', component: 'DashboardPage', active: true, icon: 'home' },
+      { title: 'New Sales Activity', component: 'NewSalesActivityPage', active: false, icon: 'quote' },
+      { title: 'View Reporting User Activity', component: 'ReportingUserActivityPage', active: false, icon: 'quote' },
+      { title: 'Search Sales Activity', component: 'SearchSalesActivityPage', active: false, icon: 'open' },
+      { title: 'New Sales Lead', component: 'NewSalesLeadPage', active: false, icon: 'close' },
+      { title: 'Update Job Milestone', component: 'UpdateJobMilestonePage', active: false, icon: 'print' },
+      { title: 'Configure Parameters', component: 'ConfigureParametersPage', active: false, icon: 'clipboard' },
+      // { title: 'Settings', component: 'EnquiryPage', active: false, icon: 'clipboard' },
+      // { title: 'Notification', component: 'EnquiryPage', active: false, icon: 'clipboard' }
     ];
   }
   public static get MENU_PAGES_ARRAY_CUST(): Array<MENU> {
     return [
       { title: 'Home', component: 'DashboardPage', active: true, icon: 'home' },
-      { title: 'New Sales Activity', component: 'NewSalesActivityPage', active: false, icon: 'quote' },
-      { title: 'View Reporting User Activity', component: 'EnquiryPage', active: false, icon: 'quote' },
-      { title: 'Search Sales Activity', component: 'FindSalesActivityPage', active: false, icon: 'open' },
-      { title: 'New Sales Lead', component: 'NewSalesLeadPage', active: false, icon: 'close' },
-      { title: 'Update Job Milestone', component: 'UpdateJobMilestonePage', active: false, icon: 'print' },
-      { title: 'Configure Parameters', component: 'ConfigureParametersPage', active: false, icon: 'clipboard' },
-      { title: 'Settings', component: 'EnquiryPage', active: false, icon: 'clipboard' },
-      { title: 'Notification', component: 'EnquiryPage', active: false, icon: 'clipboard' }
+      { title: 'Shipment Status', component: 'ShipmentStatusPage', active: false, icon: 'quote' },
+      { title: 'Shipment Invoice', component: 'ShipmentInvoicePage', active: false, icon: 'quote' },
+      { title: 'Configure Parameters', component: 'CustomerSettingsPage', active: false, icon: 'clipboard' },
+      // { title: 'Settings', component: 'EnquiryPage', active: false, icon: 'clipboard' },
+      // { title: 'Notification', component: 'EnquiryPage', active: false, icon: 'clipboard' }
     ];
   }
   public static get MIME_TYPE(): string { return "application/pdf" }
@@ -73,9 +85,18 @@ export class Constants {
     "UserConfigurationSave": "UserConfigurationSave",
     "OpenJobList": "OpenJobList",
     "SearchJobList": "SearchJobList",
-
-
-
+    "GetSearchSalesActivityReportingToList": "GetSearchSalesActivityReportingToList",
+    "GetSearchInvoiceList": "GetSearchInvoiceList",
+    "InvoiceList": "InvoiceList",
+    "GetCustomerSearchJobList": "GetCustomerSearchJobList",
+    "GetSearchSalesActivityList": "GetSearchSalesActivityList",
+    "GetSalesActivityById": "GetSalesActivityById",
+    "SendMailSalesActivityToReporting": "SendMailSalesActivityToReporting",
+    "GetJobDetailsById": "GetJobDetailsById",
+    "TempResetPassword": "TempResetPassword",
+    "RegisterNowButton":"RegisterNowButton",
+    "RegisterNowUserProfile":"RegisterNowUserProfile",
+    
     "OpenJobs": {
       "Get_OpenJobList": "OpenJobList"
     },

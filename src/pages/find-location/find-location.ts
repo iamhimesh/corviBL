@@ -34,7 +34,9 @@ export class FindLocationPage {
   SearchLoc: searchLocation;
   CityName: any = '';
   CityCode: any = '';
-  LocationInfo: any;
+  LocationInfo: any = 0;
+  responseFormAPI: any = [];
+  countOfRec: number;
   constructor(
 
     public navCtrl: NavController, public navParams: NavParams,
@@ -65,25 +67,40 @@ export class FindLocationPage {
   }
   dismissModal() {
     let data = { 'foo': 'bar' };
-    this.viewCtrl.dismiss(data);
+    this.viewCtrl.dismiss();
   }
 
   GetLocationMasterList() {
-     debugger
-    this.SearchLoc.LocationType = 'Port,Airport,City'; //this.branchCode;
+    debugger
+    this.SearchLoc.LocationType = 'City'; //this.branchCode;
     this.SearchLoc.LocationCode = this.CityCode;
     this.SearchLoc.LocationName = this.CityName;
     //this.SearchLoc.VendorName = this.VendorName;
-
+    this.countOfRec =0;
     this.http.POST(Constants.Corvi_Services.GetLocationMasterList, this.SearchLoc).then((response) => {
 
       console.log('response to check login method: ', response);
-      //debugger
+
+
+
       if (response['Table'] == '') {
         this.toastService.show('Data not found.', 3000, true, 'top', 'toast-container');
         return;
       } else {
-        this.LocationInfo = response['Table'];
+
+        if (this.globalService.isCordovaAvailable()) {
+          debugger
+          this.responseFormAPI = response;
+          this.LocationInfo = JSON.parse(this.responseFormAPI)["Table"];
+
+          this.countOfRec = JSON.parse(this.responseFormAPI)["Table"].length;
+          // this.flag = true;
+        } else {
+          this.LocationInfo = response['Table'];
+          this.countOfRec = response['Table'].length
+        }
+
+
 
         // Culture: "culture "
         // LocationCode: "IN IXC"
@@ -127,8 +144,13 @@ export class FindLocationPage {
     console.log('********', this.globalService.selectedCity);
     // this.navCtrl.push(UpdateJobMilestonePage, {milestone: selecetedData})
     // this.navCtrl.remove(this.navCtrl.getActive().index - 0, 1,);
-    this.viewCtrl.dismiss();
-    this.globalService.setRootPage(NewSalesLeadPage);
+    //this.viewCtrl.dismiss();
+    // this.globalService.setRootPage(NewSalesLeadPage);
+    // this.navCtrl.remove(this.navCtrl.getActive().index - 0, 1,);
+    this.viewCtrl.dismiss(JSON.stringify(this.globalService.selectedCity));
   }
+
+
+
 
 }

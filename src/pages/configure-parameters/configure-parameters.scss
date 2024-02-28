@@ -1,16 +1,19 @@
 page-configure-parameters {
     .ShadowBox13 {
-        -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
-        border-radius: 10px;
+      -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+      border-radius: 10px;
+      margin-right: 10px;
+      margin-left: 10px;
+      margin-bottom: 10px;
       }
       .ion-fab34 {
         width: 34px !important;
         height: 34px !important;
         float: right !important;
       }
-    
+
       .margin4 {
         margin-top: 4px !important;
       }
@@ -20,7 +23,7 @@ page-configure-parameters {
         width: 100%;
         border: 1px solid #ddd;
       }
-    
+
       th,
       td {
         text-align: left;
@@ -49,7 +52,7 @@ page-configure-parameters {
         line-height: 0.1em;
         margin: 10px 0 10px;
       }
-    
+
       h4 span {
         background: #fff;
         padding: 0 10px;
@@ -58,12 +61,12 @@ page-configure-parameters {
         clear: both;
         display: inline-block;
       }
-    
+
       .stv-radio-button {
         position: absolute;
         left: -9999em;
         top: -9999em;
-    
+
         & + label {
           float: left;
           padding: 0.5em 1em;
@@ -77,12 +80,12 @@ page-configure-parameters {
           &:first-of-type {
             border-radius: 0.7em 0 0 0.7em;
           }
-    
+
           &:last-of-type {
             border-radius: 10px;
           }
         }
-    
+
         &:checked + label {
           background-color: #3277b3;
           color: #fff;

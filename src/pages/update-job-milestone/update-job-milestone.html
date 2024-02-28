@@ -27,7 +27,7 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-row padding class="ShadowBox13">
+    <ion-row padding class="ShadowBox13" style="margin-top: 10px;">
       <ion-col col-12>
         Job Type
       </ion-col>
@@ -46,13 +46,11 @@
       </ion-col> -->
 
       <ion-col col-6>
-        <input [(ngModel)]="VenType" type="radio" class="stv-radio-button" name="jobType" value="1"
-          id="1" />
+        <input [(ngModel)]="VenType" type="radio" class="stv-radio-button" name="jobType2" value="1" id="1" />
         <label for="1">Freight Forwarding</label>
       </ion-col>
       <ion-col col-6>
-        <input [(ngModel)]="VenType" type="radio" class="stv-radio-button" name="jobType" value="2"
-          id="2" />
+        <input [(ngModel)]="VenType" type="radio" class="stv-radio-button" name="jobType2" value="2" id="2" />
         <label for="2">Customs</label>
       </ion-col>
 
@@ -60,6 +58,7 @@
         <label>
           Branch
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
       <!-- <ion-col col-12>
 
@@ -73,10 +72,9 @@
       <ion-col col-12>
 
         <select id="ddlBrach" name="ddlBrach" [(ngModel)]="branchCode" col-12 placeholder="">
-          <option [value]="0" disabled selected>Select</option>
+          <!-- <option [value]="0" disabled selected>Select</option> -->
           <option *ngFor="let brData of BranchTbl" [value]="brData.BranchCode">{{brData.branch}}</option>
         </select>
-        <div class="errorbox" style="color:tomato" *ngIf="branchCode == '0'">*required</div>
 
       </ion-col>
 
@@ -84,15 +82,17 @@
         <label>
           Mode
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
 
       <ion-col col-12>
-        <select id="ddlMode" name="ddlMode" [(ngModel)]="transportMode" col-12 placeholder="">
+        <select id="ddlMode" name="ddlMode" [(ngModel)]="transportMode" col-12 placeholder=""
+          (change)='onModeChanged($event)'>
           <option [value]="0" disabled selected>Select</option>
           <option *ngFor="let modeData of modes" [value]="modeData.KeyValue">{{modeData.Description}}</option>
         </select>
-        <div class="errorbox" style="color:tomato" *ngIf="transportMode == '0'">*required</div>
-      </ion-col> 
+
+      </ion-col>
 
       <!-- <ion-col col-12>
 
@@ -104,14 +104,16 @@
         <label>
           Service
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
 
       <ion-col col-12>
         <select id="ddlService" name="ddlService" [(ngModel)]="serviceCode" col-12 placeholder="">
           <option [value]="0" disabled selected>Select</option>
-          <option *ngFor="let serviceData of services" [value]="serviceData.KeyValue">{{serviceData.Description}}</option>
+          <option *ngFor="let serviceData of services" [value]="serviceData.KeyValue">{{serviceData.Description}}
+          </option>
         </select>
-        <div class="errorbox" style="color:tomato" *ngIf="serviceCode == '0'">*required</div>
+
       </ion-col>
 
       <!-- <ion-col col-12>
@@ -127,6 +129,7 @@
         <label>
           Shipment Type
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
 
       <ion-col col-12>
@@ -134,7 +137,7 @@
           <option [value]="0" disabled selected>Select</option>
           <option *ngFor="let shipData of shipments" [value]="shipData.KeyValue">{{shipData.Description}}</option>
         </select>
-        <div class="errorbox" style="color:tomato" *ngIf="shipmentCode == '0'">*required</div>
+
       </ion-col>
 
       <!-- <ion-col col-12>
@@ -148,12 +151,12 @@
         <label>
           Milestone
         </label>
+        <font color="red" class="margin12">*</font>
       </ion-col>
 
 
       <ion-col col-10>
-          <input col-12 type="text" [(ngModel)]="globalService.selectedMilestone.DocumentName" name="fetchedMilestone">
-        <!-- <input col-12 placeholder="Select One"> -->
+        <input col-12 type="text" [(ngModel)]="globalService.selectedMilestone.DocumentName" name="fetchedMilestone">
 
       </ion-col>
 
@@ -172,6 +175,7 @@
         <label>
           General Remarks
         </label>
+        <!-- <font color="red" class="margin12">*</font> -->
       </ion-col>
 
       <ion-col col-12>
@@ -186,7 +190,10 @@
       </ion-col>
 
       <ion-col style="text-align:end" col-6>
-        <a href="#"> <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY" disabled [(ngModel)]="activityDate"></ion-datetime></a>     
+        <a href="#">
+          <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DD/MM/YYYY" disabled [(ngModel)]="activityDate">
+          </ion-datetime>
+        </a>
       </ion-col>
 
       <ion-col col-12>
@@ -208,9 +215,9 @@
               <!-- <input col-12 value="BOMFJAI2021001020" disabled> -->
               <input col-12 value="{{data.JobNo}}" disabled>
             </td>
-            <td > <button ion-button icon-only clear style="color: red !important;" (click)="removeJob(data)">
-              <ion-icon name="trash"></ion-icon>Remove
-            </button></td>
+            <td> <button ion-button icon-only clear style="color: red !important;" (click)="removeJob(data)">
+                <ion-icon name="trash"></ion-icon>Remove
+              </button></td>
 
           </tr>
           <!-- <tr>
@@ -247,18 +254,18 @@
   </ion-list>
 </ion-content>
 <ion-footer class="ion-footer">
-  <ion-row padding class="ShadowBox13">
+  <ion-row padding class="">
     <ion-col col-6>
-      <button ion-button  block class="btnRadius btncancel" (click)="backToDashboard();">
-        <ion-icon ></ion-icon>
+      <button ion-button block class="btnRadius btncancel" (click)="backToDashboard();">
+        <ion-icon></ion-icon>
         Cancel
       </button>
     </ion-col>
 
     <ion-col col-6>
       <button ion-button icon-start block class="btnRadius" (click)="save()">
-        <ion-icon ></ion-icon>
-       Save
+        <ion-icon></ion-icon>
+        Save
       </button>
     </ion-col>
   </ion-row>

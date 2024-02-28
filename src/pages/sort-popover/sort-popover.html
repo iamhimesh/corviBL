@@ -1,0 +1,53 @@
+
+<ion-content class="main-view">
+  <div class="overlay" ></div>
+  <div class="modal_content">
+  <ion-list radio-group (ionChange)="dismissModal($event)">
+    <!-- <ion-radio-group > -->
+
+      <!-- <ion-item>
+        <ion-item-header style="text-align: center;">Sort by</ion-item-header>
+      </ion-item> -->
+      <ion-item>
+        <ion-label>Type: Export</ion-label>
+        <ion-radio slot="end" color="primary" value="export"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Type: Import</ion-label>
+        <ion-radio slot="end" color="primary" value="import"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Mode: Air</ion-label>
+        <ion-radio slot="end" color="primary" value="air"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Mode: Ocean</ion-label>
+        <ion-radio slot="end" color="primary" value="ocean"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Job No.</ion-label>
+        <ion-radio slot="end" color="primary" value="JobNo"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Date</ion-label>
+        <ion-radio slot="end" color="primary" value="JobDate"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>AWB No.</ion-label>
+        <ion-radio slot="end" color="primary" value="MasterNo"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label style="text-align: end;" color="primary" (click)="dismissModal()">Cancel</ion-label>
+      </ion-item>
+    <!-- </ion-radio-group> -->
+  </ion-list>
+  </div>
+
+</ion-content>

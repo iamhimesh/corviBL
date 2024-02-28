@@ -40,6 +40,7 @@ import { SpinnerDialog } from '@ionic-native/spinner-dialog';
 import { BaseURLProvider } from '../providers/baseUrlGenerator/baseurlgenerator';
 import { EnquiryPageModule } from '../pages/enquiry/enquiry.module';
 import { FormsModule } from '@angular/forms';
+
 import { DashboardPageModule } from '../pages/dashboard/dashboard.module';
 import { WelcomeuserPageModule } from '../pages/welcomeuser/welcomeuser.module';
 import { NewSalesActivityPageModule } from '../pages/new-sales-activity/new-sales-activity.module';
@@ -59,6 +60,17 @@ import { JobStatusPageModule } from '../pages/job-status/job-status.module';
 import { CustomerJobSearchPage } from '../pages/customer-job-search/customer-job-search';
 import { CustomerJobSearchPageModule } from '../pages/customer-job-search/customer-job-search.module';
 import { SearchPortAirportPageModule } from '../pages/search-port-airport/search-port-airport.module';
+import { ReportingUserActivityPageModule } from '../pages/reporting-user-activity/reporting-user-activity.module';
+import { SearchSalesActivityPageModule } from '../pages/search-sales-activity/search-sales-activity.module';
+import { ShipmentInvoicePageModule } from '../pages/shipment-invoice/shipment-invoice.module';
+import { PopoverPageModule } from '../pages/popover/popover.module';
+import { SortPopoverPageModule } from '../pages/sort-popover/sort-popover.module';
+import { CustomerSettingsPageModule } from '../pages/customer-settings/customer-settings.module';
+import { SearchInvoicePageModule } from '../pages/search-invoice/search-invoice.module';
+import { SearchInvoiceResultsPageModule } from '../pages/search-invoice-results/search-invoice-results.module';
+import { FindSalesActivityPage } from '../pages/find-sales-activity/find-sales-activity';
+import { CustomerSettingsPage } from '../pages/customer-settings/customer-settings';
+
 @NgModule({
   declarations: [
     CorviApp
@@ -66,6 +78,7 @@ import { SearchPortAirportPageModule } from '../pages/search-port-airport/search
   imports: [
     HttpClientModule,
     HttpModule,
+
     BrowserModule,
     IonicModule.forRoot(CorviApp, {
       // platform: 'ios',
@@ -83,16 +96,19 @@ import { SearchPortAirportPageModule } from '../pages/search-port-airport/search
     OpenJobsPageModule,
     InvoicesPageModule,
     TabsPageModule,
-    EnquiryPageModule,DashboardPageModule,
-    WelcomeuserPageModule,NewSalesActivityPageModule,FindSalesActivityPageModule,
-    NewSalesLeadPageModule,FindLocationPageModule,UpdateJobMilestonePageModule,
+    EnquiryPageModule, DashboardPageModule,
+    WelcomeuserPageModule, NewSalesActivityPageModule, FindSalesActivityPageModule,
+    NewSalesLeadPageModule, FindLocationPageModule, UpdateJobMilestonePageModule,
     ResetPasswordPageModule,
     SearchMilestonePageModule,
     FormsModule,
     SearchJobsPageModule,
     SearchJobResultsPageModule,
-    ConfigureParametersPageModule,CustomerDashboardPageModule,ShipmentStatusPageModule,JobStatusPageModule,
-    CustomerJobSearchPageModule,SearchPortAirportPageModule
+    ConfigureParametersPageModule, CustomerDashboardPageModule, ShipmentStatusPageModule, JobStatusPageModule,
+    CustomerJobSearchPageModule, SearchPortAirportPageModule, ReportingUserActivityPageModule, SearchSalesActivityPageModule,
+    ShipmentInvoicePageModule, PopoverPageModule, SortPopoverPageModule,
+    CustomerSettingsPageModule, SearchInvoicePageModule, SearchInvoiceResultsPageModule,
+
 
   ],
   bootstrap: [IonicApp],

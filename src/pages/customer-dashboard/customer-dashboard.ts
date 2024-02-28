@@ -1,8 +1,12 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController, ModalController } from 'ionic-angular';
 import { GlobalProvider } from '../../providers/global/global';
+import { searchCustomerJob } from '../customer-job-search/customer-job-search';
 import { FindSalesActivityPage } from '../find-sales-activity/find-sales-activity';
 import { NewSalesActivityPage } from '../new-sales-activity/new-sales-activity';
+import { ReportingUserActivityPage } from '../reporting-user-activity/reporting-user-activity';
+import { ReportingUserActivityPageModule } from '../reporting-user-activity/reporting-user-activity.module';
+import { ShipmentInvoicePage } from '../shipment-invoice/shipment-invoice';
 
 import { ShipmentStatusPage } from '../shipment-status/shipment-status';
 import { UpdateJobMilestonePage } from '../update-job-milestone/update-job-milestone';
@@ -29,6 +33,7 @@ export class CustomerDashboardPage {
     this.title = "Home";
   }
   ionViewDidLoad() {
+   
     console.log('ionViewDidLoad CustomerDashboardPage');
   }
 
@@ -37,6 +42,11 @@ export class CustomerDashboardPage {
 
     // this.globalService.setRootPage(FindSalesActivityPage);
     this.openModal();
+  }
+
+  goToShipmentInvoice() {
+    this.globalService.valueForLeadCutomer = '';
+    this.globalService.setRootPage(ShipmentInvoicePage);
   }
 
   openModal() {
@@ -52,7 +62,8 @@ export class CustomerDashboardPage {
 
   goToShipmentStatus() {
 
-    this.globalService.setRootPage(ShipmentStatusPage);
+   this.globalService.setRootPage(ShipmentStatusPage);
+   // this.globalService.setRootPage(searchCustomerJob);
   }
 
   goToUpdateJobMilestonePage() {
@@ -65,5 +76,8 @@ export class CustomerDashboardPage {
     // this.navCtrl.push(NewSalesActivityPage);
 
   }
+
+
+
 
 }

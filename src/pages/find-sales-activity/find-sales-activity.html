@@ -23,7 +23,7 @@
 </ion-header> -->
 
 
-<ion-content padding>
+<ion-content padding >
   <ion-list>
     <ion-row padding class="">
       <ion-col col-6>
@@ -48,8 +48,8 @@
       </ion-col>
       <ion-col col-12>
 
-        <select id="ddlBrach" name="ddlBrach" [(ngModel)]="branchCode" col-12 placeholder="">
-          <option [value]="0" disabled selected>Select</option>
+        <select disabled id="ddlBrach" name="ddlBrach" [(ngModel)]="branchCode" col-12 placeholder="">
+          <!-- <option [value]="0" disabled selected>Select</option> -->
           <option *ngFor="let brData of BranchTbl" [value]="brData.BranchCode">{{brData.branch}}</option>
         </select>
       </ion-col>
@@ -92,17 +92,24 @@
         </button>
       </ion-col>
     </ion-row>
-
+    <ion-row>
+      <ion-col col-12>
+        <label>Search Result: {{countOfRec}} record found</label>
+      </ion-col>
+    </ion-row>
     <ion-row padding class="ShadowBox13">
       <ion-col col-12>
         <table>
           <tr *ngFor="let item of customerInfo; let i = index">
             <td>
               <label>
-                {{item.BranchName}}
-              </label>
-            </td>
-            <td><a href="#" (click)="passDataToNSA(item);">Select</a></td>
+                {{item.VendorName}} </label>
+
+              <br>
+              <label>
+                {{item.LocationName}} </label>
+
+            <td style="text-align: right;"><a href="#" (click)="passDataToNSA(item);">Select</a></td>
             <!-- <td> <input [(ngModel)]="item.Address1" type="hidden" /> </td>
             <td> <input [(ngModel)]="item.Address2" type="hidden" /> </td>
             <td> <input [(ngModel)]="item.Address3" type="hidden" /> </td>

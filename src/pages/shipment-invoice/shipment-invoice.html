@@ -1,0 +1,183 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title center text-center>
+      {{title}}
+    </ion-title>
+
+    <!-- <ion-buttons right>
+       <button ion-button icon-only>
+        <ion-icon ios="ios-search" md="md-search"></ion-icon>
+    </button>
+
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-buttons> -->
+
+    <ion-buttons right class="iconDiv">
+      <button ion-button icon-only (click)="toggle()">
+        <ion-icon ios="ios-search" md="md-search"></ion-icon>
+      </button>
+
+      <button ion-button icon-only menuToggle>
+        <ion-icon ios="ios-menu" md="md-menu"></ion-icon>
+      </button>
+    </ion-buttons>
+
+    <ion-buttons left>
+      <button ion-button icon-only (click)="goBack();">
+        <ion-icon name="ios-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+
+
+    <!-- <ion-buttons right>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons> -->
+
+
+  </ion-navbar>
+  <!-- <ion-searchbar
+       *ngIf="toggled" (ionInput)="filterItems($event)" (ionCancel)="onCancel($event)" [(ngModel)]="terms">
+    </ion-searchbar> -->
+
+    <ion-searchbar
+       *ngIf="toggled" (ionCancel)="onCancel($event)" [(ngModel)]="terms">
+    </ion-searchbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-row class="ShadowBox13" *ngFor="let shipData of shipmentInvoiceData | search: terms; let i = index;">
+    <ion-card>
+      <ion-item>
+        <!-- <div class="column">
+          <label>
+            <ion-icon name="ios-plane-outline"></ion-icon>&nbsp;&nbsp;
+            <ion-icon name="ios-create-outline"></ion-icon>&nbsp;&nbsp;&nbsp;
+            <label for="">{{shipData.InvoiceDate }}</label>
+          </label>
+        </div> -->
+
+        <div class="column" *ngIf="shipData.Service == 'Import'">
+          <label>
+            <ion-icon *ngIf="shipData.Mode == 'AIR'" name="plane"></ion-icon>
+            <ion-icon *ngIf="shipData.Mode == 'OCEAN'" name="boat"></ion-icon>&nbsp;&nbsp;
+            <ion-icon name="create"></ion-icon>&nbsp;&nbsp;
+
+            <!-- <img src="assets/img/flight.png" *ngIf="shipData.Mode == 'AIR'" class="">
+            <img src="assets/img/boat-with-containers.png" *ngIf="shipData.Mode == 'OCEAN'" class="">&nbsp;&nbsp;
+            <img src="assets/img/import.png"  class="">&nbsp;&nbsp; -->
+            <label for="">{{shipData.InvoiceDate }}</label>
+          </label>
+        </div>
+
+        <div class="columnBlue" *ngIf="shipData.Service == 'Export'">
+          <label>
+            <ion-icon *ngIf="shipData.Mode == 'AIR'" name="plane"></ion-icon>
+            <ion-icon *ngIf="shipData.Mode == 'OCEAN'" name="boat"></ion-icon>&nbsp;&nbsp;
+            <ion-icon name="create"></ion-icon>&nbsp;&nbsp;
+
+            <!-- <img src="assets/img/flight.png" *ngIf="shipData.Mode == 'AIR'" class="">
+            <img src="assets/img/boat-with-containers.png" *ngIf="shipData.Mode == 'OCEAN'" class="">&nbsp;&nbsp;
+            <img src="assets/img/export.png"  class="">&nbsp;&nbsp; -->
+            <label for="">{{shipData.InvoiceDate }}</label>
+          </label>
+        </div>
+
+        <div class="column1">
+          <h4>
+            {{shipData.MasterNo}}
+          </h4>
+        </div>
+      </ion-item>
+
+      <ion-card-content>
+        <div class="column2">
+          <label style="color: #0461AA;font-size: 16px;"><b> {{shipData.BillingNo}}</b></label><br>
+          <ion-row>
+            <ion-col>
+              <label class="labelFont"><b>INVOICE AMT.:</b></label><br />
+              <label class="labelFont">{{shipData.Amount}} </label><br />
+            </ion-col>
+            <ion-col>
+              <label class="labelFont"><b>JOB NO.:</b></label><br />
+              <label class="labelFont">{{shipData.JobNo}} </label><br />
+            </ion-col>
+            <ion-col col-1>
+              <div class="divW">
+                <!-- <img class="imgSize" src="assets/img/Icon - Keyboard Arrow - Up - Dark.png"> -->
+                <!-- <ion-icon ios="ios-more" md="md-more"></ion-icon> -->
+                <ion-icon name="custom-dots" (click)="openPopOver($event, shipData)"> </ion-icon>
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <!-- <table>
+        <tr>
+        <th>INVOICE AMT.:</th>
+        <th>JOB NO.:</th>
+        <th></th>
+      </tr>
+      <tr>
+        <td>{{shipData.Amount}}</td>
+        <td>{{shipData.BillingNo}}</td>
+        <td>
+          <ion-icon name="more"></ion-icon>
+        </td>
+      </tr>
+      </table> -->
+
+          <label class="labelFont">POL / POD :</label>
+          <label class="labelFont">{{shipData.POL}} / {{shipData.POD}} </label>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-row>
+
+  <!-- <ion-list> -->
+
+  <!-- <ion-row class="ShadowBox13" *ngFor="let shipData of shipmentInvoiceData; let i = index;">
+      <div class="column">
+        <label>
+          <span>&#9992;</span>&nbsp;&nbsp;
+          <ion-icon name="create"></ion-icon>&nbsp;&nbsp;&nbsp;
+          <label for="">{{shipData.HouseDate }}</label>
+        </label>
+      </div>
+      <div class="column1">
+        <h4>
+          {{shipData.MasterNo}}
+        </h4>
+
+      </div>
+      <div class="column2">
+        <label style="color: #0461AA;font-size: 20px;"><b> {{shipData.JobNo}}</b></label><br>
+        <label>{{shipData.POL}} </label>
+      </div>
+      <div class="divW">
+        <img class="imgSize" src="assets/img/Icon - Keyboard Arrow - Up - Dark.png">
+      </div>
+
+    </ion-row>
+
+  </ion-list> -->
+
+</ion-content>
+<ion-footer class="ion-footer">
+  <ion-row padding class="">
+    <ion-col col-12>
+      <button ion-button class="btnRadius" icon-start block (click)="goToSearchInvoice()">
+        <ion-icon></ion-icon>
+        Search Invoice
+      </button>
+    </ion-col>
+  </ion-row>
+  <div class="label-white toolbar-background-md" center text-center style="background-color: #0461b2;color: #fff;">
+    © Kale Logistics Solutions Private Limited. {{appBuildConfig.fullYear}} Version {{appBuildConfig.version}}
+  </div>
+</ion-footer>

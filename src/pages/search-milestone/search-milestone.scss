@@ -1,98 +1,101 @@
 page-search-milestone {
-    .ShadowBox13 {
-        -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
+  .ShadowBox13 {
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+  }
+  .ion-fab34 {
+    width: 34px !important;
+    height: 34px !important;
+    float: right !important;
+  }
+
+  .margin4 {
+    margin-top: 4px !important;
+  }
+  .btnRadius {
+    border-radius: 20px;
+  }
+  .btncancel {
+    // background: white;
+    // color: black;
+    // border: solid thin gray;
+    width: 100%;
+  }
+  .toolbar-background-md {
+    background-color: #0461b2;
+    color: #fff;
+  }
+  .toast-container {
+    background: yellow;
+  }
+
+  .toast-md .toast-message {
+    color: red;
+  }
+  .btnRadiusUpper {
+    border-radius: 10px;
+    text-transform: capitalize;
+  }
+  .btncancel {
+    background: white;
+    color: #0461aa;
+    border: solid thin gray;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 8px;
+  }
+
+  .stv-radio-buttons-wrapper {
+    clear: both;
+    display: inline-block;
+  }
+
+  .stv-radio-button {
+    position: absolute;
+    left: -9999em;
+    top: -9999em;
+
+    & + label {
+      float: left;
+      padding: 0.5em 0em;
+      cursor: pointer;
+      border: 1px solid #28608f;
+      margin-right: -1px;
+      color: #000;
+      background-color: #fff;
+      text-align: center;
+      width: 100%;
+      &:first-of-type {
+        border-radius: 0.7em 0 0 0.7em;
+      }
+
+      &:last-of-type {
         border-radius: 10px;
       }
-      .ion-fab34 {
-        width: 34px !important;
-        height: 34px !important;
-        float: right !important;
-      }
-    
-      .margin4 {
-        margin-top: 4px !important;
-      }
-      .btnRadius {
-        border-radius: 20px;
-      }
-      .btncancel {
-        // background: white;
-        // color: black;
-        // border: solid thin gray;
-        width: 100%;
-      }
-      .toolbar-background-md {
-        background-color: #0461b2;
-        color: #fff;
-      }
-      .toast-container {
-        background: yellow;
-      }
-    
-      .toast-md .toast-message {
-        color: red;
-      }
-      .btnRadiusUpper {
-        border-radius: 10px;
-        text-transform: capitalize;
-      }
-      .btncancel {
-        background: white;
-        color: #0461AA;
-        border: solid thin gray;
-      }
-      table {
-        border-collapse: collapse;
-        border-spacing: 0;
-        width: 100%;
-        border: 1px solid #ddd;
-      }
-    
-      th,
-      td {
-        text-align: left;
-        padding: 8px;
-      }
+    }
 
-      .stv-radio-buttons-wrapper {
-        clear: both;
-        display: inline-block;
-      }
-    
-      .stv-radio-button {
-        position: absolute;
-        left: -9999em;
-        top: -9999em;
-    
-        & + label {
-          float: left;
-          padding: 0.5em 1em;
-          cursor: pointer;
-          border: 1px solid #28608f;
-          margin-right: -1px;
-          color: #000;
-          background-color: #fff;
-          text-align: center;
-          width: 100%;
-          &:first-of-type {
-            border-radius: 0.7em 0 0 0.7em;
-          }
-    
-          &:last-of-type {
-            border-radius: 10px;
-          }
-        }
-    
-        &:checked + label {
-          background-color: #3277b3;
-          color: #fff;
-        }
-      }
-    
-    
+    &:checked + label {
+      background-color: #3277b3;
+      color: #fff;
+    }
+  }
 
-      
 
+  .scroll-content{
+    margin-bottom: 0px !important;
+  }
 }

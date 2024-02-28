@@ -1,0 +1,500 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20210916.174744.25344.0.001.json",
+    "dumpEventTime": "2021-09-16T17:47:44Z",
+    "dumpEventTimeStamp": "1631794664944",
+    "processId": 25344,
+    "cwd": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL",
+    "commandLine": [
+      "node",
+      "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\.bin\\\\..\\@ionic\\app-scripts\\bin\\ionic-app-scripts.js",
+      "serve",
+      "--address",
+      "localhost",
+      "--port",
+      "8101",
+      "--livereload-port",
+      "35730",
+      "--dev-logger-port",
+      "53704",
+      "--nobrowser"
+    ],
+    "nodejsVersion": "v13.5.0",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "13.5.0",
+      "v8": "7.9.317.25-node.23",
+      "uv": "1.34.0",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "79",
+      "nghttp2": "1.40.0",
+      "napi": "5",
+      "llhttp": "2.0.1",
+      "openssl": "1.1.1d",
+      "cldr": "36.0",
+      "icu": "65.1",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "headersUrl": "https://nodejs.org/download/release/v13.5.0/node-v13.5.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v13.5.0/node-v13.5.0.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v13.5.0/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.18363",
+    "osVersion": "Windows 10 Pro",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i5-6402P CPU @ 2.80GHz",
+        "speed": 2808,
+        "user": 72286187,
+        "nice": 0,
+        "sys": 221775531,
+        "idle": 1705736500,
+        "irq": 6650015
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-6402P CPU @ 2.80GHz",
+        "speed": 2808,
+        "user": 87311781,
+        "nice": 0,
+        "sys": 209288625,
+        "idle": 1703197656,
+        "irq": 1447468
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-6402P CPU @ 2.80GHz",
+        "speed": 2808,
+        "user": 86496250,
+        "nice": 0,
+        "sys": 248150921,
+        "idle": 1665150890,
+        "irq": 1120812
+      },
+      {
+        "model": "Intel(R) Core(TM) i5-6402P CPU @ 2.80GHz",
+        "speed": 2808,
+        "user": 100911812,
+        "nice": 0,
+        "sys": 315752734,
+        "idle": 1583133515,
+        "irq": 930359
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "VirtualBox Host-Only Network",
+        "internal": false,
+        "mac": "0a:00:27:00:00:0c",
+        "address": "fe80::bc60:885d:c2e0:6812",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 12
+      },
+      {
+        "name": "VirtualBox Host-Only Network",
+        "internal": false,
+        "mac": "0a:00:27:00:00:0c",
+        "address": "192.168.56.1",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "Ethernet",
+        "internal": false,
+        "mac": "40:8d:5c:db:e9:b2",
+        "address": "fe80::9c52:c504:26fe:c666",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 19
+      },
+      {
+        "name": "Ethernet",
+        "internal": false,
+        "mac": "40:8d:5c:db:e9:b2",
+        "address": "10.22.3.5",
+        "netmask": "255.255.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      }
+    ],
+    "host": "Mohammed-junaid"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff6d4cc19f9",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+10857"
+    },
+    {
+      "pc": "0x00007ff6d4cc5d6c",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+28124"
+    },
+    {
+      "pc": "0x00007ff6d4cc4d28",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+23960"
+    },
+    {
+      "pc": "0x00007ff6d4dbddfb",
+      "symbol": "v8::base::CPU::has_sse+39435"
+    },
+    {
+      "pc": "0x00007ff6d55e5c2e",
+      "symbol": "v8::Isolate::ReportExternalAllocationLimitReached+94"
+    },
+    {
+      "pc": "0x00007ff6d55cd381",
+      "symbol": "v8::SharedArrayBuffer::Externalize+785"
+    },
+    {
+      "pc": "0x00007ff6d54946dc",
+      "symbol": "v8::internal::Heap::EphemeronKeyWriteBarrierFromCode+1436"
+    },
+    {
+      "pc": "0x00007ff6d54904e9",
+      "symbol": "v8::internal::Heap::AllocateExternalBackingStore+1561"
+    },
+    {
+      "pc": "0x00007ff6d54b23d4",
+      "symbol": "v8::internal::Factory::NewFillerObject+196"
+    },
+    {
+      "pc": "0x00007ff6d520c9d1",
+      "symbol": "v8::internal::interpreter::JumpTableTargetOffsets::iterator::operator=+1681"
+    },
+    {
+      "pc": "0x00007ff6d5a2ebcd",
+      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+517453"
+    },
+    {
+      "pc": "0x00007ff6d5a432b8",
+      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+601144"
+    },
+    {
+      "pc": "0x000001ffa0e6e130",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2151432192,
+    "totalCommittedMemory": 2151432192,
+    "usedMemory": 1608570384,
+    "availableMemory": 128244552,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 262144,
+        "capacity": 33040,
+        "used": 33040,
+        "available": 0
+      },
+      "new_space": {
+        "memorySize": 1048576,
+        "committedMemory": 1048576,
+        "capacity": 1047424,
+        "used": 0,
+        "available": 1047424
+      },
+      "old_space": {
+        "memorySize": 1997414400,
+        "committedMemory": 1997414400,
+        "capacity": 1542324160,
+        "used": 1462557560,
+        "available": 79766600
+      },
+      "code_space": {
+        "memorySize": 2265088,
+        "committedMemory": 2265088,
+        "capacity": 1898112,
+        "used": 1898112,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 8392704,
+        "committedMemory": 8392704,
+        "capacity": 2293600,
+        "used": 2293600,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 141426688,
+        "committedMemory": 141426688,
+        "capacity": 141243784,
+        "used": 141243784,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 622592,
+        "committedMemory": 622592,
+        "capacity": 544288,
+        "used": 544288,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 1047424,
+        "used": 0,
+        "available": 1047424
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 419.015,
+    "kernelCpuSeconds": 39.921,
+    "cpuConsumptionPercent": 8.62986,
+    "maxRss": 1647341568,
+    "pageFaults": {
+      "IORequired": 16404042,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 8038,
+      "writes": 507
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "=D:": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL",
+    "allusersprofile": "C:\\ProgramData",
+    "android_home": "C:\\Users\\Mohammad.Junaid\\AppData\\Local\\Android\\Sdk",
+    "appdata": "C:\\Users\\Mohammad.Junaid\\AppData\\Roaming",
+    "chocolateyinstall": "C:\\ProgramData\\chocolatey",
+    "chocolateylastpathupdate": "132222525214831662",
+    "chrome_crashpad_pipe_name": "\\\\.\\pipe\\crashpad_10608_NOTLFAHASXMJPPRT",
+    "clientname": "DESKTOP-PI4F2T4",
+    "colorterm": "truecolor",
+    "commonprogramfiles": "C:\\Program Files\\Common Files",
+    "commonprogramfiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "commonprogramw6432": "C:\\Program Files\\Common Files",
+    "computername": "MOHAMMED-JUNAID",
+    "comspec": "C:\\WINDOWS\\system32\\cmd.exe",
+    "driverdata": "C:\\Windows\\System32\\Drivers\\DriverData",
+    "force_color": "1",
+    "git_askpass": "c:\\Users\\Mohammad.Junaid\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh",
+    "gradle_home": "C:\\Program Files\\gradle-5.1.1\\bin",
+    "homedrive": "C:",
+    "homepath": "\\Users\\Mohammad.Junaid",
+    "IONIC_ACTION_SHEET_COMPONENT_FACTORY_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\action-sheet\\action-sheet-component.ngfactory.js",
+    "IONIC_ACTION_SHEET_COMPONENT_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\action-sheet\\action-sheet-component.js",
+    "IONIC_ACTION_SHEET_CONTROLLER_CLASSNAME": "ActionSheetController",
+    "IONIC_ACTION_SHEET_CONTROLLER_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\action-sheet\\action-sheet-controller.js",
+    "IONIC_ACTION_SHEET_VIEW_CONTROLLER_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\action-sheet\\action-sheet.js",
+    "IONIC_ALERT_COMPONENT_FACTORY_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\alert\\alert-component.ngfactory.js",
+    "IONIC_ALERT_COMPONENT_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\alert\\alert-component.js",
+    "IONIC_ALERT_CONTROLLER_CLASSNAME": "AlertController",
+    "IONIC_ALERT_CONTROLLER_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\alert\\alert-controller.js",
+    "IONIC_ALERT_VIEW_CONTROLLER_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\alert\\alert.js",
+    "IONIC_ANGULAR_CORE_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\@angular\\core",
+    "IONIC_ANGULAR_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular",
+    "IONIC_ANGULAR_ENTRY_POINT": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\index.js",
+    "IONIC_ANGULAR_TEMPLATE_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\templates",
+    "IONIC_AOT": "false",
+    "IONIC_APP_ENTRY_POINT": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\src\\app\\main.ts",
+    "IONIC_APP_NG_MODULE_CLASS": "AppModule",
+    "IONIC_APP_NG_MODULE_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\src\\app\\app.module.ts",
+    "IONIC_APP_ROOT_COMPONENT_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\app\\app-root.js",
+    "IONIC_APP_SCRIPTS_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\@ionic\\app-scripts",
+    "IONIC_BUILD_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\www\\build",
+    "IONIC_CACHE_LOADER": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\@ionic\\app-scripts\\dist\\webpack\\cache-loader.js",
+    "ionic_cli_bin": "C:\\Users\\Mohammad.Junaid\\AppData\\Roaming\\npm\\node_modules\\ionic\\bin\\ionic",
+    "ionic_cli_lib": "C:\\Users\\Mohammad.Junaid\\AppData\\Roaming\\npm\\node_modules\\ionic",
+    "ionic_cli_local_error": "LOCAL_CLI_NOT_FOUND",
+    "IONIC_COMPONENTS_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\src\\components",
+    "IONIC_COMPONENTS_NG_MODULE_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\src\\components\\components.module.ts",
+    "IONIC_CORE_COMPILER_FILE_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\compiler",
+    "IONIC_CORE_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular",
+    "IONIC_DEEPLINKS_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\src",
+    "IONIC_DIRECTIVES_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\src\\directives",
+    "IONIC_DIRECTIVES_NG_MODULE_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\src\\directives\\directives.module.ts",
+    "IONIC_ENABLE_LINT": "true",
+    "IONIC_ENV": "dev",
+    "IONIC_FONTS_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\www\\assets\\fonts",
+    "IONIC_GENERATE_SOURCE_MAP": "true",
+    "IONIC_GLOB_UTIL": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\@ionic\\app-scripts\\dist\\util\\glob-util.js",
+    "IONIC_HTML_TO_SERVE": "index.html",
+    "IONIC_LOADING_COMPONENT_FACTORY_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\loading\\loading-component.ngfactory.js",
+    "IONIC_LOADING_COMPONENT_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\loading\\loading-component.js",
+    "IONIC_LOADING_CONTROLLER_CLASSNAME": "LoadingController",
+    "IONIC_LOADING_CONTROLLER_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\loading\\loading-controller.js",
+    "IONIC_LOADING_VIEW_CONTROLLER_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\loading\\loading.js",
+    "IONIC_MINIFY_CSS": "false",
+    "IONIC_MINIFY_JS": "false",
+    "IONIC_MODAL_COMPONENT_FACTORY_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\modal\\modal-component.ngfactory.js",
+    "IONIC_MODAL_COMPONENT_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\modal\\modal-component.js",
+    "IONIC_MODAL_CONTROLLER_CLASSNAME": "ModalController",
+    "IONIC_MODAL_CONTROLLER_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\modal\\modal-controller.js",
+    "IONIC_MODAL_VIEW_CONTROLLER_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\modal\\modal.js",
+    "IONIC_MOVE_SOURCE_MAPS": "true",
+    "IONIC_NG_MODULE_FILENAME_SUFFIX": ".module.ts",
+    "IONIC_NODE_MODULES_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules",
+    "IONIC_OPTIMIZE_JS": "false",
+    "IONIC_OUTPUT_CSS_FILE_NAME": "main.css",
+    "IONIC_OUTPUT_JS_FILE_NAME": "main.js",
+    "IONIC_PAGES_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\src\\pages",
+    "IONIC_PARSE_DEEPLINKS": "true",
+    "IONIC_PICKER_COMPONENT_FACTORY_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\picker\\picker-component.ngfactory.js",
+    "IONIC_PICKER_COMPONENT_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\picker\\picker-component.js",
+    "IONIC_PICKER_CONTROLLER_CLASSNAME": "PickerController",
+    "IONIC_PICKER_CONTROLLER_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\picker\\picker-controller.js",
+    "IONIC_PICKER_VIEW_CONTROLLER_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\picker\\picker.js",
+    "IONIC_PIPES_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\src\\pipes",
+    "IONIC_PIPES_NG_MODULE_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\src\\pipes\\pipes.module.ts",
+    "IONIC_POLYFILL_FILE_NAME": "polyfills.js",
+    "IONIC_POPOVER_COMPONENT_FACTORY_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\popover\\popover-component.ngfactory.js",
+    "IONIC_POPOVER_COMPONENT_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\popover\\popover-component.js",
+    "IONIC_POPOVER_CONTROLLER_CLASSNAME": "PopoverController",
+    "IONIC_POPOVER_CONTROLLER_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\popover\\popover-controller.js",
+    "IONIC_POPOVER_VIEW_CONTROLLER_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\popover\\popover.js",
+    "IONIC_PROVIDERS_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\src\\providers",
+    "IONIC_PURGE_UNUSED_FONTS": "true",
+    "IONIC_READ_CONFIG_JSON": "true",
+    "IONIC_ROOT_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL",
+    "IONIC_RXJS_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\rxjs",
+    "IONIC_SELECT_POPOVER_CLASSNAME": "SelectPopover",
+    "IONIC_SELECT_POPOVER_COMPONENT_FACTORY_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\select\\select-popover-component.ngfactory.js",
+    "IONIC_SELECT_POPOVER_COMPONENT_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\select\\select-popover-component.js",
+    "IONIC_SKIP_IONIC_ANGULAR_VERSION": "false",
+    "IONIC_SOURCEMAP_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\.sourcemaps",
+    "IONIC_SOURCE_MAP_TYPE": "source-map",
+    "IONIC_SRC_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\src",
+    "IONIC_START_WATCH_TIMEOUT": "3000",
+    "IONIC_TMP_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\.tmp",
+    "IONIC_TOAST_COMPONENT_FACTORY_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\toast\\toast-component.ngfactory.js",
+    "IONIC_TOAST_COMPONENT_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\toast\\toast-component.js",
+    "IONIC_TOAST_CONTROLLER_CLASSNAME": "ToastController",
+    "IONIC_TOAST_CONTROLLER_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\toast\\toast-controller.js",
+    "IONIC_TOAST_VIEW_CONTROLLER_PATH": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\ionic-angular\\components\\toast\\toast.js",
+    "IONIC_TS_CONFIG": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\tsconfig.json",
+    "IONIC_TYPESCRIPT_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\typescript",
+    "IONIC_WEBPACK_FACTORY": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\@ionic\\app-scripts\\dist\\webpack\\ionic-webpack-factory.js",
+    "IONIC_WEBPACK_LOADER": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\@ionic\\app-scripts\\dist\\webpack\\loader.js",
+    "IONIC_WWW_DIR": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\www",
+    "java_home": "C:\\Program Files\\java\\jdk1.8.0_171",
+    "lang": "en_GB.UTF-8",
+    "localappdata": "C:\\Users\\Mohammad.Junaid\\AppData\\Local",
+    "logonserver": "\\\\KLSTHNAD",
+    "number_of_processors": "4",
+    "onedrive": "C:\\Users\\Mohammad.Junaid\\OneDrive",
+    "original_xdg_current_desktop": "undefined",
+    "os": "Windows_NT",
+    "path": "D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\.bin;C:\\Python35\\Lib\\site-packages\\PyQt5;C:\\Python27\\;C:\\Python27\\Scripts;C:\\Program Files\\gradle-5.1.1\\bin;C:\\ProgramData\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;C:\\Users\\Mohammad.Junaid\\.dnx\\bin;C:\\Program Files\\Microsoft DNX\\Dnvm\\;C:\\Program Files\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\Client SDK\\ODBC\\110\\Tools\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\Tools\\Binn\\;C:\\Program Files\\Microsoft SQL Server\\120\\DTS\\Binn\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\Tools\\Binn\\ManagementStudio\\;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\DTS\\Binn\\;C:\\WINDOWS\\System32\\OpenSSH\\;%JAVA_HOME%;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\Microsoft\\Web Platform Installer\\;C:\\Program Files\\Git\\cmd;C:\\Users\\Mohammad.Junaid\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\Mohammad.Junaid\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\Mohammad.Junaid\\AppData\\Local\\Android\\Sdk\\platform-tools;C:\\Users\\Mohammad.Junaid\\AppData\\Roaming\\npm;C:\\flutter\\bin;",
+    "pathext": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.CPL",
+    "processor_architecture": "AMD64",
+    "processor_identifier": "Intel64 Family 6 Model 94 Stepping 3, GenuineIntel",
+    "processor_level": "6",
+    "processor_revision": "5e03",
+    "programdata": "C:\\ProgramData",
+    "programfiles": "C:\\Program Files",
+    "programfiles(x86)": "C:\\Program Files (x86)",
+    "programw6432": "C:\\Program Files",
+    "PROMPT": "$P$G",
+    "psmodulepath": "C:\\Users\\Mohammad.Junaid\\Documents\\WindowsPowerShell\\Modules;C:\\Program Files\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules;C:\\Program Files (x86)\\Microsoft SQL Server\\120\\Tools\\PowerShell\\Modules\\",
+    "public": "C:\\Users\\Public",
+    "sessionname": "RDP-Tcp#125",
+    "studio_jdk": "C:\\Program Files\\Android\\Android Studio",
+    "systemdrive": "C:",
+    "systemroot": "C:\\WINDOWS",
+    "temp": "C:\\Users\\MOHAMM~1.JUN\\AppData\\Local\\Temp",
+    "term_program": "vscode",
+    "term_program_version": "1.60.1",
+    "tmp": "C:\\Users\\MOHAMM~1.JUN\\AppData\\Local\\Temp",
+    "userdnsdomain": "KALELOGISTICS.IN",
+    "userdomain": "KLSTHN",
+    "userdomain_roamingprofile": "KLSTHN",
+    "username": "Mohammad.Junaid",
+    "userprofile": "C:\\Users\\Mohammad.Junaid",
+    "vbox_msi_install_path": "C:\\Program Files\\Oracle\\VirtualBox\\",
+    "vs140comntools": "C:\\Program Files (x86)\\Microsoft Visual Studio 14.0\\Common7\\Tools\\",
+    "vscode_git_askpass_main": "c:\\Users\\Mohammad.Junaid\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js",
+    "vscode_git_askpass_node": "C:\\Users\\Mohammad.Junaid\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+    "vscode_git_ipc_handle": "\\\\.\\pipe\\vscode-git-21ef3b1ccf-sock",
+    "windir": "C:\\WINDOWS",
+    "_java_options": "-Xmx512M"
+  },
+  "sharedObjects": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\WINDOWS\\SYSTEM32\\ntdll.dll",
+    "C:\\WINDOWS\\System32\\KERNEL32.DLL",
+    "C:\\WINDOWS\\System32\\KERNELBASE.dll",
+    "C:\\WINDOWS\\System32\\WS2_32.dll",
+    "C:\\WINDOWS\\System32\\RPCRT4.dll",
+    "C:\\WINDOWS\\System32\\PSAPI.DLL",
+    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
+    "C:\\WINDOWS\\System32\\msvcrt.dll",
+    "C:\\WINDOWS\\System32\\sechost.dll",
+    "C:\\WINDOWS\\System32\\USER32.dll",
+    "C:\\WINDOWS\\System32\\win32u.dll",
+    "C:\\WINDOWS\\System32\\GDI32.dll",
+    "C:\\WINDOWS\\System32\\gdi32full.dll",
+    "C:\\WINDOWS\\System32\\msvcp_win.dll",
+    "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\System32\\CRYPT32.dll",
+    "C:\\WINDOWS\\System32\\MSASN1.dll",
+    "C:\\WINDOWS\\System32\\bcrypt.dll",
+    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\dbghelp.dll",
+    "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
+    "C:\\WINDOWS\\System32\\profapi.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMM.dll",
+    "C:\\WINDOWS\\SYSTEM32\\winmmbase.dll",
+    "C:\\WINDOWS\\System32\\cfgmgr32.dll",
+    "C:\\WINDOWS\\System32\\bcryptPrimitives.dll",
+    "C:\\WINDOWS\\System32\\IMM32.DLL",
+    "C:\\WINDOWS\\system32\\tmumh\\20019\\AddOn\\8.53.0.1108\\TmUmEvt64.dll",
+    "C:\\WINDOWS\\system32\\tmumh\\20019\\TmMon\\2.8.0.1051\\tmmon64.dll",
+    "C:\\WINDOWS\\System32\\powrprof.dll",
+    "C:\\WINDOWS\\System32\\UMPDC.dll",
+    "C:\\WINDOWS\\SYSTEM32\\CRYPTBASE.DLL",
+    "C:\\WINDOWS\\system32\\uxtheme.dll",
+    "C:\\WINDOWS\\System32\\combase.dll",
+    "C:\\WINDOWS\\system32\\mswsock.dll",
+    "C:\\WINDOWS\\System32\\kernel.appcore.dll",
+    "\\\\?\\D:\\ALL_PROJECT\\CORVIGIT\\corviBL\\node_modules\\node-sass\\vendor\\win32-x64-79\\binding.node",
+    "C:\\WINDOWS\\System32\\NSI.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc6.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\DNSAPI.dll",
+    "C:\\Windows\\System32\\rasadhlp.dll",
+    "C:\\WINDOWS\\System32\\fwpuclnt.dll",
+    "C:\\WINDOWS\\system32\\napinsp.dll",
+    "C:\\WINDOWS\\system32\\pnrpnsp.dll",
+    "C:\\WINDOWS\\System32\\winrnr.dll",
+    "C:\\WINDOWS\\system32\\NLAapi.dll",
+    "C:\\WINDOWS\\system32\\wshbth.dll"
+  ]
+}

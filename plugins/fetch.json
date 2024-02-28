@@ -81,14 +81,6 @@
       "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
     }
   },
-  "cordova-plugin-nativestorage": {
-    "source": {
-      "type": "registry",
-      "id": "cordova-plugin-nativestorage@^2.3.2"
-    },
-    "is_top_level": true,
-    "variables": {}
-  },
   "cordova-plugin-advanced-http": {
     "source": {
       "type": "registry",
@@ -109,6 +101,14 @@
     "source": {
       "type": "registry",
       "id": "com.telerik.plugins.nativepagetransitions@0.6.5"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "cordova-plugin-nativestorage": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-nativestorage"
     },
     "is_top_level": true,
     "variables": {}

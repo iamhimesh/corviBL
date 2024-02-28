@@ -26,6 +26,8 @@ import * as xml2js from 'xml2js';
 @Injectable()
 export class HttpServiceProvider {
 
+  BaseURL = Constants.CORVI_Base_URL;
+
   constructor(private nativeHttp: HTTP, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public toastCtrl: ToastController, public globalService: GlobalProvider, public http: Http, private spinnerDialog: SpinnerDialog) {
   }
 
@@ -47,8 +49,8 @@ export class HttpServiceProvider {
             this.getToken().then((token) => {
               let requestOptionArgs: RequestOptionsArgs;
               requestOptionArgs = {
-                // url: baseURL + service_name,
-                url: Constants.CORVI_Base_URL + service_name,
+                url: baseURL + service_name,
+                // url: Constants.CORVI_Base_URL + service_name,
                 method: requestMethod,
                 body: body,
                 headers: new Headers({
@@ -99,7 +101,10 @@ export class HttpServiceProvider {
         this.spinnerDialog.show(null, null, true);
         this.globalService.get('baseURL')
           .then((baseURL) => {
+            // let url = this.BaseURL + service_name
+
             let url = baseURL + service_name
+            
 
             this.getToken().then((token) => {
               this.nativeHttp.setDataSerializer('json');
@@ -198,8 +203,8 @@ export class HttpServiceProvider {
   // for mobiles
   public getHttpRequest(url: string, requestMethod: RequestMethod, body?: any) {
     if (this.globalService.isCordovaAvailable()) {
-      //  return this.nativePost(url, body);
-      return this.webPOST(url, requestMethod, body);
+      return this.nativePost(url, body);
+      // return this.webPOST(url, requestMethod, body);
     } else {
       return this.webPOST(url, requestMethod, body);
     }
@@ -224,7 +229,7 @@ export class HttpServiceProvider {
           headers: new Headers({
             "Content-Type": "application/json",
             "access-control-allow-methods":
-              'GET, POST', "access-control-allow-origin": "*",
+            'GET, POST', "access-control-allow-origin": "*",
             "Access-Control-Allow-Credentials": 'true',
             "Authorization": "Bearer "
             //add any extra custom headers you need

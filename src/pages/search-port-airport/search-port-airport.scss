@@ -1,10 +1,11 @@
 page-search-port-airport {
-
   .ShadowBox13 {
     -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
     border-radius: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
   }
   .ion-fab34 {
     width: 34px !important;
@@ -73,7 +74,7 @@ page-search-port-airport {
 
     & + label {
       float: left;
-      padding: 0.5em 1em;
+      padding: 0.5em 0em;
       cursor: pointer;
       border: 1px solid #28608f;
       margin-right: -1px;

@@ -18,9 +18,10 @@
                 </div>
             </div>
             <ion-list no-lines>
-                <button menuClose ion-item detail-none *ngFor="let p of pages" (click)="openPage(p)"
+                <button menuClose ion-item detail-none *ngFor="let p of globalService.menuItems" (click)="openPage(p)"
                     [ngClass]="(p.active)?'active-menu-item-color':''">
                     <!-- <ion-icon [name]="p.icon" item-left [ngClass]="(p.icon == 'close')?'font-bold':''"></ion-icon> -->
+                    <!-- {{p.title}} -->
                     {{p.title}}
                 </button>
             </ion-list>
@@ -47,6 +48,7 @@
                 <button menuClose ion-item detail-none *ngFor="let p of pages" (click)="openPage(p)"
                     [ngClass]="(p.active)?'active-menu-item-color':''">
                     <!-- <ion-icon [name]="p.icon" item-left></ion-icon> -->
+                    <!-- {{p.title}} -->
                     {{p.title}}
                 </button>
             </ion-list>

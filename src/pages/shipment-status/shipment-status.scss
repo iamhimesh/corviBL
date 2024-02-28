@@ -23,7 +23,6 @@ page-shipment-status {
     width: 100%;
     border: 1px solid #ddd;
   }
-
   th,
   td {
     text-align: left;
@@ -47,19 +46,31 @@ page-shipment-status {
   .column {
     float: left;
     width: 50%;
-    padding: 10px;
+    padding: 5px;
     border-radius: 10px 0 10px 0px;
     // border: solid thin black;
-    background-color: #E6B900;
+    background-color: #e6b900;
     color: #fff;
     font-size: 20px;
+    height: 35px;
   }
+
+  .columnBlue {
+    float: left;
+    width: 50%;
+    padding: 5px;
+    border-radius: 10px 0 10px 0px;
+    // border: solid thin black;
+    background-color: #0461AA;
+    color: #fff;
+    font-size: 20px;
+    height: 35px;
+  }
+
   .column1 {
     float: left;
     width: 40%;
     padding: 10px;
-
-
   }
   .column2 {
     padding: 10px;
@@ -72,11 +83,14 @@ page-shipment-status {
     display: table;
     clear: both;
   }
-  .imgSize{
+  .imgSize {
     height: 20px;
     float: right;
   }
-  .divW{
+  .divW {
     width: 8%;
   }
+  // img{
+  //   height: 50%
+  // }
 }

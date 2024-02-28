@@ -1,17 +1,18 @@
 <!-- <domain-config cleartextTrafficPermitted="true">
 
         <domain includeSubdomains="true">localhost</domain>
-       
+
     <domain includeSubdomains="true">http://52.172.36.110/</domain>
     </domain-config> -->
 
-    <network-security-config>
-<base-config cleartextTrafficPermitted="true">
+<network-security-config>
+  <base-config cleartextTrafficPermitted="true">
     <trust-anchors>
-        <certificates src="system" />
+      <certificates src="system" />
     </trust-anchors>
-</base-config>
+  </base-config>
 
-<domain-config cleartextTrafficPermitted="true">
-    <domain includeSubdomains="true">http://52.172.36.110/</domain>
-</domain-config> </network-security-config>
+  <domain-config cleartextTrafficPermitted="true">
+    <domain includeSubdomains="true">https://lmsinv.balmerlawrie.co.in/Mobapi/MobileAPI/</domain>
+  </domain-config>
+</network-security-config>

@@ -38,6 +38,9 @@ export class SearchPortAirportPage {
   LocationInfo: any;
   origin: any;
   destination: any;
+  responseFormAPI: any = [];
+  countOfRec: number;
+  Mode: any;
   constructor(
 
     public navCtrl: NavController, public navParams: NavParams,
@@ -56,11 +59,15 @@ export class SearchPortAirportPage {
     this.title = "Find Location";
     this.appBuildConfig = this.globalService.appBuildConfig;
     this.VenType = 'Lead-Customer';
+    debugger
     this.SearchLoc = new searchLocation();
     this.origin = this.navParams.get('origin');
+    this.Mode = localStorage.getItem('Mode');
+
     this.destination = this.navParams.get('destination');
     localStorage.removeItem('origin1');
     localStorage.removeItem('destination1');
+
 
   }
   ionViewDidLoad() {
@@ -79,25 +86,36 @@ export class SearchPortAirportPage {
 
   passDataToNSA(selectedData) {
 
-    if (this.origin == '0') {
-      this.globalService.selectedOrigin = selectedData.Locationtext;
-    } else {
-      this.globalService.selectedDest = selectedData.Locationtext;
-    }
+    // if (this.origin == '0') {
+    //   this.globalService.selectedOrigin = selectedData.Locationtext;
+    // } else {
+    //   this.globalService.selectedDest = selectedData.Locationtext;
+    // }
 
-    // this.globalService.selectedCity = selectedData;
-    // console.log('********', this.globalService.selectedCity);
+    // // this.globalService.selectedCity = selectedData;
+    // // console.log('********', this.globalService.selectedCity);
 
-      this.viewCtrl.dismiss();
-      this.globalService.setRootPage(CustomerJobSearchPage);
+    // this.viewCtrl.dismiss();
+    // this.globalService.setRootPage(CustomerJobSearchPage);
+
+    this.globalService.selectedOrigin = selectedData;
+    this.viewCtrl.dismiss(JSON.stringify(this.globalService.selectedOrigin));
+
     // this.navCtrl.push(CustomerJobSearchPage, { milestone: selectedData })
     // this.navCtrl.remove(this.navCtrl.getActive().index - 0, 1,);
   }
   GetLocationMasterList() {
     debugger
-    this.SearchLoc.LocationType = 'Port,Airport,City'; //this.branchCode;
-    this.SearchLoc.LocationCode = this.CityCode;
-    this.SearchLoc.LocationName = this.CityName;
+    if (this.Mode == '1') {
+      this.SearchLoc.LocationType = 'Airport';
+    } else if (this.Mode == '2') {
+      this.SearchLoc.LocationType = 'Port';
+    }else{
+      this.SearchLoc.LocationType = 'City';
+    }
+    //this.branchCode;
+    this.SearchLoc.LocationCode = this.CityCode.trim();
+    this.SearchLoc.LocationName = this.CityName.trim();
 
     this.http.POST(Constants.Corvi_Services.GetLocationMasterList, this.SearchLoc).then((response) => {
 
@@ -107,7 +125,25 @@ export class SearchPortAirportPage {
         this.toastService.show('Data not found.', 3000, true, 'top', 'toast-container');
         return;
       } else {
-        this.LocationInfo = response['Table'];
+        // this.LocationInfo = response['Table'];
+        if (this.globalService.isCordovaAvailable()) {
+
+          this.responseFormAPI = response;
+          this.LocationInfo = JSON.parse(this.responseFormAPI)["Table"];
+          // this.navCtrl.push(SearchJobResultsPage, { jobResults: stageOne });
+          // this.flag = true;
+          this.countOfRec = JSON.parse(this.responseFormAPI)["Table"].length;
+
+          if (JSON.parse(this.responseFormAPI)["Table"] == '') {
+            this.toastService.show('Data not found.', 3000, true, 'top', 'toast-container');
+            return;
+          }
+
+        } else {
+          this.LocationInfo = response['Table'];
+          // this.navCtrl.push(SearchJobResultsPage, { jobResults: stageOne });
+          this.countOfRec = response['Table'].length
+        }
 
       }
 

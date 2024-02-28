@@ -31,7 +31,7 @@
       </ion-col>
     </ion-row> -->
 
-    <ion-row padding class="ShadowBox13">
+    <ion-row padding class="ShadowBox13" style='margin-top:10px;'>
       <ion-col col-12>
         <label>
           City Name
@@ -71,19 +71,32 @@
       </ion-col>
     </ion-row>
 
-    <ion-row padding class="ShadowBox13">
+    <ion-row>
       <ion-col col-12>
-        <table>
-          <tr *ngFor="let item of LocationInfo; let i = index">
-            <td>
-              <label>
-                {{item.Locationtext}}
-              </label>
-            </td>
-            <td><a href="#" (click)="passDataToNSA(item);">Select</a></td>
-            <!-- <td><button (click)="passDataToNSA(item.Locationtext)">Select</button></td> -->
+        <label>Search Result: {{countOfRec}} record found</label>
+      </ion-col>
+    </ion-row>
 
-            <!-- <td> <input [(ngModel)]="item.Address1" type="hidden" /> </td>
+    <ion-row padding class="ShadowBox13">
+
+
+      <table>
+        <tr *ngFor="let item of LocationInfo; let i = index">
+          <td>
+            <label>
+              {{item.Locationtext}}
+
+            </label><br>
+            <label>
+              {{item.description}}
+
+            </label><br>
+
+          </td>
+          <td><a href="#" (click)="passDataToNSA(item);">Select</a></td>
+          <!-- <td><button (click)="passDataToNSA(item.Locationtext)">Select</button></td> -->
+
+          <!-- <td> <input [(ngModel)]="item.Address1" type="hidden" /> </td>
             <td> <input [(ngModel)]="item.Address2" type="hidden" /> </td>
             <td> <input [(ngModel)]="item.Address3" type="hidden" /> </td>
             <td> <input [(ngModel)]="item.BranchName" type="hidden" /> </td>
@@ -97,7 +110,7 @@
             <td> <input [(ngModel)]="item.VendorId" type="hidden" /> </td>
             <td> <input [(ngModel)]="item.VendorName" type="hidden" /> </td>
             <td> <input [(ngModel)]="item.VendorType" type="hidden" /> </td> -->
-            <!-- Address1: "Ideal Plaza"
+          <!-- Address1: "Ideal Plaza"
             Address2: "Sarat Bose Road"
             Address3: ""
             BranchName: "BALMER LAWRIE & CO. LTD - Kolkata"
@@ -114,8 +127,8 @@
             VendorId: 13929
             VendorName: "OOCL"
             VendorType: "Lead-Customer" -->
-          </tr>
-          <!-- <tr>
+        </tr>
+        <!-- <tr>
             <td>
               <label>
                 Babuline Pharma Pvt. Ltd.
@@ -145,10 +158,7 @@
 
             <td><a href="#">Select</a></td>
           </tr> -->
-        </table>
-      </ion-col>
-
-
+      </table>
 
     </ion-row>
 

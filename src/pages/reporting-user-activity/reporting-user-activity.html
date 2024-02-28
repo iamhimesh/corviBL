@@ -1,0 +1,224 @@
+<!--
+  Generated template for the NewSalesActivityPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <!-- <ion-navbar color="primary">
+    junaid's navbar
+    <ion-title id="Dashboard" center text-center>
+      {{title}}
+      <ion-icon name='close-circle' (click)='dismissModal()' style='float: right;'></ion-icon>
+    </ion-title>
+  </ion-navbar> -->
+
+  <ion-navbar color="primary">
+    <button right ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title id="Dashboard" center text-center>
+      {{title}}
+    </ion-title>
+
+    <ion-buttons left>
+      <button ion-button icon-only (click)="backToDashboard();">
+        <ion-icon name="ios-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title center> {{title}}</ion-title>
+    <ion-icon name='close-circle' (click)='dismissModal()' style='float: right;'></ion-icon>
+  </ion-toolbar>
+</ion-header> -->
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-row padding class="ShadowBox13" style="margin-top:10px">
+
+      <ion-col col-12>
+        <label>
+          Reporting User
+        </label>
+        <font color="red" class="margin12">*</font>
+      </ion-col>
+      <ion-col col-12>
+
+        <select id="ddlBrach" name="ddlBrach" [(ngModel)]="RpuserID" col-12 placeholder="">
+          <option [value]="0" disabled selected>Select</option>
+          <option *ngFor="let brData of userTbl" [value]="brData.UserId">{{brData.FirstName + ' ' + brData.LastName}}
+          </option>
+        </select>
+      </ion-col>
+
+      <!-- FirstName: "admin"
+LastName: ".."
+LoginName: "Admin"
+MiddleName: ""
+Password: "Admin@123"
+ProfileType: 1
+UserId: 1 -->
+
+      <ion-col col-12>
+        <label>
+          Branch
+        </label>
+        <!-- <font color="red" class="margin12">*</font> -->
+      </ion-col>
+      <ion-col col-12>
+
+        <select id="ddlBrach" name="ddlBrach" [(ngModel)]="branchCode" col-12 placeholder="">
+          <!-- <option [value]="0" disabled selected>Select</option> -->
+          <option *ngFor="let brData of BranchTbl" [value]="brData.BranchCode">{{brData.branch}}</option>
+        </select>
+      </ion-col>
+      <ion-col col-12>
+        <label>
+          Customer Name
+        </label>
+      </ion-col>
+      <ion-col col-10>
+
+        <input type="text" [(ngModel)]="VendorName" col-12 placeholder="">
+      </ion-col>
+      <ion-col col-2>
+        <button ion-fab class="ion-fab34" (click)="openModal();">
+          <ion-icon name="md-search" class=""></ion-icon>
+        </button>
+      </ion-col>
+
+      <ion-col col-6>
+        <label style="line-height: 3;">
+          From
+        </label>
+        <!-- <font color="red" class="margin12">*</font> -->
+      </ion-col>
+
+      <ion-col col-6 style="margin-top: 5px;">
+
+        <input col-12 type="date" [(ngModel)]="startDate">
+      </ion-col>
+
+      <ion-col col-6>
+        <label style="line-height: 3;">
+          To
+        </label>
+        <!-- <font color="red" class="margin12">*</font> -->
+      </ion-col>
+
+      <ion-col col-6 style="margin-top: 5px;">
+
+        <input col-12 type="date" [(ngModel)]="endtDate">
+      </ion-col>
+
+
+    </ion-row>
+
+
+    <ion-row padding>
+      <ion-col col-6>
+        <button ion-button round outline class=" btncancel" (click)="backToDashboard();">
+          <ion-icon></ion-icon>
+          Cancel
+        </button>
+      </ion-col>
+
+      <ion-col col-6>
+        <button type="button" ion-button icon-start block class="btnRadius"
+          (click)='GetSearchSalesActivityReportingToList();'>
+          <ion-icon></ion-icon>
+          Search
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <label>Search Result: {{countOfRec}} record found</label>
+      </ion-col>
+    </ion-row>
+    <!-- <ion-row padding class="ShadowBox13">
+      <ion-col col-12>
+        <table>
+          <tr *ngFor="let item of customerInfo; let i = index">
+            <td>
+              <label>
+                {{item.AppointmentCode}}
+              </label>
+            </td>
+            <td>
+              <label>
+                {{item.CustomerName}}
+              </label>
+            </td>
+
+            <td>
+              <label>
+                {{item.StartTime}}
+              </label>
+            </td>
+            <td><a href="#" (click)="passDataToNSA(item);">Select</a></td>
+          </tr>
+        </table>
+      </ion-col>
+    </ion-row> -->
+
+    <ion-row class="ShadowBox13" *ngFor="let item of customerInfo; let i = index;">
+      <ion-card>
+        <!-- <ion-item>
+
+          <div class="columnBlue">
+            <label>
+              <label for="">{{item.AppointmentCode }}</label>
+            </label>
+          </div>
+
+          <div class="column1">
+            <h4>
+              {{item.CustomerName}}
+            </h4>
+          </div>
+        </ion-item> -->
+
+        <ion-card-content>
+          <!-- <div class="column2"> -->
+            <!-- <label style="color: #0461AA;font-size: 16px;"><b> {{item.AppointmentCode}}</b></label><br> -->
+            <ion-row>
+              <ion-col>
+                <label class="labelFont">{{item.AppointmentCode}}</label><br />
+                <label class="labelFont">{{item.CustomerName}}</label><br />
+                <label class="labelFont">{{item.StartTime}} </label><br />
+              </ion-col>
+              <!-- <ion-col>
+                <label class="labelFont"><b>JOB NO.:</b></label><br />
+                <label class="labelFont">{{item.StartTime}} </label><br />
+              </ion-col> -->
+              <ion-col col-3>
+                <div class="divW">
+
+                  <a href="#" (click)="passDataToNSA(item);">Select</a>
+                  <!-- <ion-icon name="custom-dots" (click)="openPopOver($event)"> </ion-icon> -->
+                </div>
+              </ion-col>
+            </ion-row>
+          <!-- </div> -->
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+
+
+
+  </ion-list>
+</ion-content>
+<ion-footer class="ion-footer">
+
+  <div class="label-white toolbar-background-md" center text-center>
+    © Kale Logistics Solutions Private Limited. {{appBuildConfig.fullYear}} Version {{appBuildConfig.version}}
+  </div>
+</ion-footer>

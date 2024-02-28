@@ -8,7 +8,7 @@
  * @desc [description]
 */
 import { Component } from "@angular/core";
-import { NavController, ToastController, MenuController } from "ionic-angular";
+import { NavController, ToastController, MenuController, Events, Platform, ModalController } from "ionic-angular";
 import { RegisterPage } from "../register/register";
 import { GlobalProvider } from "../../providers/global/global";
 import { HttpServiceProvider } from "../../providers/http-service/http-service";
@@ -24,31 +24,17 @@ import { ResetPasswordPage } from "../reset-password/reset-password";
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { DashboardPage } from "../dashboard/dashboard";
 import { WelcomeuserPage } from "../welcomeuser/welcomeuser";
+import { BaseURLProvider } from "../../providers/baseUrlGenerator/baseurlgenerator";
 
-export class User {
-  UserId: string; Password: string;
+export class signUpList {
+  UserID: string;
+  Password: string;
+  IdentityCode: string;
   // CustIdCode: string;
 }
-export class saveLeadCustomer {
-  VendorId: any;
-  VendorName: any;
-  VendorType: any;
-  AddressLine1: any;
-  AddressLine2: any;
-  AddressLine3: any;
-  ContactEmail: any;
-  FirstName: any;
-  LastName: any;
-  Designation: any;
-  Location: any;
-  MobileNo: any;
-  PinCode: any;
-  Status: any;
-  TypeOfCustomer: any;
-  TypeofIndustry: any;
-  UserId: any;
-  ClientDate: any;
-  BranchCode: any;
+export class User {
+  UserId: string; Password: string;
+  IdentityCode: string;
 }
 declare var Email: any;
 @Component({
@@ -56,6 +42,7 @@ declare var Email: any;
   templateUrl: 'login.html'
 })
 export class LoginPage {
+  signUpVarList: signUpList;
   user: User;
   isRemembered: boolean;
   loggedIn: true;
@@ -66,6 +53,20 @@ export class LoginPage {
   customerCode: any;
   public showPass = false;
   public type = "password";
+
+  stageOne;
+
+  custIdCode: string = 'TES'
+
+  modesTwo: any = [];
+
+  profileType = '';
+  signUpButtonshowHide: string;
+  finalStatus: string;
+  statusForcheck: string;
+  temp: string;
+  findList: any ='';
+  msgg: any ='BLL';
   constructor(
     public nav: NavController,
     public menu: MenuController,
@@ -74,28 +75,46 @@ export class LoginPage {
     public http: HttpServiceProvider,
     public alertService: AlertService,
     public toastService: ToastService,
+    public events: Events,
+    public platform: Platform,
+    public baseUrlProvider: BaseURLProvider,
+    public modalCtrl: ModalController,
     // public baseURLProvider: BaseURLProvider,
     public fb: FormBuilder
   ) {
+    this.signUpVarList = new signUpList();
+    // var now = new Date();
+    // var utcString = now.toISOString().substring(0, 19);
+    // var year = now.getFullYear();
+    // var month = now.getMonth() + 1;
+    // var day = now.getDate();
+    // var hour = now.getHours();
+    // var minute = now.getMinutes();
+    // var second = now.getSeconds();
+    // var localDatetime = year + "-" +
+    //   (month < 10 ? "0" + month.toString() : month) + "-" +
+    //   (day < 10 ? "0" + day.toString() : day) + "T" +
+    //   (hour < 10 ? "0" + hour.toString() : hour) + ":" +
+    //   (minute < 10 ? "0" + minute.toString() : minute) +
+    //   utcString.substring(16, 19);
 
-
-
-
+    //   alert(localDatetime)
 
     this.menu.swipeEnable(false);
     this.menu.close();
     this.user = new User();
-//this.saveCustomer = new saveLeadCustomer();
+
     // this.authForm = fb.group({
     //   'username' : [null, Validators.compose([Validators.required,Validators.minLength(3)])],
     //   'password' : [null, Validators.compose([Validators.required,Validators.minLength(3)])],
     //   'customerCode' : [null, Validators.compose([Validators.required,Validators.minLength(3)])],
     // });
-  //  this.VendorMasterSaveHHT();
+
   }
 
   //On page Load
   ionViewDidEnter() {
+    this.RegisterNowButton();
     this.getUserDetails();
   }
 
@@ -116,28 +135,67 @@ export class LoginPage {
 
   // login and go to home page
   logIn() {
-    // let companyCode = this.user.custIdCode.substring(0, 3);
-    // this.baseURLProvider.setBaseURL(companyCode).then((msg) => {
-    // if (msg != null && msg != '') {
-    // console.log('response to check 1');
-    this.http.POST(Constants.Corvi_Services.Login, this.user).then((response) => {
-      console.log('response to check login method: ', response);
-      // this.globalService.store('custIdCode', this.user.custIdCode);
-       this.user_Rememebered();
-      this.globalService.store('login_resp', response);
+    // this.globalService.remove('isLogged');
+    // this.globalService.remove('login_resp');
+    // this.globalService.remove('userDetails');
 
-      (response.hasOwnProperty('access_token')) ? this.fetchUserDetails() : this.globalService.showToast('Something went wrong');
-    }, (err) => {
-      console.log('error Login ', err);
-      console.log('response to check service link: ', Constants.Corvi_Services.Login);
-      this.LoginInvalid(err);
-    });
-    // }
-    // else {
-    //   this.globalService.showAlert('Invalid Customer Identity Code')
-    // }
+    this.globalService.remove('ActivityStatus');
+    this.globalService.remove('SalesLeadStatus');
+    this.globalService.remove('ActivityPriority');
 
-    // });
+    this.globalService.remove('bvalue');
+    this.globalService.remove('ProfileType');
+    this.globalService.remove('branchCode');
+
+    this.globalService.remove('TransportMode');
+    this.globalService.remove('CommunicationType');
+    this.globalService.remove('reportingUSer');
+    this.globalService.remove('BranchTable');
+    this.globalService.remove('Activity');
+    this.globalService.remove('ServiceType');
+    this.globalService.remove('ShipmentType');
+    this.globalService.remove('jobType');
+    this.globalService.remove('TypeOfIndustry');
+    this.globalService.remove('branchCode');
+    this.globalService.remove('flagJobSearch');
+    this.globalService.remove('customerJobSearch');
+    this.globalService.remove('filterMilestone');
+
+
+
+    try {
+
+
+      // this.platform.ready().then(() => {
+      let companyCode = this.user.IdentityCode.slice(0, 3);
+      console.log('check CI code: ', companyCode);
+      this.baseUrlProvider.setBaseURL(companyCode).then((msg) => {
+        console.log('check msg from login()', msg);
+        // if (msg != null && msg != '') {
+        // console.log('response to check 1');
+        this.http.POST(Constants.Corvi_Services.Login, this.user).then((response) => {
+          console.log('response to check login method: ', response);
+          // this.globalService.store('custIdCode', this.user.custIdCode);
+          this.user_Rememebered();
+          this.globalService.store('login_resp', response);
+
+          (response.hasOwnProperty('access_token')) ? this.fetchUserDetails() : this.globalService.showToast('Something went wrong');
+        }, (err) => {
+          console.log('error Login ', err);
+          console.log('response to check service link: ', Constants.Corvi_Services.Login);
+          this.LoginInvalid(err);
+        });
+        // }
+        // else {
+        //   this.globalService.showAlert('Invalid Customer Identity Code')
+        // }
+
+      }); // this.baseUrlProvider ends
+      // }); //platform end
+    }
+    catch (msg) {
+      this.globalService.showAlert('Enter valid Customer Identity code');
+    }
   }
 
 
@@ -152,16 +210,34 @@ export class LoginPage {
     this.nav.push(ResetPasswordPage);
   }
 
+  signUp() {
+    this.nav.push(RegisterPage);
+  }
+
+
+  openSupport() {
+    window.open('http://support.kalelogistics.in/', '_system');
+  }
+
+  openContactModal() {
+    // let contactModal = this.modalCtrl.create(ContactUsPage);
+    // contactModal.present();
+
+    window.open('https://www.kalelogistics.com/contact-us/', '_system');
+  }
+
   user_Rememebered() {
     if (this.isRemembered) {
 
       this.globalService.store('userName', this.user.UserId);
       this.globalService.store('password', this.user.Password);
+      this.globalService.store('CustIdCode', this.user.IdentityCode);
       this.globalService.store('isRemembered', "true");
     } else {
-      this.globalService.store("userName", this.user.UserId);
-      this.globalService.store("password", "");
-      this.globalService.remove('isRemembered')
+      this.globalService.store('userName', this.user.UserId);
+      this.globalService.store('password', this.user.Password);
+      this.globalService.store('CustIdCode', this.user.IdentityCode);
+      this.globalService.store('isRemembered', "");
     }
   }
 
@@ -201,6 +277,11 @@ export class LoginPage {
           pwd => this.user.Password = pwd,
           error => console.error(error)
         );
+      this.globalService.get('CustIdCode')
+        .then(
+          IdentityCode => this.user.IdentityCode = IdentityCode,
+          error => console.error(error)
+        );
     } else {
       this.isRemembered = false;
     }
@@ -231,22 +312,445 @@ export class LoginPage {
       );
   }
 
-  setDetails(UUID) {
-
+  setDetailsone(UUID) { // dont touch
+    debugger
     this.user.UserId = UUID;
-    this.http.POST(Constants.Corvi_Services.UserDetails, this.user).then((userDetailsResp) => {
+    this.http.POST(Constants.Corvi_Services.UserDetails, this.user).then((userDetailsResp: any) => {
 
-      this.globalService.store('userDetails', userDetailsResp);
+      // this.globalService.store('userDetails', userDetailsResp); //old
+      // this.stageOne = userDetailsResp['Table'][0]; // old
+      if (this.globalService.isCordovaAvailable()) {
+        this.stageOne = JSON.parse(userDetailsResp)['Table'][0];
+        this.globalService.store('userDetails', JSON.parse(userDetailsResp)); //old
+      } else {
+        this.stageOne = userDetailsResp['Table'][0];
+        this.globalService.store('userDetails', userDetailsResp); //old
+      }
+
       console.log('check userdetails', userDetailsResp);
-      let stageOne = userDetailsResp['Table'][0];
-      console.log('check userdetails2', stageOne.UserId);
-      localStorage.setItem('userId', stageOne.UserId );
-      localStorage.setItem('profileType', stageOne.ProfileType);
-      console.log('what profile: ',localStorage.getItem('profileType'));
+
+      console.log('check userdetails2', this.stageOne.UserId);
+      localStorage.setItem('userId', this.stageOne.UserId);
+      localStorage.setItem('profileType', this.stageOne.ProfileType);
+      localStorage.setItem('reportingTo', this.stageOne.ReportingTo);
+
+      console.log('what profile: ', localStorage.getItem('profileType'));
+      console.log('Is Reporting to: ', localStorage.getItem('reportingTo'));
+      this.profileType = localStorage.getItem('profileType');
       console.log('checking from local', localStorage.getItem('userId'));
       this.globalService.publishEventwithData('app:userDetails', userDetailsResp);
-      this.globalService.publishEventwithData('login:sessionExpired', 500000);
+      this.globalService.publishEventwithData('login:sessionExpired', 5000000);
+      // below is new for dynamic side menu
+      this.events.publish('user:created', this.profileType, Date.now());
       this.globalService.setRootPage(WelcomeuserPage);
+    }, (err) => {
+      console.log('error Login ', err);
+    });
+  }
+
+  setDetails(UUID) {
+    this.user.UserId = UUID;
+    this.http.POST(Constants.Corvi_Services.UserDetails, this.user).then((userDetailsResp: any) => {
+
+
+      var parsed = JSON.stringify(userDetailsResp);
+      let stageOne
+
+      var Activity: any = [];
+      var ActivityPriority: any = [];
+      var CommunicationType: any = [];
+      var ActivityStatus: any = [];
+      var BranchTable: any = [];
+      var SalesLeadStatus: any = [];
+      var TypeOfIndustry: any = [];
+      var TypeOfIndustry: any = [];
+      var reportingUSer: any = [];
+      let dataT;
+      //hemesh
+      var TransportMode: any = [];
+      var ShipmentType: any = [];
+      var ShipmentTypeAir: any = [];
+      var ShipmentTypeRail: any = [];
+      var ShipmentTypeRoad: any = [];
+      var ServiceType: any = [];
+      var TypeOfCustomer: any = [];
+
+      var MenuItems: any = [];
+
+
+      if (this.globalService.isCordovaAvailable()) {
+        dataT = JSON.parse(userDetailsResp);
+        console.log('I am from cordova');
+        this.globalService.store('userDetails', dataT);
+
+        stageOne = dataT['Table'][0];
+        this.globalService.store('ProfileType', JSON.parse(userDetailsResp)["Table"][0]["ProfileType"]);
+        this.globalService.store('ReportingTo', JSON.parse(userDetailsResp)["Table"][0]["ReportingTo"]);
+
+        Activity = JSON.parse(userDetailsResp)["Table3"].filter(t => t.Identifier == 'Activity');
+        ActivityPriority = JSON.parse(userDetailsResp)["Table3"].filter(t => t.Identifier == 'ActivityPriority');
+        CommunicationType = JSON.parse(userDetailsResp)["Table3"].filter(t => t.Identifier == 'CommunicationType');
+        ActivityStatus = JSON.parse(userDetailsResp)["Table3"].filter(t => t.Identifier == 'ActivityStatus');
+        BranchTable = JSON.parse(userDetailsResp)["Table4"];
+
+        //himesh on 07/09
+        if (typeof (JSON.parse(userDetailsResp)["Table6"][0]) != 'undefined') {
+          this.globalService.defaultMode = JSON.parse(userDetailsResp)["Table6"][0]["Mode"];
+          this.globalService.defaultService = JSON.parse(userDetailsResp)["Table6"][0]["Service"];
+          this.globalService.defaultJobType = JSON.parse(userDetailsResp)["Table6"][0]["JobType"];
+          this.globalService.defaultNoofRecords = JSON.parse(userDetailsResp)["Table6"][0]["NoofRecordsPrListing"];
+        }
+        //himesh on 08/09
+        this.globalService.menuItems = JSON.parse(userDetailsResp)["Table2"];
+        // added on 09/07 to check role action
+        for (let p of this.globalService.menuItems) {
+          if (p.MenuName == 'Sales Activity') {
+            localStorage.setItem('dashSales', '1');
+            if (p.View == '1') {
+              this.globalService.viewSales == '1';
+              localStorage.setItem('viewSales', '1');
+            } else {
+              this.globalService.viewSales == '0';
+              localStorage.setItem('viewSales', '0');
+            }
+            if (p.Update == '1') {
+              this.globalService.editSales == '1';
+              localStorage.setItem('editSales', '1');
+            } else {
+              this.globalService.editSales == '0';
+              localStorage.setItem('editSales', '0');
+            }
+            if (p.Create == '1') {
+              this.globalService.createSales == '1';
+              localStorage.setItem('createSales', '1');
+            } else {
+              this.globalService.createSales == '0';
+              localStorage.setItem('createSales', '0');
+            }
+          }
+
+          if (p.MenuName == 'Sales Lead-Customer') {
+            localStorage.setItem('dashLead', '1');
+            if (p.View == '1') {
+              this.globalService.viewLead == '1';
+              localStorage.setItem('viewLead', '1');
+            } else {
+              this.globalService.viewLead == '0';
+              localStorage.setItem('viewLead', '0');
+            }
+            if (p.Update == '1') {
+              this.globalService.editLead == '1';
+              localStorage.setItem('editLead', '1');
+            } else {
+              this.globalService.editLead == '0';
+              localStorage.setItem('editLead', '0');
+            }
+            if (p.Create == '1') {
+              this.globalService.createLead == '1';
+              localStorage.setItem('createLead', '1');
+            } else {
+              this.globalService.createLead == '0';
+              localStorage.setItem('createLead', '0');
+            }
+          }
+
+          if (p.MenuName == 'Update Job Milestone') {
+            localStorage.setItem('dashMilestone', '1');
+            if (p.View == '1') {
+              this.globalService.viewMilestone == '1';
+              localStorage.setItem('viewMilestone', '1');
+            } else {
+              this.globalService.viewMilestone == '0';
+              localStorage.setItem('viewMilestone', '0');
+            }
+            if (p.Update == '1') {
+              this.globalService.editMilestone == '1';
+              localStorage.setItem('editMilestone', '1');
+            } else {
+              this.globalService.editMilestone == '0';
+              localStorage.setItem('editMilestone', '0');
+            }
+            if (p.Create == '1') {
+              this.globalService.createMilestone == '1';
+              localStorage.setItem('createMilestone', '1');
+            } else {
+              this.globalService.createMilestone == '0';
+              localStorage.setItem('createMilestone', '0');
+            }
+          }
+
+          if (p.MenuName == 'View Reporting User Activity') {
+            localStorage.setItem('dashReportingUser', '1');
+          }
+
+
+          if (p.MenuName == 'Shipment Status') {
+            localStorage.setItem('dashShipStatus', '1');
+          }
+          if (p.MenuName == 'Shipment Invoice') {
+            localStorage.setItem('dashShipInvoice', '1');
+          }
+        }
+
+
+        for (var i = 0; i < BranchTable.length; i++) {
+          if (BranchTable[i].IsDefault == '1') {
+            this.globalService.globalDefaultBranchCode = BranchTable[i].BranchCode
+          }
+        }
+
+        ShipmentType = JSON.parse(userDetailsResp)["Table3"].filter(t => t.Identifier == 'ShipmentType');
+        ServiceType = JSON.parse(userDetailsResp)["Table3"].filter(t => t.Identifier == 'Service');
+        TransportMode = JSON.parse(userDetailsResp)["Table3"].filter(t => t.Identifier == 'TransportMode');
+        TypeOfCustomer = JSON.parse(userDetailsResp)["Table3"].filter(t => t.Identifier == 'TypeOfCustomer');
+
+        ShipmentTypeAir = JSON.parse(userDetailsResp)["Table3"].filter(t => t.Identifier == 'ShipmentTypeAir');
+        ShipmentTypeRail = JSON.parse(userDetailsResp)["Table3"].filter(t => t.Identifier == 'ShipmentTypeAir');
+
+
+        //Himesh
+
+
+        ShipmentType = JSON.parse(userDetailsResp)["Table3"].filter(t => t.Identifier == 'ShipmentType');
+        ServiceType = JSON.parse(userDetailsResp)["Table3"].filter(t => t.Identifier == 'Service');
+        TransportMode = JSON.parse(userDetailsResp)["Table3"].filter(t => t.Identifier == 'TransportMode');
+        ShipmentTypeAir = JSON.parse(userDetailsResp)["Table3"].filter(t => t.Identifier == 'ShipmentTypeAir');
+        ShipmentTypeRail = JSON.parse(userDetailsResp)["Table3"].filter(t => t.Identifier == 'ShipmentTypeAir');
+        ShipmentTypeRoad = JSON.parse(userDetailsResp)["Table3"].filter(t => t.Identifier == 'ShipmentTypeRoad');
+
+
+
+        reportingUSer = JSON.parse(userDetailsResp)["Table5"];
+        SalesLeadStatus = JSON.parse(userDetailsResp)["Table3"].filter(t => t.Identifier == 'SalesLeadStatus');
+        TypeOfIndustry = JSON.parse(userDetailsResp)["Table3"].filter(t => t.Identifier == 'TypeOfIndustry');
+        TypeOfCustomer = JSON.parse(userDetailsResp)["Table3"].filter(t => t.Identifier == 'TypeOfCustomer');
+
+
+        localStorage.setItem('Activity', JSON.stringify(Activity));
+        localStorage.setItem('ActivityPriority', JSON.stringify(ActivityPriority));
+        localStorage.setItem('CommunicationType', JSON.stringify(CommunicationType));
+        localStorage.setItem('ActivityStatus', JSON.stringify(ActivityStatus));
+        localStorage.setItem('BranchTable', JSON.stringify(BranchTable));
+        localStorage.setItem('ShipmentType', JSON.stringify(ShipmentType));
+        localStorage.setItem('ServiceType', JSON.stringify(ServiceType));
+        localStorage.setItem('TransportMode', JSON.stringify(TransportMode));
+
+
+
+
+        // localStorage.setItem('BranchTable', JSON.stringify(BranchTable));
+        localStorage.setItem('ShipmentType', JSON.stringify(ShipmentType));
+        localStorage.setItem('ServiceType', JSON.stringify(ServiceType));
+        localStorage.setItem('TransportMode', JSON.stringify(TransportMode));
+
+        localStorage.setItem('ShipmentTypeAir', JSON.stringify(ShipmentTypeAir));
+        localStorage.setItem('ShipmentTypeRail', JSON.stringify(ShipmentTypeRail));
+        localStorage.setItem('ShipmentTypeRoad', JSON.stringify(ShipmentTypeRoad));
+
+
+
+        localStorage.setItem('reportingUSer', JSON.stringify(reportingUSer));
+
+        localStorage.setItem('SalesLeadStatus', JSON.stringify(SalesLeadStatus));
+        localStorage.setItem('TypeOfIndustry', JSON.stringify(TypeOfIndustry));
+        localStorage.setItem('TypeOfCustomer', JSON.stringify(TypeOfCustomer));
+
+
+
+      } else {
+
+        this.globalService.store('userDetails', userDetailsResp);
+        console.log('I am from browser');
+        stageOne = userDetailsResp['Table'][0];
+        // tem = userDetailsResp["Table"][0]["ProfileType"];
+        this.globalService.store('ProfileType', userDetailsResp["Table"][0]["ProfileType"]);
+        // this.globalService.store('ReportingTo', userDetailsResp["Table"][0]["ReportingTo"]);
+
+
+
+        Activity = userDetailsResp["Table3"].filter(t => t.Identifier == 'Activity');
+        ActivityPriority = userDetailsResp["Table3"].filter(t => t.Identifier == 'ActivityPriority');
+        CommunicationType = userDetailsResp["Table3"].filter(t => t.Identifier == 'CommunicationType');
+        ActivityStatus = userDetailsResp["Table3"].filter(t => t.Identifier == 'ActivityStatus');
+        BranchTable = userDetailsResp["Table4"];
+
+        //himesh on 07/09
+        if (typeof (userDetailsResp["Table6"][0]) != 'undefined') {
+          this.globalService.defaultMode = userDetailsResp["Table6"][0]["Mode"];
+          this.globalService.defaultService = userDetailsResp["Table6"][0]["Service"];
+          this.globalService.defaultJobType = userDetailsResp["Table6"][0]["JobType"];
+          this.globalService.defaultNoofRecords = userDetailsResp["Table6"][0]["NoofRecordsPrListing"];
+
+        }
+
+        //himesh on 08/09
+        this.globalService.menuItems = userDetailsResp["Table2"];
+        // added on 09/07 to check role action
+        for (let p of this.globalService.menuItems) {
+          if (p.MenuName == 'Sales Activity') {
+            localStorage.setItem('dashSales', '1');
+            if (p.View == '1') {
+              this.globalService.viewSales == '1';
+              localStorage.setItem('viewSales', '1');
+            } else {
+              this.globalService.viewSales == '0';
+              localStorage.setItem('viewSales', '0');
+            }
+            if (p.Update == '1') {
+              this.globalService.editSales == '1';
+              localStorage.setItem('editSales', '1');
+            } else {
+              this.globalService.editSales == '0';
+              localStorage.setItem('editSales', '0');
+            }
+            if (p.Create == '1') {
+              this.globalService.createSales == '1';
+              localStorage.setItem('createSales', '1');
+            } else {
+              this.globalService.createSales == '0';
+              localStorage.setItem('createSales', '0');
+            }
+          }
+
+          if (p.MenuName == 'Sales Lead-Customer') {
+            localStorage.setItem('dashLead', '1');
+            if (p.View == '1') {
+              this.globalService.viewLead == '1';
+              localStorage.setItem('viewLead', '1');
+            } else {
+              this.globalService.viewLead == '0';
+              localStorage.setItem('viewLead', '0');
+            }
+            if (p.Update == '1') {
+              this.globalService.editLead == '1';
+              localStorage.setItem('editLead', '1');
+            } else {
+              this.globalService.editLead == '0';
+              localStorage.setItem('editLead', '0');
+            }
+            if (p.Create == '1') {
+              this.globalService.createLead == '1';
+              localStorage.setItem('createLead', '1');
+            } else {
+              this.globalService.createLead == '0';
+              localStorage.setItem('createLead', '0');
+            }
+          }
+
+          if (p.MenuName == 'Update Job Milestone') {
+            localStorage.setItem('dashMilestone', '1');
+            if (p.View == '1') {
+              this.globalService.viewMilestone == '1';
+              localStorage.setItem('viewMilestone', '1');
+            } else {
+              this.globalService.viewMilestone == '0';
+              localStorage.setItem('viewMilestone', '0');
+            }
+            if (p.Update == '1') {
+              this.globalService.editMilestone == '1';
+              localStorage.setItem('editMilestone', '1');
+            } else {
+              this.globalService.editMilestone == '0';
+              localStorage.setItem('editMilestone', '0');
+            }
+            if (p.Create == '1') {
+              this.globalService.createMilestone == '1';
+              localStorage.setItem('createMilestone', '1');
+            } else {
+              this.globalService.createMilestone == '0';
+              localStorage.setItem('createMilestone', '0');
+            }
+          }
+
+          if (p.MenuName == 'View Reporting User Activity') {
+            localStorage.setItem('dashReportingUser', '1');
+          }
+
+          if (p.MenuName == 'Shipment Status') {
+            localStorage.setItem('dashShipStatus', '1');
+          }
+          if (p.MenuName == 'Shipment Invoice') {
+            localStorage.setItem('dashShipInvoice', '1');
+          }
+        }
+
+        console.log('check milestone: ', localStorage.getItem('viewSales'));
+        console.log('check again milestone: ', this.globalService.viewSales);
+
+        // this.globalService.defaultMode = userDetailsResp["Table6"][0]["Mode"];
+
+        console.log('***** check default mode *****: ', this.globalService.defaultMode);
+
+        for (var i = 0; i < BranchTable.length; i++) {
+          if (BranchTable[i].IsDefault == '1') {
+            this.globalService.globalDefaultBranchCode = BranchTable[i].BranchCode;
+            //alert(this.globalService.globalDefaultBranchCode)
+          }
+        }
+
+        ShipmentType = userDetailsResp["Table3"].filter(t => t.Identifier == 'ShipmentType');
+        ServiceType = userDetailsResp["Table3"].filter(t => t.Identifier == 'Service');
+        TransportMode = userDetailsResp["Table3"].filter(t => t.Identifier == 'TransportMode');
+        //Himesh
+        ShipmentType = userDetailsResp["Table3"].filter(t => t.Identifier == 'ShipmentType');
+        ServiceType = userDetailsResp["Table3"].filter(t => t.Identifier == 'Service');
+        TransportMode = userDetailsResp["Table3"].filter(t => t.Identifier == 'TransportMode');
+        TypeOfCustomer = userDetailsResp["Table3"].filter(t => t.Identifier == 'TypeOfCustomer');
+        ShipmentTypeAir = userDetailsResp["Table3"].filter(t => t.Identifier == 'ShipmentTypeAir');
+        ShipmentTypeRail = userDetailsResp["Table3"].filter(t => t.Identifier == 'ShipmentTypeRail');
+        ShipmentTypeRoad = userDetailsResp["Table3"].filter(t => t.Identifier == 'ShipmentTypeRoad');
+
+        reportingUSer = userDetailsResp["Table5"];
+        SalesLeadStatus = userDetailsResp["Table3"].filter(t => t.Identifier == 'SalesLeadStatus');
+        TypeOfIndustry = userDetailsResp["Table3"].filter(t => t.Identifier == 'TypeOfIndustry');
+        TypeOfIndustry = userDetailsResp["Table3"].filter(t => t.Identifier == 'TypeOfIndustry');
+
+        localStorage.setItem('Activity', JSON.stringify(Activity));
+        localStorage.setItem('ActivityPriority', JSON.stringify(ActivityPriority));
+        localStorage.setItem('CommunicationType', JSON.stringify(CommunicationType));
+        localStorage.setItem('ActivityStatus', JSON.stringify(ActivityStatus));
+        localStorage.setItem('BranchTable', JSON.stringify(BranchTable));
+        localStorage.setItem('ShipmentType', JSON.stringify(ShipmentType));
+        localStorage.setItem('ServiceType', JSON.stringify(ServiceType));
+        localStorage.setItem('TransportMode', JSON.stringify(TransportMode));
+
+        //Himesh
+
+        localStorage.setItem('ShipmentType', JSON.stringify(ShipmentType));
+        localStorage.setItem('ServiceType', JSON.stringify(ServiceType));
+        localStorage.setItem('TransportMode', JSON.stringify(TransportMode));
+        localStorage.setItem('ShipmentTypeAir', JSON.stringify(ShipmentTypeAir));
+        localStorage.setItem('ShipmentTypeRail', JSON.stringify(ShipmentTypeRail));
+        localStorage.setItem('ShipmentTypeRoad', JSON.stringify(ShipmentTypeRoad));
+
+
+
+        localStorage.setItem('SalesLeadStatus', JSON.stringify(SalesLeadStatus));
+        localStorage.setItem('TypeOfIndustry', JSON.stringify(TypeOfIndustry));
+        // localStorage.setItem('TypeOfIndustry', JSON.stringify(TypeOfIndustry));
+        localStorage.setItem('reportingUSer', JSON.stringify(reportingUSer));
+
+        localStorage.setItem('TypeOfCustomer', JSON.stringify(TypeOfCustomer));
+
+
+      }
+      console.log('check userdetails2', stageOne.UserId);
+      localStorage.setItem('userId', stageOne.UserId);
+      localStorage.setItem('profileType', stageOne.ProfileType);
+      localStorage.setItem('reportingTo', stageOne.ReportingTo);
+      console.log('what profile: ', localStorage.getItem('profileType'));
+      console.log('Is Reporting to: ', localStorage.getItem('reportingTo'));
+      this.profileType = localStorage.getItem('profileType');
+
+
+      console.log('checking from local', localStorage.getItem('userId'));
+      this.globalService.publishEventwithData('app:userDetails', userDetailsResp);
+      this.globalService.publishEventwithData('login:sessionExpired', 5000000);
+      // below is new for dynamic side menu
+      this.events.publish('user:created', this.profileType, Date.now());
+
+      this.globalService.setRootPage(DashboardPage); // here junaid's customerdashboard was there
+
     }, (err) => {
       console.log('error Login ', err);
     });
@@ -303,101 +807,33 @@ export class LoginPage {
   }
 
 
+  RegisterNowButton() {
 
 
-  // VendorMasterSaveHHT() {
+    this.signUpVarList.UserID = 'BLL';
+    this.signUpVarList.Password = 'A1@add';
+    this.signUpVarList.IdentityCode = 'BLL';
 
-  //   debugger
+    this.baseUrlProvider.setBaseURL('BLL').then((msg) => {
+      console.log('check msg from login()', msg);
+      // if (msg != null && msg != '') {
+      // console.log('response to check 1');
+      this.http.POST(Constants.Corvi_Services.RegisterNowButton, this.signUpVarList).then((response: any) => {
+        console.log('response to check login method: ', response);
+        this.statusForcheck = response;
+        this.finalStatus = this.statusForcheck.replace(/^"|"$/g, '');
+      }, (err) => {
+        console.log('error Login ', err);
+       
+      });
+      // }
+      // else {
+      //   this.globalService.showAlert('Invalid Customer Identity Code')
+      // }
 
+    }); // this.baseUrlProvider ends
 
-  //   var now = new Date();
-  //   var utcString = now.toISOString().substring(0, 19);
-  //   var year = now.getFullYear();
-  //   var month = now.getMonth() + 1;
-  //   var day = now.getDate();
-  //   var hour = now.getHours();
-  //   var minute = now.getMinutes();
-  //   var second = now.getSeconds();
-  //   var localDatetime = year + "-" +
-  //     (month < 10 ? "0" + month.toString() : month) + "-" +
-  //     (day < 10 ? "0" + day.toString() : day) + " " +
-  //     (hour < 10 ? "0" + hour.toString() : hour) + ":" +
-  //     (minute < 10 ? "0" + minute.toString() : minute) +
-  //     utcString.substring(16, 19);
+  }
 
-  //   // if (this.startDate == '') {
-  //   //   this.toastService.show('Please select Start Date.', 3000, true, 'top', 'toast-container');
-  //   //   //this.startDate.focus();
-  //   //   return;
-  //   // }
-
-  //   // if (this.endtDate == '') {
-  //   //   this.toastService.show('Please select End Date.', 3000, true, 'top', 'toast-container');
-  //   //  // this.startDate.focus();
-  //   //   return;
-  //   // }
-
-  //   // var a = Date.parse(this.startDate);
-  //   // var b = Date.parse(this.endtDate);
-
-  //   // if (b < a) {
-  //   //   this.toastService.show('End Time should be greater than Start Time.', 3000, true, 'top', 'toast-container')
-  //   //   return;
-  //   // } else if (b == a) {
-  //   //   this.toastService.show('End Time should be greater than Start Time.', 3000, true, 'top', 'toast-container')
-  //   //   return;
-  //   // }
-
-  //   // this.saveCustomer.VendorId = '0';
-  //   // this.saveCustomer.VendorName = 'comp'
-  //   // this.saveCustomer.VendorType = "Lead Customer"
-  //   // this.saveCustomer.AddressLine1 = "test";
-  //   // this.saveCustomer.AddressLine2 = ''
-  //   // this.saveCustomer.AddressLine3 = ''
-  //   // this.saveCustomer.ContactEmail = ''
-  //   // this.saveCustomer.FirstName = ''
-  //   // this.saveCustomer.LastName = ''
-  //   // this.saveCustomer.Designation = ''
-  //   // this.saveCustomer.Location = '11217'
-  //   // this.saveCustomer.MobileNo = ''
-  //   // this.saveCustomer.PinCode = ''
-  //   // this.saveCustomer.Status = '1'
-  //   // this.saveCustomer.TypeOfCustomer ='1'
-  //   // this.saveCustomer.TypeofIndustry = '1'
-  //   // this.saveCustomer.UserId = '1'
-  //   // this.saveCustomer.ClientDate = localDatetime;
-  //   // this.saveCustomer.BranchCode = 'CCU'
-
-
-
-
-
-  //   this.http.POST(Constants.Corvi_Services.VendorMasterSaveForHHT, this.saveCustomer).then((response) => {
-
-  //     console.log('response to check login method: ', response);
-  //     debugger
-  //     if (response != '') {
-  //       // localStorage.removeItem('login_resp');
-  //       // localStorage.removeItem('userDetails');
-  //       this.toastService.show(response, 3000, true, 'top', 'toast-success');
-  //     }
-
-
-  //     // this.globalService.store('login_resp', response);
-
-  //   }, (err) => {
-  //     console.log('error Login ', err);
-  //     console.log('response to check service link: ', Constants.Corvi_Services.Login);
-  //   });
-  //   // }
-  //   // else {
-  //   //   this.globalService.showAlert('Invalid Customer Identity Code')
-  //   // }
-
-  //   // });
-
-
-
-  // }
 
 }

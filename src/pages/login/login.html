@@ -1,9 +1,9 @@
 <!-- -->
-<ion-header no-border>
+<ion-header no-border style="margin-bottom: 100px;">
   <ion-grid class="gridDesign">
     <ion-row>
       <ion-col col-6>
-        <div padding-horizontal class="animated fadeInDown">
+        <div padding-horizontal class="animated fadeInDown ">
           <div class="logoLeft">
             <img class="imgLeft" src="../assets/img/Corvi_Logo.png">
           </div>
@@ -20,93 +20,101 @@
   </ion-grid>
 
 </ion-header>
-<ion-content padding class="animated fadeIn login">
-  <div class="login-content">
-    <!-- Login form -->
-    <!-- <form [formGroup]="authForm" class="list-form" > -->
-    <form #f="ngForm" class="list-form">
-      <div class="contaier-login">
+<ion-content padding class="animated fadeInDown login">
+  <!-- <div class="login-content ShadowBox13" center> -->
+  <!-- Login form -->
+  <!-- <form [formGroup]="authForm" class="list-form" > -->
+  <form #f="ngForm" class="list-form ShadowBox13">
+    <!-- <div class="contaier-login"> -->
 
-        <ion-row>
-          <ion-col>
+    <ion-row>
+      <ion-col>
 
-            <h3 style="text-align: center;">Sign in to your account</h3>
+        <h3 style="text-align: center;">Sign in to your account</h3>
 
-          </ion-col>
-        </ion-row>
-        <ion-item>
-          <ion-label stacked>
-            <!-- <ion-icon name="person" item-start class="text-primary"></ion-icon> -->
-            Enter Username
-          </ion-label>
-          <ion-input type="text" [(ngModel)]="user.UserId" #nameCtrl="ngModel" name="userId" required></ion-input>
-        </ion-item>
-        <div class="errorbox" style="color:tomato" *ngIf="!nameCtrl.valid && nameCtrl.touched">required</div>
-        <!-- <ion-item *ngIf="!nameCtrl.valid && nameCtrl.touched">
+      </ion-col>
+    </ion-row>
+    <ion-item>
+      <ion-label stacked>
+        <!-- <ion-icon name="person" item-start class="text-primary"></ion-icon> -->
+        Enter Username
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="user.UserId" #nameCtrl="ngModel" name="userId" required></ion-input>
+    </ion-item>
+    <!-- <div class="errorbox" style="color:tomato" *ngIf="!nameCtrl.valid && nameCtrl.touched">required</div> -->
+    <!-- <ion-item *ngIf="!nameCtrl.valid && nameCtrl.touched">
             <ion-label color="danger">Name is required</ion-label>
           </ion-item>
            -->
 
-        <ion-item>
-          <ion-label stacked>
-            Enter Password
-          </ion-label>
-          <ion-input type="{{type}}" [(ngModel)]="user.Password" #passwordCtrl="ngModel" name="password" required>
-          </ion-input>
-          <button *ngIf="!showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()">
-            <ion-icon name="ios-eye-off-outline"></ion-icon>
-          </button>
-          <button *ngIf="showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()">
-            <ion-icon name="ios-eye-outline"></ion-icon>
-          </button>
-          <!-- <ion-input name="p2" type="password" *ngIf="!showPwd" [(ngModel)]="user.Password" required></ion-input> -->
-          <!-- <button icon-only ion-button clear type="button" item-right (click)="showPwd=!showPwd">
+    <ion-item>
+      <ion-label stacked>
+        Enter Password
+      </ion-label>
+      <ion-input type="{{type}}" [(ngModel)]="user.Password" #passwordCtrl="ngModel" name="password" required>
+      </ion-input>
+      <button *ngIf="!showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()">
+        <ion-icon name="ios-eye-off-outline"></ion-icon>
+      </button>
+      <button *ngIf="showPass" ion-button clear color="dark" type="button" item-right (click)="showPassword()">
+        <ion-icon name="ios-eye-outline"></ion-icon>
+      </button>
+      <!-- <ion-input name="p2" type="password" *ngIf="!showPwd" [(ngModel)]="user.Password" required></ion-input> -->
+      <!-- <button icon-only ion-button clear type="button" item-right (click)="showPwd=!showPwd">
             <ion-icon *ngIf="showPwd" name="eye"></ion-icon>
             <ion-icon *ngIf="!showPwd" name="eye-off"></ion-icon>
           </button> -->
-        </ion-item>
-        <div class="errorbox" style="color:tomato" *ngIf="!passwordCtrl.valid && passwordCtrl.touched">required</div>
-        <!-- <ion-item *ngIf="!passwordCtrl.valid && passwordCtrl.touched">
+    </ion-item>
+    <!-- <div class="errorbox" style="color:tomato" *ngIf="!passwordCtrl.valid && passwordCtrl.touched">required</div> -->
+    <!-- <ion-item *ngIf="!passwordCtrl.valid && passwordCtrl.touched">
             <ion-label color="danger">Password is required</ion-label>
           </ion-item> -->
 
-        <ion-item>
-          <!-- *ngIf="showCustIdCode" -->
-          <ion-label stacked>
-            Enter Customer Identity Code
-          </ion-label>
-          <ion-input type="text"  [(ngModel)]="customerCode" #codeCtrl="ngModel" name="customerCode" required>
-          </ion-input>
-        </ion-item>
-        <div class="errorbox" style="color:tomato" *ngIf="!codeCtrl.valid && codeCtrl.touched">required</div>
-        <!-- <ion-item *ngIf="!codeCtrl.valid && codeCtrl.touched">
+    <ion-item>
+      <!-- *ngIf="showCustIdCode" -->
+      <ion-label stacked>
+        Enter Customer Identity Code
+      </ion-label>
+      <ion-input type="text" [(ngModel)]="user.IdentityCode" #codeCtrl="ngModel" name="customerCode" required>
+      </ion-input>
+    </ion-item>
+    <!-- <div class="errorbox" style="color:tomato" *ngIf="!codeCtrl.valid && codeCtrl.touched">required</div> -->
+    <!-- <ion-item *ngIf="!codeCtrl.valid && codeCtrl.touched">
             <ion-label color="danger">code is required</ion-label>
           </ion-item> -->
 
-        <br />
-        <ion-row>
-          <ion-checkbox name='remember' [(ngModel)]="isRemembered" style="margin-top: 13px;"></ion-checkbox>&nbsp;&nbsp;
-          <ion-label id="checkboxRemember" color="secondary">Remember Me</ion-label>
-          <p text-right ion-text color="secondary" tappable (click)="forgotPwd()">
-            <strong>Forgot Password?</strong>
-          </p>
+    <br />
+    <ion-row>
+      <ion-checkbox checked name='remember' [(ngModel)]="isRemembered" style="margin-top: 13px;"></ion-checkbox>
+      &nbsp;&nbsp;
+      <ion-label id="checkboxRemember" color="secondary">Remember Me</ion-label>
+      <p text-right ion-text color="secondary" tappable (click)="forgotPwd()">
+        <strong>Forgot Password?</strong>
+      </p>
 
-        </ion-row>
-        <br />
-        <div>
-          <button style="border-radius: 10px;" ion-button block color="primary" tappable [disabled]="!f.valid"
-            (click)="logIn()">
-            <!-- <ion-icon name="log-in"></ion-icon> -->
-            Sign In
-          </button>
+    </ion-row>
+    <ion-row>
+      <ion-col>
 
-        </div>
+        <a style="text-align: right;" *ngIf="finalStatus == 1" (click)="signUp();">Don't have an account yet?  Sign Up here</a>
 
-      </div>
-    </form>
-  </div>
+      </ion-col>
+    </ion-row>
+    <br />
+    <div>
+      <button style="border-radius: 10px;" ion-button block color="primary" tappable [disabled]="!f.valid"
+        (click)="logIn()">
+        <!-- <ion-icon name="log-in"></ion-icon> -->
+        Sign In
+      </button>
 
-  <div class="addOns">
+    </div>
+
+    <!-- </div> -->
+  </form>
+  <!-- </div> -->
+
+  <!-- <div class="addOns">
     <div class="addOnsText">
       <h4>Additional Services</h4>
     </div>
@@ -114,19 +122,19 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <div class="container">
+          <div class="container" style="opacity: 0.2">
             <img src="../assets/img/moreservices.png">
             <h6>More Services</h6>
           </div>
         </ion-col>
         <ion-col>
-          <div class="container">
+          <div class="container" (click)="openContactModal()">
             <img src="../assets/img/contactus.png">
             <h6>Contact Us</h6>
           </div>
         </ion-col>
         <ion-col>
-          <div class="container">
+          <div class="container" (click)="openSupport()">
             <img src="../assets/img/monitor_support.png">
             <h6>24 x 7 Support</h6>
           </div>
@@ -135,20 +143,89 @@
     </ion-grid>
 
 
-  </div>
+  </div> -->
 
 </ion-content>
-
 <ion-footer>
-  <div class="bar bar-footer">
+
+  <ion-row style="background-color: #1f63a6;padding-bottom: 10px">
+
+    <ion-col col-12 style="color: white;">
+      <span>Additional Services</span>
+    </ion-col>
+
+
+    <ion-col col-4>
+      <div class="container" style="opacity: 0.2">
+        <img src="../assets/img/moreservices.png">
+        <span>More Services</span>
+      </div>
+    </ion-col>
+    <ion-col col-4>
+      <div class="container" (click)="openContactModal()">
+        <img src="../assets/img/contactus.png">
+        <span>Contact Us</span>
+      </div>
+    </ion-col>
+    <ion-col col-4>
+      <div class="container" (click)="openSupport()">
+        <img src="../assets/img/monitor_support.png">
+        <span>24 x 7 Support</span>
+      </div>
+    </ion-col>
+  </ion-row>
+  <div class="bar bar-footer" center text-center>
+    <!-- <ion-row>
+      <ion-col col-4></ion-col>
+      <ion-col col-4>
+        <div class="inner footer-col-color">
+          <img src="assets/img/kale_power.png" class="center-footer-img">
+        </div>
+
+      </ion-col>
+      <ion-col col-2></ion-col>
+    </ion-row> -->
     <ion-row>
-      <ion-col col-6>
-        <h6 style="text-align: center;" class="title">Terms and conditions</h6>
+      <ion-col col-6 style="color:lightgray;">
+        <em style="text-align: center;" class="title">Terms and conditions</em>
       </ion-col>
 
-      <ion-col col-6>
-        <h6 style="text-align: center;" class="title">Privacy Policy</h6>
+      <ion-col col-6 style="color: lightgray;">
+        <em style="text-align: center;" class="title">Privacy Policy</em>
       </ion-col>
     </ion-row>
   </div>
 </ion-footer>
+<!-- <ion-footer>
+  <ion-row style="background-color: #1f63a6;">
+    <ion-col>
+      <div class="container" style="opacity: 0.2">
+        <img src="../assets/img/moreservices.png">
+        <span>More Services</span>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="container" (click)="openContactModal()">
+        <img src="../assets/img/contactus.png">
+        <span>Contact Us</span>
+      </div>
+    </ion-col>
+    <ion-col>
+      <div class="container" (click)="openSupport()">
+        <img src="../assets/img/monitor_support.png">
+        <span>24 x 7 Support</span>
+      </div>
+    </ion-col>
+  </ion-row>
+  <div class="bar bar-footer" center text-center>
+    <ion-row>
+      <ion-col col-6 style="color: black;">
+        <em style="text-align: center;" class="title">Terms and conditions</em>
+      </ion-col>
+
+      <ion-col col-6 style="color: black;">
+        <em style="text-align: center;" class="title">Privacy Policy</em>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-footer> -->

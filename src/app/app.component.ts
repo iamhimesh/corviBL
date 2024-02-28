@@ -7,7 +7,7 @@
 */
 import { AppState } from './app.global';
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, MenuController, App, Events } from 'ionic-angular';
+import { Nav, Platform, MenuController, App, Events, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Subject } from 'rxjs/Subject';
@@ -35,7 +35,9 @@ export class CorviApp {
   chosenPicture: any;
   hidePopups: boolean;
   appVersion: String;
-  
+
+  profileType;
+
   constructor(
     public platform: Platform,
     public statusBar: StatusBar,
@@ -46,12 +48,36 @@ export class CorviApp {
     public globalService: GlobalProvider,
     public networkProvider: NetworkProvider,
     public events: Events,
-    public pushNotification: PushNotificationProvider
+    public pushNotification: PushNotificationProvider,
+    public alertCtrl: AlertController
   ) {
+    this.events.subscribe('user:created', (profile,time) =>{
+      console.log('Welcome', profile, 'at', time);
+      this.profileType = profile
+      if(this.profileType == 1){
+        // this.pages = Constants.MENU_PAGES_ARRAY;
+        this.pages = this.globalService.menuItems;
+      }
+      if(this.profileType == 2){
+        // this.pages = Constants.MENU_PAGES_ARRAY_CUST;
+        this.pages = this.globalService.menuItems;
+      }
+      if(this.profileType == 3){
+        this.pages = Constants.MENU_PAGES_ARRAY_MANAGER;
+      }
+    })
     // App Initialisation
     this.initializeApp();
+    console.log('from app component: ',localStorage.getItem('profileType'));
     // Stores JSON Array of Pages for Init.
-    this.pages = Constants.MENU_PAGES_ARRAY;
+    if(this.profileType == 1){
+      // this.pages = Constants.MENU_PAGES_ARRAY;
+      this.pages = this.globalService.menuItems;
+    }
+    if(this.profileType == 2){
+      this.pages = Constants.MENU_PAGES_ARRAY_CUST;
+    }
+
     this.activePage.subscribe((selectedPage: any) => {
       this.pages.map(page => {
         page.active = page.title === selectedPage.title;
@@ -70,7 +96,7 @@ export class CorviApp {
       this.splashscreen.hide();
       this.menuCtrl.enable(false, 'right');
       //Menu Changes based on the platform
-      this.platform.is('android') ? this.changeMenu(Constants.MENU.MATERIAL) : this.platform.is('ios') ? this.changeMenu(Constants.MENU.AVATAR) : this.changeMenu(Constants.MENU.MATERIAL);
+      this.platform.is('android') ? this.changeMenu(Constants.MENU.MATERIAL) : this.platform.is('ios') ? this.changeMenu(Constants.MENU.MATERIAL) : this.changeMenu(Constants.MENU.MATERIAL);
       this.menuCtrl.swipeEnable(false);
       this.networkEventInit();                                            // Network Initialistaion
       this.handleLogout();                                                // Event to be received after Logout
@@ -81,7 +107,8 @@ export class CorviApp {
     });
 
     // handle back button event
-    this.handleBackEvent();
+    // this.handleBackEvent();
+    this.handleBackEvent2();
   }
 
   openPage(page) {
@@ -117,6 +144,39 @@ export class CorviApp {
     }, 0);
   }
 
+  handleBackEvent2(){
+    this.platform.registerBackButtonAction(() => {
+      // Catches the active view
+      let nav = this.app.getActiveNavs()[0];
+      let activeView = nav.getActive();                
+      // Checks if can go back before show up the alert
+      if(activeView.name === 'HomePage') {
+          if (nav.canGoBack()){
+              nav.pop();
+          } else {
+              const alert = this.alertCtrl.create({
+                  title: 'Close the App',
+                  message: 'Are you sure?',
+                  buttons: [{
+                      text: 'Cancel',
+                      role: 'cancel',
+                      handler: () => {
+                        console.log('** App Exit cancelled! **');
+                      }
+                  },{
+                      text: 'Yes',
+                      handler: () => {
+                        this.Logout();
+                        this.platform.exitApp();
+                      }
+                  }]
+              });
+              alert.present();
+          }
+      }
+    });
+  }
+
   networkEventInit() {
     // Network Events
     this.networkProvider.initializeNetworkEvents();
@@ -134,7 +194,7 @@ export class CorviApp {
 
   Logout() {
     this.globalService.confirmlogOut();
-  } 
+  }
 
 
   recieveUserDetailsEvent() {
@@ -150,6 +210,18 @@ export class CorviApp {
   setUserName(data) {
     let UserName = data.Table[0].LoginName
     this.UserName = (UserName != undefined || UserName != '' || UserName != null) ? UserName : '';
+
+    let emailID = data.Table[0].Email;
+    this.globalService.defaultEmailId = (emailID != undefined || emailID != '' || emailID != null) ? emailID : '';
+
+    this.globalService.defaultUsername = (UserName != undefined || UserName != '' || UserName != null) ? UserName : '';
+
+    
+    // this.globalService.defaultMode = data.Table[6].Mode;
+    // this.globalService.defaultService = data.Table[6].Service;
+    // this.globalService.defaultJobType = data.Table[6].JobType;
+
+    // console.log('***** check default mode *****: ', this.globalService.defaultMode);
   }
 
   setSessionExpired() {

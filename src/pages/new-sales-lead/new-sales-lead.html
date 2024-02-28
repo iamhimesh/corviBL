@@ -25,7 +25,7 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-row padding class="ShadowBox13">
+    <ion-row padding class="ShadowBox13" style='margin-top:10px;'>
       <ion-col col-12>
         <label>
           Branch
@@ -35,7 +35,7 @@
       <ion-col col-12>
         <select id="ddlBrach" name="ddlBrach" [(ngModel)]="branchCode" (change)="getSelectedOptionText()" col-12
           placeholder="">
-          <option [value]="0" disabled selected>Select</option>
+          <!-- <option [value]="0" disabled selected>Select</option> -->
           <option *ngFor="let brData of BranchTbl" [value]="brData.BranchCode">{{brData.branch}}</option>
 
         </select>
@@ -63,8 +63,8 @@
       </ion-col>
       <ion-col col-12>
         <select col-12 placeholder="" [(ngModel)]="status">
-          <option [value]="5" disabled selected>Yet to start</option>
-          <option *ngFor="let acData of filterActivityStatus" [value]="1">{{acData.Description}}</option>
+          <!-- <option [value]="5" disabled selected>Yet to start</option> -->
+          <option *ngFor="let acData of filterActivityStatus" [value]="acData.KeyValue">{{acData.Description}}</option>
 
         </select>
       </ion-col>
@@ -77,8 +77,8 @@
       </ion-col>
       <ion-col col-12>
         <select col-12 placeholder="" [(ngModel)]="typeOfIndus">
-          <option [value]="5" disabled selected>Yet to start</option>
-          <option *ngFor="let acData of filterTypesOFIndus" [value]="1">{{acData.Description}}</option>
+          <!-- <option [value]="5" disabled selected>Yet to start</option> -->
+          <option *ngFor="let acData of filterTypesOFIndus" [value]="acData.KeyValue">{{acData.Description}}</option>
 
         </select>
       </ion-col>
@@ -91,8 +91,8 @@
       </ion-col>
       <ion-col col-12>
         <select col-12 placeholder="" [(ngModel)]="typeOfCust">
-          <option [value]="5" disabled selected>Yet to start</option>
-          <option *ngFor="let acData of filterTypeOFCustomer" [value]="1">{{acData.Description}}</option>
+          <!-- <option [value]="5" disabled selected>Yet to start</option> -->
+          <option *ngFor="let acData of filterTypeOFCustomer" [value]="acData.KeyValue">{{acData.Description}}</option>
 
         </select>
       </ion-col>
@@ -105,7 +105,7 @@
         <font color="red" class="margin12">*</font>
       </ion-col>
       <ion-col col-10>
-        <input disabled maxlength="100" type="text" [(ngModel)]="location" col-12 placeholder="">
+        <input  maxlength="100" type="text" [(ngModel)]="location" col-12 placeholder="">
       </ion-col>
       <ion-col col-2>
         <button ion-fab class="ion-fab34" (click)="openModal();">
@@ -186,7 +186,7 @@
         </select>
       </ion-col>
       <ion-col col-10>
-        <input maxlength="50" type="text" [(ngModel)]="mobileno" col-12 placeholder="">
+        <input maxlength="10" pattern="\d*" (change)='IsMobileNumber($event.target.value)' type="text" [(ngModel)]="mobileno" col-12 placeholder="">
       </ion-col>
 
 
@@ -197,7 +197,7 @@
       </ion-col>
       <ion-col col-12>
         <input maxlength="100" type="email" [(ngModel)]="contactemail" col-12 placeholder=""
-          pattern="[A-Za-z0-9._%+-]{3,}@[a-zA-Z]{3,}([.]{1}[a-zA-Z]{2,}|[.]{1}[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,})">
+        (change)='validateEmail($event.target.value)'>
       </ion-col>
 
 
@@ -207,12 +207,12 @@
   </ion-list>
 </ion-content>
 <ion-footer class="ion-footer">
-  <ion-row padding class="ShadowBox13">
+  <ion-row padding class="">
     <ion-col col-12>
       <span style="color: red;">(*) Marks field are mandatory to fill up</span>
     </ion-col>
     <ion-col col-6>
-      <button ion-button block class="btnRadius btncancel" (click)="backToDashboard();">
+      <button ion-button round outline class="btncancel" (click)="backToDashboard();">
         <ion-icon></ion-icon>
         Cancel
       </button>

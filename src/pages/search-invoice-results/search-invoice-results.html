@@ -1,0 +1,98 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title style="margin-left: 17%">
+      {{title}}
+    </ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only menuToggle style="color: #1069ad;">
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-row>
+    <ion-col col-12>
+      <label>Search Result: {{countOfRec}} record found</label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ShadowBox13" *ngFor="let shipData of fetchedData; let i = index;">
+    <ion-card>
+      <ion-item>
+        <!-- <div class="column">
+          <label>
+            <span>&#9992;</span>&nbsp;&nbsp;
+            <ion-icon name="create"></ion-icon>&nbsp;&nbsp;&nbsp;
+            <label for="">{{shipData.InvoiceDate }}</label>
+          </label>
+        </div> -->
+
+        <div class="column" *ngIf="shipData.Service == 'Import'">
+          <label>
+            <ion-icon *ngIf="shipData.Mode == 'AIR'" name="plane"></ion-icon>
+            <ion-icon *ngIf="shipData.Mode == 'OCEAN'" name="boat"></ion-icon>&nbsp;&nbsp;
+            <ion-icon name="create"></ion-icon>&nbsp;&nbsp;
+
+            <!-- <img src="assets/img/flight.png" *ngIf="shipData.Mode == 'AIR'" class="">
+            <img src="assets/img/boat-with-containers.png" *ngIf="shipData.Mode == 'OCEAN'" class="">&nbsp;&nbsp;
+            <img src="assets/img/import.png"  class="">&nbsp;&nbsp; -->
+            <label for="">{{shipData.InvoiceDate }}</label>
+          </label>
+        </div>
+
+        <div class="columnBlue" *ngIf="shipData.Service == 'Export'">
+          <label>
+            <ion-icon *ngIf="shipData.Mode == 'AIR'" name="plane"></ion-icon>
+            <ion-icon *ngIf="shipData.Mode == 'OCEAN'" name="boat"></ion-icon>&nbsp;&nbsp;
+            <ion-icon name="create"></ion-icon>&nbsp;&nbsp;
+
+            <!-- <img src="assets/img/flight.png" *ngIf="shipData.Mode == 'AIR'" class="">
+            <img src="assets/img/boat-with-containers.png" *ngIf="shipData.Mode == 'OCEAN'" class="">&nbsp;&nbsp;
+            <img src="assets/img/export.png"  class="">&nbsp;&nbsp; -->
+            <label for="">{{shipData.InvoiceDate }}</label>
+          </label>
+        </div>
+
+        <div class="column1">
+          <h4>
+            {{shipData.MasterNo}}
+          </h4>
+        </div>
+      </ion-item>
+
+      <ion-card-content>
+        <div class="column2">
+          <label style="color: #0461AA;font-size: 16px;"><b> {{shipData.InvoiceNo}}</b></label><br>
+          <ion-row>
+            <ion-col>
+              <label class="labelFont"><b>INVOICE AMT.:</b></label><br />
+              <label class="labelFont">{{shipData.Amount}} </label><br />
+            </ion-col>
+            <ion-col>
+              <label class="labelFont"><b>JOB NO.:</b></label><br />
+              <label class="labelFont">{{shipData.JobNo}} </label><br />
+            </ion-col>
+            <ion-col col-1>
+              <div class="divW">
+                <ion-icon name="custom-dots" (click)="openPopOver($event,shipData)"> </ion-icon>
+              </div>
+            </ion-col>
+          </ion-row>
+
+          <label class="labelFont">POL / POD :</label>
+          <label class="labelFont">{{shipData.POL}} / {{shipData.POD}} </label>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </ion-row>
+
+</ion-content>
+<ion-footer class="ion-footer">
+  <div class="label-white toolbar-background-md" center text-center style="background-color: #1069ad;color: #fff;">
+    © Kale Logistics Solutions Private Limited. {{appBuildConfig.fullYear}} Version {{appBuildConfig.version}}
+  </div>
+</ion-footer>

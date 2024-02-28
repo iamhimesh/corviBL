@@ -20,7 +20,7 @@ export class WelcomeuserPage {
   title: string;
   @ViewChild('mySlider') slides: Slides;
   UserDetails: any = [];
-  BranchTbl: any= [];
+  BranchTbl: any = [];
   public next() {
     this.slides.slideNext();
   }
@@ -33,12 +33,12 @@ export class WelcomeuserPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public globalService: GlobalProvider,) {
     this.title = "Welcome, CORVI User";
 
-    this.UserDetails = this.globalService.get('userDetails');
+    this.BranchTbl = this.globalService.get('ProfileType');
 
-    this.BranchTbl = this.UserDetails[Object.keys(this.UserDetails)[1]]["Table"];
+    // this.BranchTbl = this.UserDetails[Object.keys(this.UserDetails)[1]]["Table"];
   }
   skip() {
-    if (this.BranchTbl[0]["ProfileType"] == '2') {
+    if (this.BranchTbl.__zone_symbol__value == '2') {
 
       this.globalService.setRootPage(CustomerDashboardPage);
     } else {

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { IonicPage, NavController, NavParams, MenuController, ModalController, ToastController, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, ModalController, ToastController, ViewController, AlertController } from 'ionic-angular';
 import { Constants } from '../../constants';
 import { GlobalProvider } from '../../providers/global/global';
 import { HttpServiceProvider } from '../../providers/http-service/http-service';
@@ -52,7 +52,7 @@ export class NewSalesLeadPage {
   appBuildConfig: any;
   UserDetails: any = [];
   BranchTbl: any = [];
-  branchCode: any = '0';
+  branchCode: any;
   ActivityTbl: any = [];
   filterActivityStatus: any;
   filterTypesOFIndus: any;
@@ -80,6 +80,7 @@ export class NewSalesLeadPage {
   Locationid: any;
   companyName: any;
   customerType: any;
+  VendorId: string = '0';
   // public vForm: FormGroup;
   constructor(
     public navCtrl: NavController, public navParams: NavParams,
@@ -88,7 +89,7 @@ export class NewSalesLeadPage {
     public nav: NavController,
     public menu: MenuController,
     public toastCtrl: ToastController,
-
+    public alertCtrl: AlertController,
     public http: HttpServiceProvider,
     public alertService: AlertService,
     public toastService: ToastService,
@@ -99,34 +100,70 @@ export class NewSalesLeadPage {
     // debugger
     this.title = "New Sales Lead";
     this.appBuildConfig = this.globalService.appBuildConfig;
-    this.UserDetails = this.globalService.get('userDetails');
-    this.BranchTbl = this.UserDetails[Object.keys(this.UserDetails)[1]]["Table4"];
-    this.ActivityTbl = this.UserDetails[Object.keys(this.UserDetails)[1]]["Table3"];
 
-    this.userid = localStorage.getItem('userId');
-    this.filterActivityStatus = this.ActivityTbl.filter(t => t.Identifier == 'SalesLeadStatus');
-    this.filterTypesOFIndus = this.ActivityTbl.filter(t => t.Identifier == 'TypeOfIndustry');
-    this.filterTypeOFCustomer = this.ActivityTbl.filter(t => t.Identifier == 'TypeOfIndustry');
+    // this.UserDetails = this.globalService.get('userDetails');
+    // this.BranchTbl = this.UserDetails[Object.keys(this.UserDetails)[1]]["Table4"];
+    // this.ActivityTbl = this.UserDetails[Object.keys(this.UserDetails)[1]]["Table3"];
+
+
+    // this.filterActivityStatus = this.ActivityTbl.filter(t => t.Identifier == 'SalesLeadStatus');
+    // this.filterTypesOFIndus = this.ActivityTbl.filter(t => t.Identifier == 'TypeOfIndustry');
+    // this.filterTypeOFCustomer = this.ActivityTbl.filter(t => t.Identifier == 'TypeOfIndustry');
+
+
+    if (this.globalService.isCordovaAvailable()) {
+      this.BranchTbl = JSON.parse(localStorage.getItem('BranchTable'));
+      this.filterActivityStatus = JSON.parse(localStorage.getItem('SalesLeadStatus'));
+      this.filterTypesOFIndus = JSON.parse(localStorage.getItem('TypeOfIndustry'));
+      this.filterTypeOFCustomer = JSON.parse(localStorage.getItem('TypeOfCustomer'));
+
+    } else {
+
+      this.filterActivityStatus = JSON.parse(localStorage.getItem('SalesLeadStatus'));
+      this.filterTypesOFIndus = JSON.parse(localStorage.getItem('TypeOfIndustry'));
+      this.filterTypeOFCustomer = JSON.parse(localStorage.getItem('TypeOfCustomer'));
+      this.BranchTbl = JSON.parse(localStorage.getItem('BranchTable'));
+    }
+
+
     this.saveCustomer = new saveLeadCustomer();
-
-    if (this.globalService.selectedCity != undefined) {
-      this.location = this.globalService.selectedCity.Locationtext;
-
-      this.LocationCode = this.globalService.selectedCity.LocationCode;
-      this.Locationid = this.globalService.selectedCity.Locationid;
+    this.userid = localStorage.getItem('userId');
 
 
-    }
+    // if (this.globalService.selectedCity != '') {
+    //   this.location = this.globalService.selectedCity.Locationtext;
+
+    //   this.LocationCode = this.globalService.selectedCity.LocationCode;
+    //   this.Locationid = this.globalService.selectedCity.Locationid;
 
 
-    if (this.globalService.valueForLeadCutomer != undefined) {
+    // }
 
-      this.companyName = this.globalService.valueForLeadCutomer.BranchName;
-      this.customerType = this.globalService.valueForLeadCutomer.VendorType;
 
-      this.vendorname = this.companyName;
+    // if (this.globalService.valueForLeadCutomer != '') {
 
-    }
+    //   this.companyName = this.globalService.valueForLeadCutomer.VendorName;
+    //   this.customerType = this.globalService.valueForLeadCutomer.VendorType;
+    //   this.addressline1 = this.globalService.valueForLeadCutomer.Address1;
+    //   this.addressline2 = this.globalService.valueForLeadCutomer.Address2;
+    //   this.addressline3 = this.globalService.valueForLeadCutomer.Address3;
+
+    //   this.Locationid = this.globalService.valueForLeadCutomer.LocationID;
+    //   this.status = this.globalService.valueForLeadCutomer.Status.toString();
+    //   this.typeOfIndus = this.globalService.valueForLeadCutomer.TypeofIndustry.toString();
+    //   this.typeOfCust = this.globalService.valueForLeadCutomer.TypeOfCustomer.toString();
+    //   this.location = this.globalService.valueForLeadCutomer.LocationName;
+    //   this.firstname = this.globalService.valueForLeadCutomer.FirstName;
+    //   this.lastname = this.globalService.valueForLeadCutomer.LastName;
+    //   this.designation = this.globalService.valueForLeadCutomer.Designation;
+    //   this.mobileno = this.globalService.valueForLeadCutomer.Mobile;
+    //   this.contactemail = this.globalService.valueForLeadCutomer.Email;
+
+    //   //this.branchCode = this.globalService.valueForLeadCutomer.BranchName;
+    //   this.pincode = this.globalService.valueForLeadCutomer.Pincode
+    //   this.vendorname = this.globalService.valueForLeadCutomer.VendorName;
+
+    // }
 
     // this.vForm = this.fb.group({
 
@@ -144,7 +181,13 @@ export class NewSalesLeadPage {
 
   }
 
+  // ionViewWillEnter() {
+  //   alert('ionViewWillEnter')
+  // }
+  // ionViewDidEnter() {
+  //   alert('ionViewDidEnter')
 
+  // }
 
   openModal() {
 
@@ -154,7 +197,36 @@ export class NewSalesLeadPage {
     // }
     const profileModal = this.modalCtrl.create(FindLocationPage, { searchDetails: '1' });
     profileModal.onDidDismiss(data => {
-      console.log(data);
+      console.log('my data' + JSON.parse(data));
+      if (data != undefined) {
+        this.location = this.globalService.handleJSON(data).Locationtext;
+        this.LocationCode = this.globalService.handleJSON(data).LocationCode;
+        this.Locationid = this.globalService.handleJSON(data).Locationid;
+
+        // if (this.globalService.isCordovaAvailable()) {
+        //   console.log('my data' + data);
+
+        // } else {
+        //   // this.companyName = data.VendorName;
+        //   // this.customerType = data.VendorType;
+        //   // this.addressline1 = data.Address1;
+        //   // this.addressline2 = data.Address2;
+        //   // this.addressline3 = data.Address3;
+        //   // this.Locationid = data.LocationID;
+        //   // this.status = data.Status.toString();
+        //   // this.typeOfIndus = data.TypeofIndustry.toString();
+        //   // this.typeOfCust = data.TypeOfCustomer.toString();
+        //   // this.location = data.LocationName;
+        //   // this.firstname = data.FirstName;
+        //   // this.lastname = data.LastName;
+        //   // this.designation = data.Designation;
+        //   // this.mobileno = data.Mobile;
+        //   // this.contactemail = data.Email;
+        //   // this.pincode = data.Pincode
+        //   // this.vendorname = data.VendorName;
+
+      }
+      // }
       //this.madalDismissData = JSON.stringify(data);
     });
     profileModal.present();
@@ -178,6 +250,7 @@ export class NewSalesLeadPage {
     // debugger
     // alert(this.branchCode);
     // alert(this.branchCode);
+
     localStorage.setItem('bvalue', this.branchCode);
     // localStorage.setItem('btext', this.branchCode.branch);
 
@@ -198,7 +271,7 @@ export class NewSalesLeadPage {
     }
 
 
-    if (this.location == '') {
+    if (this.location == '' || this.location == undefined) {
       this.toastService.show('Please search location.', 3000, true, 'top', 'toast-container')
       return;
     }
@@ -206,6 +279,22 @@ export class NewSalesLeadPage {
 
     if (this.addressline1 == '') {
       this.toastService.show('Please enter at least one address.', 3000, true, 'top', 'toast-container')
+      return;
+    }
+
+    var mob = /^[1-9]{1}[0-9]{9}$/;
+    var txtMobile = this.mobileno;
+    if (mob.test(txtMobile) == false && this.mobileno != '') {
+      this.toastService.show('Please enter valid mobile number.', 3000, true, 'top', 'toast-container')
+      //  alert("Please enter valid mobile number.");
+      // txtMobile.focus();
+      return;
+    }
+
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    // return re.test(String(email).toLowerCase());
+    if (re.test(this.contactemail) == false && this.contactemail != '') {
+      this.toastService.show('Please enter valid email Id.', 3000, true, 'top', 'toast-container')
       return;
     }
 
@@ -248,12 +337,13 @@ export class NewSalesLeadPage {
     //   return;
     // }
 
-    this.saveCustomer.VendorId = '0';
+    this.saveCustomer.VendorId = this.VendorId;
     this.saveCustomer.VendorName = this.vendorname;
     this.saveCustomer.VendorType = this.vendortype;
     this.saveCustomer.AddressLine1 = this.addressline1;
     this.saveCustomer.AddressLine2 = this.addressline2;
     this.saveCustomer.AddressLine3 = this.addressline3;
+    this.saveCustomer.BranchCode = this.branchCode;
     this.saveCustomer.ContactEmail = this.contactemail;
     this.saveCustomer.FirstName = this.firstname;
     this.saveCustomer.LastName = this.lastname;
@@ -265,17 +355,42 @@ export class NewSalesLeadPage {
     this.saveCustomer.TypeOfCustomer = this.typeOfCust;
     this.saveCustomer.TypeofIndustry = this.typeOfIndus;
     this.saveCustomer.UserId = this.userid;
-    this.saveCustomer.ClientDate = '2021-05-28 13:10:44.060';
-    this.saveCustomer.BranchCode = this.branchCode;
+    this.saveCustomer.ClientDate = localDatetime;// '2021-05-28 13:10:44.060';
+
+
+    //     @VendorId int,
+    // @VendorName varchar(max),
+    // @VendorType varchar(max),
+    // @AddressLine1 varchar(max),
+    // @AddressLine2 varchar(max),
+    // @AddressLine3 varchar(max),
+    // @BranchCode varchar(max),
+    // @ContactEmail varchar(max),
+    // @FirstName varchar(max),
+    // @LastName varchar(max),
+    // @Designation varchar(max),
+    // @Location int,
+    // @MobileNo varchar(max),
+    // @PinCode varchar(max),
+    // @Status int,
+    // @TypeOfCustomer int,
+    // @TypeofIndustry int,
+    // @UserId int,
+    // @ClientDate varchar(max)
 
     this.http.POST(Constants.Corvi_Services.VendorMasterSaveForHHT, this.saveCustomer).then((response) => {
 
       console.log('response to check login method: ', response);
-      debugger
-      if (response != '') {
+
+      if (response == 'Success') {
+
+        this.showAlert('Success', 'Sales Lead Saved');
         // localStorage.removeItem('login_resp');
         // localStorage.removeItem('userDetails');
-        this.toastService.show(response, 3000, true, 'top', 'toast-success');
+
+      } else {
+        // this.toastService.show(response, 3000, true, 'top', 'toast-success');
+        this.showAlert('Success', 'Sales Lead Saved');
       }
 
 
@@ -299,8 +414,34 @@ export class NewSalesLeadPage {
 
 
 
+  showAlert(title, msg) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      message: msg,
+      buttons: [
+        {
+          text: 'OK',
+          handler: () => {
+            this.globalService.setRootPage(DashboardPage);
 
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+      ]
+    });
+    alert.present();
+  }
 
+  ngOnInit() {
+
+    this.branchCode = this.globalService.globalDefaultBranchCode;
+  }
 
   openModalFoSearchCompany() {
 
@@ -308,13 +449,106 @@ export class NewSalesLeadPage {
       this.toastService.show('Please select branch.', 3000, true, 'top', 'toast-container')
       return;
     }
-    const profileModal = this.modalCtrl.create(FindSalesActivityPage, { fromSaleLeadVal: '1' });
+    const profileModal = this.modalCtrl.create(FindSalesActivityPage, { fromSaleLeadVal: '1', branchCode: this.branchCode });
     profileModal.onDidDismiss(data => {
       console.log(data);
-      // this.madalDismissData = JSON.stringify(data);
+      if (this.globalService.valueForLeadCutomer != '') {
+        this.companyName = this.globalService.handleJSON(data).VendorName;
+        this.customerType = this.globalService.handleJSON(data).VendorType;
+        this.addressline1 = this.globalService.handleJSON(data).Address1;
+        this.addressline2 = this.globalService.handleJSON(data).Address2;
+        this.addressline3 = this.globalService.handleJSON(data).Address3;
+        this.Locationid = this.globalService.handleJSON(data).LocationID;
+        this.status = this.globalService.handleJSON(data).Status.toString();
+        this.typeOfIndus = this.globalService.handleJSON(data).TypeofIndustry.toString();
+        this.typeOfCust = this.globalService.handleJSON(data).TypeOfCustomer.toString();
+        this.location = this.globalService.handleJSON(data).LocationName;
+        this.firstname = this.globalService.handleJSON(data).FirstName;
+        this.lastname = this.globalService.handleJSON(data).LastName;
+        this.designation = this.globalService.handleJSON(data).Designation;
+        this.mobileno = this.globalService.handleJSON(data).Mobile;
+        this.contactemail = this.globalService.handleJSON(data).Email;
+        this.pincode = this.globalService.handleJSON(data).Pincode
+        this.vendorname = this.globalService.handleJSON(data).VendorName;
+
+        this.VendorId = this.globalService.handleJSON(data).VendorIds.toString();
+      }
+
+      // if (this.globalService.valueForLeadCutomer != '') {
+      //   this.companyName = this.globalService.valueForLeadCutomer.VendorName;
+      //   this.customerType = this.globalService.valueForLeadCutomer.VendorType;
+      //   this.addressline1 = this.globalService.valueForLeadCutomer.Address1;
+      //   this.addressline2 = this.globalService.valueForLeadCutomer.Address2;
+      //   this.addressline3 = this.globalService.valueForLeadCutomer.Address3;
+
+      //   this.Locationid = this.globalService.valueForLeadCutomer.LocationID;
+      //   this.status = this.globalService.valueForLeadCutomer.Status.toString();
+      //   this.typeOfIndus = this.globalService.valueForLeadCutomer.TypeofIndustry.toString();
+      //   this.typeOfCust = this.globalService.valueForLeadCutomer.TypeOfCustomer.toString();
+      //   this.location = this.globalService.valueForLeadCutomer.LocationName;
+      //   this.firstname = this.globalService.valueForLeadCutomer.FirstName;
+      //   this.lastname = this.globalService.valueForLeadCutomer.LastName;
+      //   this.designation = this.globalService.valueForLeadCutomer.Designation;
+      //   this.mobileno = this.globalService.valueForLeadCutomer.Mobile;
+      //   this.contactemail = this.globalService.valueForLeadCutomer.Email;
+
+      //   //this.branchCode = this.globalService.valueForLeadCutomer.BranchName;
+      //   this.pincode = this.globalService.valueForLeadCutomer.Pincode
+      //   this.vendorname = this.globalService.valueForLeadCutomer.VendorName;
+      // }
+
+      // this.companyName = '';
+      // this.customerType = '';;
+      // this.addressline1 = '';
+      // this.addressline2 = '';
+      // this.addressline3 = '';
+
+      // this.Locationid = '';
+      // this.status = '';
+      // this.typeOfIndus = '';
+      // this.typeOfCust = '';
+      // this.location = '';
+      // this.firstname = '';
+      // this.lastname = '';
+      // this.designation = '';
+      // this.mobileno = '';
+      // this.contactemail = '';
+
     });
     profileModal.present();
     this.globalService.store('branchCode', this.branchCode);
+
+
+    //this.branchCode = this.globalService.valueForLeadCutomer.BranchName;
+    this.pincode = this.globalService.valueForLeadCutomer.Pincode
+    this.vendorname = this.globalService.valueForLeadCutomer.VendorName;
+    //this.globalService.store('branchCode', this.branchCode);
+  }
+
+
+  IsMobileNumber(txtMobId: any) {
+
+    var mob = /^[1-9]{1}[0-9]{9}$/;
+    var txtMobile = txtMobId;
+    if (mob.test(txtMobId) == false && txtMobId != '') {
+      this.toastService.show('Please enter valid mobile number.', 3000, true, 'top', 'toast-container')
+      //  alert("Please enter valid mobile number.");
+      // txtMobile.focus();
+      return false;
+    }
+    return true;
+  }
+
+
+  validateEmail(email) {
+
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    // return re.test(String(email).toLowerCase());
+    if (re.test(email) == false && email != '') {
+      this.toastService.show('Please enter valid email Id.', 3000, true, 'top', 'toast-container')
+      return false;
+    }
+    return true;
   }
 
 }
